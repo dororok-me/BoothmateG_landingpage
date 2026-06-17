@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boothmate - 동시통역을 위한 실시간 자막 앱</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: #ffffff;
+  background: #000000;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header {
+  background: #1a1a1a;
+  padding: 16px 0;
+  border-bottom: 1px solid #333333;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+}
+
+nav a {
+  color: #888888;
+  text-decoration: none;
+  margin-left: 30px;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #ff6b35;
+}
+
+.hero {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  color: white;
+  padding: 60px 0 80px;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(255, 107, 53, 0.2);
+  border: 1px solid rgba(255, 107, 53, 0.5);
+  color: #ffb366;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hero-logo {
+  width: 280px;
+  height: auto;
+  margin: 30px auto;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  opacity: 0.95;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.subtitle-animation {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+  font-size: 18px;
+  font-weight: 500;
+  overflow: hidden;
+  position: relative;
+}
+
+.subtitle-scroll {
+  animation: scroll-text 6s infinite;
+}
+
+@keyframes scroll-text {
+  0% { transform: translateY(0); opacity: 1; }
+  20% { opacity: 1; }
+  25% { transform: translateY(-40px); opacity: 0; }
+  26% { transform: translateY(40px); opacity: 0; }
+  30% { opacity: 1; }
+  50% { opacity: 1; }
+  55% { transform: translateY(-40px); opacity: 0; }
+  56% { transform: translateY(40px); opacity: 0; }
+  60% { opacity: 1; }
+  80% { opacity: 1; }
+  85% { transform: translateY(-40px); opacity: 0; }
+  86% { transform: translateY(40px); opacity: 0; }
+  90% { opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.btn {
+  padding: 14px 32px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: #ff6b35;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #e55a24;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+}
+
+.btn-secondary {
+  background: #1a1a1a;
+  color: #2563eb;
+  border: 2px solid white;
+}
+
+.btn-secondary:hover {
+  background: transparent;
+}
+
+.features {
+  padding: 80px 0;
+  background: #1a1a1a;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 50px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.feature-card {
+  background: #1a1a1a;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #333333;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.feature-card:hover {
+  border-color: #ff6b35;
+  box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  width: 60px;
+  height: 60px;
+  background: #ff6b35;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  margin: 0 auto 20px;
+  color: white;
+}
+
+.feature-card h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #2563eb;
+}
+
+.feature-card p {
+  color: #888888;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.media-section {
+  padding: 80px 0;
+  background: #1a1a1a;
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.media-item {
+  background: #1a1a1a;
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 60px 20px;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 16px;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.media-item:hover {
+  border-color: #ff6b35;
+  background: #fff8f5;
+}
+
+.media-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.media-label {
+  font-size: 12px;
+  color: #888888;
+  margin-top: 10px;
+  display: block;
+}
+
+.video-container {
+  position: relative;
+  background: #1a1a2e;
+  border-radius: 12px;
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  grid-column: 1 / -1;
+  overflow: hidden;
+}
+
+.testimonials {
+  padding: 80px 0;
+  background: #1a1a1a;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.testimonial-card {
+  background: #1a1a1a;
+  padding: 30px;
+  border-radius: 12px;
+  border-left: 4px solid #ff6b35;
+}
+
+.stars {
+  color: #ff6b35;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.testimonial-text {
+  color: #cccccc;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+.testimonial-author {
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.cta-final {
+  padding: 60px 0;
+  text-align: center;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  color: white;
+  border-radius: 12px;
+  margin: 80px 0;
+}
+
+.cta-final h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.cta-final p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  opacity: 0.95;
+}
+
+footer {
+  background: #1a1a1a;
+  padding: 40px 0;
+  border-top: 1px solid #e2e8f0;
+  text-align: center;
+  color: #888888;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 32px;
+  }
+  
+  .hero p {
+    font-size: 16px;
+  }
+  
+  .hero-logo {
+    width: 400px;
+  }
+  
+  .media-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+  
+  nav a {
+    margin-left: 15px;
+    font-size: 12px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-content">
+      <a href="#" class="logo">
+        <img src="boothmate_logo.png" alt="Boothmate 로고">
+      </a>
+      <nav>
+        <a href="#features">기능</a>
+        <a href="#media">갤러리</a>
+        <a href="#contact">문의</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section style="background: linear-gradient(135deg, rgba(10,10,10,0.85) 0%, rgba(26,26,26,0.85) 100%), url('booth_background.png') center/cover; color: white; padding: 60px 0; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
+  <div class="container">
+    <h1 style="color: white; margin: 0; font-size: 43.2px; font-weight: 700; line-height: 1.3;">
+      <span style="background: rgba(255, 107, 53, 0.4); padding: 8px 16px; border-radius: 8px;">애플 개발자</span>이자 <span style="background: rgba(29, 209, 161, 0.4); padding: 8px 16px; border-radius: 8px;">국제회의 통역사</span>가 만든<br>
+      진정한 프로의 동시통역 AI 솔루션
+    </h1>
+    <img src="boothmate_logo_gradient.png" alt="Boothmate 로고" style="width: 400px; height: auto; margin-top: 20px; filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));">
+  </div>
+</section>
+
+<section class="hero">
+  <div class="container">
+    <div style="position: relative; display: inline-block; width: 100%; max-width: 600px; margin-bottom: 30px;">
+      <img src="booth_background.png" alt="회의실" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); display: block;">
+      <div style="position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; color: white; font-size: 18px; font-weight: 600; text-shadow: 0 2px 8px rgba(0,0,0,0.6);">실제 국제회의 통역사가 만들었습니다</div>
+    </div>
+    <h1>실시간 자막으로<br>통역을 더 스마트하게</h1>
+    <p>통역사를 위해 설계되었습니다. 동시통역의 순간을 놓치지 마세요.</p>
+    
+    <img src="boothmate_logo_gradient.png" alt="Boothmate 로고" class="hero-logo">
+    
+    <p style="font-size: 18px; margin-top: 30px;">70개 이상의 언어로 실시간 자막을 지원합니다. 자신감 있게 통역하세요.</p>
+    
+    <div class="subtitle-animation">
+      <div class="subtitle-scroll">
+        <div style="height: 40px; display: flex; align-items: center;">한국어 실시간 자막</div>
+        <div style="height: 40px; display: flex; align-items: center;">English Real-time Captions</div>
+        <div style="height: 40px; display: flex; align-items: center;">日本語リアルタイム字幕</div>
+      </div>
+    </div>
+    
+    <div class="cta-buttons">
+      <a href="https://github.com/dororok-me/BoothmateG/releases/download/v1.o.o/BoothmateG.zip" class="btn btn-primary">설치파일 다운로드</a>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="container">
+    <h2 class="section-title">핵심 기능</h2>
+    
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>실시간 자막</h3>
+        <p>Apple 음성 인식으로 0.5초 내 자막 표시. 통역 현장의 속도를 따라갑니다.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <h3>70+ 언어 지원</h3>
+        <p>Google Live Translate API로 70개 이상의 언어를 지원합니다. 국제 회의부터 다국적 팀 미팅까지 모든 언어를 커버합니다.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">📚</div>
+        <h3>용어집 관리</h3>
+        <p>양방향 용어 주석과 CSV 임포트. 전문 용어를 한 번에 관리하세요.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">✨</div>
+        <h3>직관적 인터페이스</h3>
+        <p>통역사를 위해 설계된 UI. 복잡한 설정 없이 바로 시작하세요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="media-section" id="media">
+  <div class="container">
+    <h2 class="section-title">갤러리</h2>
+    
+    <div class="media-grid">
+      <div class="media-item">
+        <div>
+          <div style="font-size: 48px; margin-bottom: 15px;">📱</div>
+          <p>앱 스크린샷 1</p>
+          <span class="media-label">여기에 Boothmate 앱 화면 이미지를 업로드하세요</span>
+        </div>
+      </div>
+      
+      <div class="media-item">
+        <div>
+          <div style="font-size: 48px; margin-bottom: 15px;">📱</div>
+          <p>앱 스크린샷 2</p>
+          <span class="media-label">여기에 자막 화면 사진을 업로드하세요</span>
+        </div>
+      </div>
+      
+      <div class="media-item">
+        <div>
+          <div style="font-size: 48px; margin-bottom: 15px;">📱</div>
+          <p>앱 스크린샷 3</p>
+          <span class="media-label">용어집 기능 스크린샷</span>
+        </div>
+      </div>
+      
+      <div class="media-item">
+        <div>
+          <div style="font-size: 48px; margin-bottom: 15px;">📱</div>
+          <p>앱 스크린샷 4</p>
+          <span class="media-label">설정/테마 화면</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-container">
+      <div style="text-align: center;">
+        <div style="font-size: 48px; margin-bottom: 15px;">🎬</div>
+        <p>Boothmate 사용 데모 영상</p>
+        <p style="font-size: 14px; margin-top: 10px; opacity: 0.7;">여기에 YouTube 또는 Vimeo 임베드 코드를 추가하세요</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="container">
+    <h2 class="section-title">사용자 평가</h2>
+    
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"동시통역이 이렇게 편해질 줄은 몰랐어요. 자막만으로도 집중력이 높아졌어요."</p>
+        <p class="testimonial-author">- 회의 통역사 김준호</p>
+      </div>
+      
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"용어집 기능이 정말 유용합니다. 복잡한 기술 용어도 빠르게 찾을 수 있어요."</p>
+        <p class="testimonial-author">- IT 분야 통역사 이수경</p>
+      </div>
+      
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"4개 언어를 동시에 지원하니까 국제 회의에서 정말 활용도가 높네요."</p>
+        <p class="testimonial-author">- 국제 컨퍼런스 통역사 박민수</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="container">
+    <h2>지금 바로 시작하세요</h2>
+    <p>iOS 앱으로 통역 현장을 더 스마트하게 관리하세요</p>
+    <div class="cta-buttons">
+      <a href="https://github.com/dororok-me/BoothmateG/releases/download/v1.o.o/BoothmateG.zip" class="btn btn-primary">설치파일 다운로드</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background: #1a1a1a; padding: 80px 0;">
+  <div class="container">
+    <h2 style="text-align: center; font-size: 36px; margin-bottom: 50px; color: #ffffff; font-weight: 700;">고객 문의</h2>
+    
+    <div style="max-width: 600px; margin: 0 auto; background: #1a1a1a; padding: 40px; border-radius: 12px; border: 1px solid #333333;">
+      <form action="https://formsubmit.co/dororok@gmail.com" method="POST" style="display: flex; flex-direction: column; gap: 20px;">
+        
+        <div>
+          <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #ffffff;">제목</label>
+          <input type="text" name="제목" required style="width: 100%; padding: 12px; border: 1px solid #333333; border-radius: 8px; font-size: 14px;">
+        </div>
+
+        <div>
+          <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #ffffff;">행사명 (행사 제목, 일정 등)</label>
+          <input type="text" name="행사명" required style="width: 100%; padding: 12px; border: 1px solid #333333; border-radius: 8px; font-size: 14px;">
+        </div>
+
+        <div>
+          <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #ffffff;">세션 개수</label>
+          <input type="number" name="세션_개수" min="1" required style="width: 100%; padding: 12px; border: 1px solid #333333; border-radius: 8px; font-size: 14px;">
+        </div>
+
+        <div>
+          <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #ffffff;">문의 내용</label>
+          <textarea name="문의_내용" rows="6" required style="width: 100%; padding: 12px; border: 1px solid #333333; border-radius: 8px; font-size: 14px; font-family: inherit; resize: vertical;"></textarea>
+        </div>
+
+        <div>
+          <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #ffffff;">답변 받으실 연락처</label>
+          <input type="email" name="이메일" required style="width: 100%; padding: 12px; border: 1px solid #333333; border-radius: 8px; font-size: 14px; margin-bottom: 10px;" placeholder="이메일 주소">
+          <input type="tel" name="전화번호" style="width: 100%; padding: 12px; border: 1px solid #333333; border-radius: 8px; font-size: 14px;" placeholder="전화번호 (선택사항)">
+        </div>
+
+        <button type="submit" style="background: #ff6b35; color: white; padding: 14px 32px; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s;">
+          전송하기
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2024 dororok AI Lab. 모든 권리 보유합니다.</p>
+    <p style="margin-top: 10px; font-size: 12px;">Boothmate는 통역사와 함께 성장합니다.</p>
+  </div>
+</footer>
+
+</body>
+</html>
