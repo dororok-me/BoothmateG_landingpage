@@ -63,6 +63,19 @@ nav a:hover {
   color: #ff6b35;
 }
 
+.nav-beta {
+  color: #378ADD !important;
+  font-weight: 700 !important;
+  border: 1px solid #378ADD;
+  border-radius: 6px;
+  padding: 4px 10px;
+}
+
+.nav-beta:hover {
+  background: #378ADD !important;
+  color: #fff !important;
+}
+
 .hero {
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
   color: white;
@@ -146,6 +159,7 @@ nav a:hover {
   gap: 15px;
   justify-content: center;
   margin-top: 40px;
+  flex-wrap: wrap;
 }
 
 .btn {
@@ -179,6 +193,18 @@ nav a:hover {
 
 .btn-secondary:hover {
   background: transparent;
+}
+
+.btn-online {
+  background: #378ADD;
+  color: white;
+  border: none;
+}
+
+.btn-online:hover {
+  background: #2a6db5;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(55,138,221,0.3);
 }
 
 .features {
@@ -410,6 +436,7 @@ footer {
         <a href="#features">기능</a>
         <a href="#media">갤러리</a>
         <a href="#contact">문의</a>
+        <a href="https://chipper-raindrop-1e932c.netlify.app" target="_blank" class="nav-beta">🌐 BoothmateOnline 베타</a>
       </nav>
     </div>
   </div>
@@ -434,14 +461,11 @@ footer {
     <h1>기존 AI 통역 솔루션에 비해<br>월등한 동시성 구현</h1>
     <p>컨퍼런스 현장을 가장 잘 이해하는 국제회의 통역사가 직접 만든 사용자 친화적 UI</p>
     
-    
     <p style="font-size: 18px; margin-top: 30px;">70개 이상의 언어 지원 & 자막 음성 지원</p>
-    
-      </div>
-    </div>
     
     <div class="cta-buttons">
       <a href="https://github.com/dororok-me/BoothmateG/releases/download/v1.o.o/BoothmateG.zip" class="btn btn-primary">설치파일 다운로드</a>
+      <a href="https://chipper-raindrop-1e932c.netlify.app" target="_blank" class="btn btn-online">🌐 BoothmateOnline 베타 체험</a>
     </div>
   </div>
 </section>
@@ -525,8 +549,6 @@ footer {
     </div>
   </div>
 </section>
-
-
 
 <section id="contact" style="background: #1a1a1a; padding: 80px 0;">
   <div class="container">
