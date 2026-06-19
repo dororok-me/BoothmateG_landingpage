@@ -499,10 +499,13 @@ footer {
     <h2 class="section-title">갤러리</h2>
     
     <div class="media-grid">
-      <div class="media-item" style="padding: 0; overflow: hidden;">
+      <div class="media-item" style="padding: 0; overflow: hidden; position: relative;">
         <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
           <source src="boothmate_screenshot1.mp4" type="video/mp4">
         </video>
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; pointer-events: none;">
+          <span style="color: white; font-size: 32px; font-weight: 700; text-shadow: 0 2px 12px rgba(0,0,0,0.7); letter-spacing: 1px;">Boothmate</span>
+        </div>
       </div>
       
       <div class="media-item">
