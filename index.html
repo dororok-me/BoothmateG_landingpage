@@ -2,591 +2,507 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Boothmate - 동시통역을 위한 실시간 자막 앱</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Boothmate — 통역사의 두뇌를 학습한 실시간 동시통역 자막</title>
+<meta name="description" content="국제회의 동시통역사이자 애플 개발자가 만든 통역 앱. 통역사의 두뇌 프로세스를 학습한 실시간 동시통역 자막 엔진, 개입형 용어집, QR 자막, 70여 개 언어 지원.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  line-height: 1.6;
-  color: #ffffff;
-  background: #000000;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-header {
-  background: #1a1a1a;
-  padding: 16px 0;
-  border-bottom: 1px solid #333333;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-}
-
-.logo img {
-  height: 40px;
-  width: 40px;
-  aspect-ratio: 1;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-nav a {
-  color: #888888;
-  text-decoration: none;
-  margin-left: 30px;
-  font-size: 14px;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: #ff6b35;
-}
-
-.hero {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-  color: white;
-  padding: 60px 0 80px;
-  text-align: center;
-  overflow: hidden;
-  position: relative;
-}
-
-.badge {
-  display: inline-block;
-  background: rgba(255, 107, 53, 0.2);
-  border: 1px solid rgba(255, 107, 53, 0.5);
-  color: #ffb366;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.hero-logo {
-  width: 280px;
-  height: auto;
-  margin: 30px auto;
-  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
-}
-
-.hero h1 {
-  font-size: 38px;
-  margin-bottom: 20px;
-  font-weight: 700;
-}
-
-.hero p {
-  font-size: 19px;
-  margin-bottom: 30px;
-  opacity: 0.95;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.subtitle-animation {
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 40px 0;
-  font-size: 18px;
-  font-weight: 500;
-  overflow: hidden;
-  position: relative;
-}
-
-.subtitle-scroll {
-  animation: scroll-text 6s infinite;
-}
-
-@keyframes scroll-text {
-  0% { transform: translateY(0); opacity: 1; }
-  20% { opacity: 1; }
-  25% { transform: translateY(-40px); opacity: 0; }
-  26% { transform: translateY(40px); opacity: 0; }
-  30% { opacity: 1; }
-  50% { opacity: 1; }
-  55% { transform: translateY(-40px); opacity: 0; }
-  56% { transform: translateY(40px); opacity: 0; }
-  60% { opacity: 1; }
-  80% { opacity: 1; }
-  85% { transform: translateY(-40px); opacity: 0; }
-  86% { transform: translateY(40px); opacity: 0; }
-  90% { opacity: 1; }
-  100% { transform: translateY(0); opacity: 1; }
-}
-
-.cta-buttons {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  margin-top: 40px;
-}
-
-.btn {
-  padding: 14px 32px;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s;
-  text-decoration: none;
-  display: inline-block;
-}
-
-.btn-primary {
-  background: #ff6b35;
-  color: white;
-}
-
-.btn-primary:hover {
-  background: #e55a24;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
-}
-
-.btn-secondary {
-  background: #1a1a1a;
-  color: #2563eb;
-  border: 2px solid white;
-}
-
-.btn-secondary:hover {
-  background: transparent;
-}
-
-.features {
-  padding: 80px 0;
-  background: #1a1a1a;
-}
-
-.section-title {
-  text-align: center;
-  font-size: 36px;
-  margin-bottom: 50px;
-  color: #ffffff;
-  font-weight: 700;
-}
-
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  margin-bottom: 60px;
-}
-
-.feature-card {
-  background: #1a1a1a;
-  padding: 30px;
-  border-radius: 12px;
-  border: 1px solid #333333;
-  text-align: center;
-  transition: all 0.3s;
-}
-
-.feature-card:hover {
-  border-color: #ff6b35;
-  box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
-  transform: translateY(-5px);
-}
-
-.feature-icon {
-  width: 60px;
-  height: 60px;
-  background: #ff6b35;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  margin: 0 auto 20px;
-  color: white;
-}
-
-.feature-card h3 {
-  font-size: 20px;
-  margin-bottom: 15px;
-  color: #2563eb;
-}
-
-.feature-card p {
-  color: #888888;
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-.media-section {
-  padding: 80px 0;
-  background: #1a1a1a;
-}
-
-.media-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  margin-bottom: 50px;
-}
-
-.media-item {
-  background: #1a1a1a;
-  border: 2px dashed #cbd5e1;
-  border-radius: 12px;
-  padding: 60px 20px;
-  text-align: center;
-  color: #94a3b8;
-  font-size: 16px;
-  min-height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s;
-}
-
-.media-item:hover {
-  border-color: #ff6b35;
-  background: #fff8f5;
-}
-
-.media-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.media-label {
-  font-size: 12px;
-  color: #888888;
-  margin-top: 10px;
-  display: block;
-}
-
-.video-container {
-  position: relative;
-  background: #1a1a2e;
-  border-radius: 12px;
-  aspect-ratio: 16/9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 16px;
-  grid-column: 1 / -1;
-  overflow: hidden;
-}
-
-.testimonials {
-  padding: 80px 0;
-  background: #1a1a1a;
-}
-
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-}
-
-.testimonial-card {
-  background: #1a1a1a;
-  padding: 30px;
-  border-radius: 12px;
-  border-left: 4px solid #ff6b35;
-}
-
-.stars {
-  color: #ff6b35;
-  font-size: 14px;
-  margin-bottom: 15px;
-}
-
-.testimonial-text {
-  color: #cccccc;
-  margin-bottom: 15px;
-  font-style: italic;
-}
-
-.testimonial-author {
-  font-weight: 600;
-  color: #ffffff;
-  font-size: 14px;
-}
-
-.cta-final {
-  padding: 60px 0;
-  text-align: center;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-  color: white;
-  border-radius: 12px;
-  margin: 80px 0;
-}
-
-.cta-final h2 {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-.cta-final p {
-  font-size: 18px;
-  margin-bottom: 30px;
-  opacity: 0.95;
-}
-
-footer {
-  background: #1a1a1a;
-  padding: 40px 0;
-  border-top: 1px solid #e2e8f0;
-  text-align: center;
-  color: #888888;
-  font-size: 14px;
-}
-
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 22px;
+  :root{
+    --white:#ffffff;
+    --offwhite:#fbfbfd;
+    --ink:#1d1d1f;
+    --gray:#6e6e73;
+    --gray2:#86868b;
+    --line:#d2d2d7;
+    --blue:#0071e3;
+    --blue-link:#2997ff;
+    --radius:18px;
+    --maxw:980px;
+    --grad:linear-gradient(120deg,#0a84ff 0%,#19c37d 100%);
   }
-  
-  .hero p {
-    font-size: 11px;
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"SF Pro KR","SF Pro Display","Apple SD Gothic Neo","Helvetica Neue",Arial,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.47;
+    letter-spacing:-.01em;
   }
-  
-  .hero-logo {
-    width: 200px;
+  img{display:block;max-width:100%}
+  a{color:var(--blue-link);text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky;top:0;z-index:9000;height:48px;
+    background:rgba(251,251,253,.72);
+    backdrop-filter:saturate(180%) blur(20px);
+    -webkit-backdrop-filter:saturate(180%) blur(20px);
+    border-bottom:1px solid rgba(0,0,0,.08);
   }
-  
-  h1[style*="font-size: 43.2px"] {
-    font-size: 28px !important;
+  .nav-inner{max-width:1024px;margin:0 auto;height:100%;padding:0 22px;display:flex;align-items:center;justify-content:space-between}
+  .nav-logo{display:flex;align-items:center;gap:8px}
+  .nav-logo img{height:22px;width:auto}
+  .nav-logo span{font-weight:600;font-size:18px;letter-spacing:-.02em}
+  .nav-links{display:flex;align-items:center;gap:26px}
+  .nav-links a{color:var(--ink);font-size:13px;opacity:.85;transition:opacity .2s}
+  .nav-links a:hover{opacity:1}
+  .nav-cta{
+    background:var(--blue);color:#fff !important;opacity:1 !important;
+    padding:5px 13px;border-radius:980px;font-size:12px;font-weight:500;
   }
-  
-  img[src="boothmate_logo_gradient.png"] {
-    width: 200px !important;
+  .nav-cta:hover{background:#0077ed}
+
+  /* ---------- TYPE ---------- */
+  .eyebrow{font-size:21px;font-weight:600;letter-spacing:-.02em;margin-bottom:6px}
+  .eyebrow.blue{color:#2997ff}
+  .eyebrow.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  h1,h2,h3{letter-spacing:-.025em;font-weight:600;line-height:1.07}
+  .headline{font-size:clamp(34px,5.4vw,56px)}
+  .headline.xl{font-size:clamp(40px,7vw,80px);line-height:1.05}
+  .subhead{font-size:clamp(19px,2.4vw,28px);font-weight:600;color:var(--gray);letter-spacing:-.02em;line-height:1.3}
+  .lead{font-size:clamp(17px,1.5vw,21px);color:var(--gray);font-weight:400;line-height:1.5}
+  .center{text-align:center}
+
+  /* ---------- BUTTONS / LINKS ---------- */
+  .btn{
+    display:inline-block;background:var(--blue);color:#fff;
+    padding:12px 24px;border-radius:980px;font-size:17px;font-weight:400;
+    transition:background .2s;
   }
-  
-  .media-grid {
-    grid-template-columns: 1fr;
+  .btn:hover{background:#0077ed}
+  .btn.ghost{background:transparent;color:var(--blue-link);border:1px solid var(--line)}
+  .btn.ghost:hover{background:rgba(0,0,0,.04)}
+  .linkrow{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+  .chev{font-size:clamp(17px,1.6vw,21px);font-weight:400}
+  .chev::after{content:" ›"}
+
+  /* on-dark variants */
+  .dark{background:#000;color:#f5f5f7}
+  .dark .subhead{color:#a1a1a6}
+  .dark .lead{color:#a1a1a6}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:96px 0}
+  .sec-head{max-width:760px;margin:0 auto}
+  .sec-head .lead{margin-top:22px;max-width:640px;margin-left:auto;margin-right:auto}
+
+  /* hero */
+  .hero{background:var(--offwhite);padding:64px 0 0;text-align:center;overflow:hidden}
+  .hero .eyebrow{font-size:clamp(17px,2vw,22px);color:var(--gray);font-weight:500;margin-bottom:18px}
+  .hero-mark{max-width:min(420px,72vw);margin:0 auto 14px}
+  .hero h1{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .hero-tag{font-size:clamp(21px,3vw,32px);font-weight:600;letter-spacing:-.02em;color:var(--ink);max-width:680px;margin:0 auto}
+  .hero-img{margin:48px auto 0;max-width:1100px;border-radius:24px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.16)}
+  .hero-img img{width:100%}
+
+  /* transition statement */
+  .statement{padding:120px 0;text-align:center}
+  .statement h2{font-size:clamp(32px,5vw,52px);color:var(--ink)}
+  .statement .accent{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* vs comparison */
+  .vs{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:stretch;max-width:860px;margin:54px auto 0}
+  .vs-card{background:#141414;border:1px solid #2a2a2c;border-radius:var(--radius);padding:34px 28px;text-align:center}
+  .vs-card.win{background:linear-gradient(160deg,#0c2a1c,#0a1f33);border:1px solid rgba(25,195,125,.5)}
+  .vs-card .tag{font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--gray2);margin-bottom:12px}
+  .vs-card.win .tag{color:#19c37d}
+  .vs-card h3{font-size:22px;margin-bottom:10px;color:#f5f5f7}
+  .vs-card p{font-size:15px;color:#a1a1a6;line-height:1.55}
+  .vs-mid{display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:var(--gray2)}
+
+  /* feature points (3-up) */
+  .points{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;max-width:920px;margin:56px auto 0}
+  .point{text-align:center}
+  .point .ic{font-size:32px;margin-bottom:14px}
+  .point h3{font-size:19px;margin-bottom:8px}
+  .point p{font-size:15px;color:var(--gray);line-height:1.55}
+  .dark .point p{color:#a1a1a6}
+
+  /* tiles grid */
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:920px;margin:54px auto 0}
+  .tile{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:36px 26px;text-align:center}
+  .tile .ic{font-size:34px;margin-bottom:14px}
+  .tile h3{font-size:19px;margin-bottom:8px}
+  .tile p{font-size:15px;color:var(--gray);line-height:1.5}
+
+  /* finale */
+  .finale{background:#000;color:#f5f5f7;text-align:center;padding:130px 0}
+  .finale .headline{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+
+  /* gallery */
+  .media-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:980px;margin:48px auto 0}
+  .media-item{border-radius:var(--radius);overflow:hidden;aspect-ratio:16/10;background:#f0f0f2;position:relative}
+  .media-item img,.media-item video{width:100%;height:100%;object-fit:cover}
+  .media-item.ph{display:flex;align-items:center;justify-content:center;border:2px dashed var(--line);background:var(--offwhite)}
+  .media-item.ph div{text-align:center;color:var(--gray2)}
+  .media-item.ph .ic{font-size:40px;margin-bottom:10px}
+  .media-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+  .media-overlay span{color:#fff;font-size:30px;font-weight:700;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+  .demo{max-width:980px;margin:24px auto 0;border-radius:var(--radius);overflow:hidden;box-shadow:0 24px 50px rgba(0,0,0,.14)}
+  .demo video{width:100%;display:block}
+
+  /* CTA */
+  .cta{background:var(--offwhite);text-align:center}
+  .cta .btnrow{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+
+  /* contact */
+  .contact{background:var(--white)}
+  .form-card{max-width:600px;margin:44px auto 0}
+  form{display:flex;flex-direction:column;gap:18px}
+  label{display:block;font-size:14px;font-weight:600;margin-bottom:7px;color:var(--ink)}
+  input,textarea{
+    width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:12px;
+    font-size:15px;font-family:inherit;background:var(--white);color:var(--ink);transition:border-color .2s,box-shadow .2s;
   }
-  
-  .cta-buttons {
-    flex-direction: column;
+  input:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,113,227,.15)}
+  textarea{resize:vertical}
+  form .btn{align-self:flex-start;border:none;cursor:pointer}
+
+  /* footer */
+  footer{background:var(--offwhite);border-top:1px solid var(--line);padding:34px 0;text-align:center}
+  footer p{font-size:12px;color:var(--gray2);line-height:1.6}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+  /* responsive */
+  @media (max-width:768px){
+    section{padding:70px 0}
+    .statement{padding:84px 0}
+    .finale{padding:96px 0}
+    .nav-links{gap:14px}
+    .nav-links a:not(.nav-cta){display:none}
+    .vs{grid-template-columns:1fr;gap:14px}
+    .vs-mid{padding:4px 0}
+    .points{grid-template-columns:1fr;gap:34px}
+    .tiles{grid-template-columns:1fr}
+    .media-grid{grid-template-columns:1fr}
+    .linkrow{gap:22px}
   }
-  
-  .btn {
-    width: 100%;
-  }
-  
-  nav a {
-    margin-left: 8px;
-    font-size: 11px;
-  }
-  
-  .container {
-    padding: 0 15px;
-  }
-}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="container">
-    <div class="header-content">
-      <a href="#" class="logo">
-        <img src="boothmate_logo_gradient.png" alt="Boothmate 로고">
-      </a>
-      <nav>
-        <a href="#features">기능</a>
-        <a href="#media">갤러리</a>
-        <a href="#contact">문의</a>
-        <a href="https://online.boothmate.co.kr" target="_blank" class="nav-beta">🌐 BoothmateOnline 베타</a>
-      </nav>
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo">
+      <img src="boothmate_logo_gradient.png" alt="Boothmate">
+      <span>Boothmate</span>
+    </a>
+    <div class="nav-links">
+      <a href="#engine">기능</a>
+      <!-- 갤러리 임시 숨김: <a href="#gallery">갤러리</a> -->
+      <a href="#contact">문의</a>
+      <a href="https://online.boothmate.co.kr" target="_blank" rel="noopener" class="nav-cta">Boothmate Online</a>
     </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow reveal">마침내<br>국제회의 동시통역사이자 애플 개발자가 만든 통역 앱</p>
+    <img class="hero-mark reveal" src="boothmate_logo_gradient.png" alt="Boothmate 로고">
+    <h1>Boothmate</h1>
+    <p class="hero-tag reveal">통역사의 두뇌를 학습한<br>실시간 동시통역 자막 엔진.</p>
+  </div>
+  <div class="hero-img reveal">
+    <img src="booth_background.png" alt="국제회의 통역 부스 환경">
   </div>
 </header>
 
-<section style="background: linear-gradient(135deg, rgba(10,10,10,0.85) 0%, rgba(26,26,26,0.85) 100%), url('booth_background.png') center/cover; color: white; padding: 40px 0; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
-  <div class="container">
-    <h1 style="color: white; margin: 0; font-size: 18px; font-weight: 700; line-height: 1.3;">
-      <span style="background: rgba(255, 107, 53, 0.6); padding: 1px 4px; border-radius: 3px; box-decoration-break: clone; -webkit-box-decoration-break: clone;">애플 개발자</span>이자 <span style="background: rgba(29, 209, 161, 0.6); padding: 1px 4px; border-radius: 3px; box-decoration-break: clone; -webkit-box-decoration-break: clone;">국제회의 통역사</span>가 만든<br>
-      진정한 프로의 동시통역 AI 솔루션
-    </h1>
-    <img src="boothmate_logo_gradient.png" alt="Boothmate 로고" style="width: 300px; height: auto; margin-top: 20px; filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));">
+<!-- TRANSITION STATEMENT -->
+<section class="statement">
+  <div class="wrap reveal">
+    <h2>바쁘니까, <span class="accent">기능부터.</span></h2>
   </div>
 </section>
 
-<section class="hero">
-  <div class="container">
-    <div style="position: relative; display: inline-block; width: 100%; max-width: 600px; margin-bottom: 30px;">
-      <img src="booth_background.png" alt="회의실" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); display: block;">
-      <div style="position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; color: white; font-size: 18px; font-weight: 600; text-shadow: 0 2px 8px rgba(0,0,0,0.6);">단순히 AI 번역에 의지하지 않습니다.<br>인간 통역사의 두뇌 프로세스를 AI에 학습시켰습니다</div>
-    </div>
-    <p>• 컨퍼런스 현장을 이해하는 국제회의 통역사가 직접 만든 사용자 친화적 UI</p>
-    
-    
-    <p style="font-size: 19px; margin-top: 30px;">• 70개 이상의 언어 지원 & 자막 음성 지원</p>
-    
-      </div>
-    </div>
-    
-    <div class="cta-buttons">
-      <a href="https://github.com/dororok-me/BoothmateG/releases/download/v1.o.o/BoothmateG.zip" class="btn btn-primary">설치파일 다운로드</a>
-      <a href="https://online.boothmate.co.kr" target="_blank" class="btn btn-online">🌐 BoothmateOnline 베타 체험</a>
-    </div>
+<!-- 1. ENGINE (dark) -->
+<section class="dark" id="engine">
+  <div class="wrap sec-head center">
+    <p class="eyebrow blue reveal">통역 엔진</p>
+    <h2 class="headline reveal">AI에게 “해줘”?<br>아니면, 매일 학습하는 엔진?</h2>
+    <p class="lead reveal">현직 국제회의 통역사가 매일매일 직접 학습시키는 AI 통역 엔진. 과연 그 승자는?</p>
+    <p class="lead reveal" style="margin-top:18px">그 개발자가 영어 통사론·구문론·의미론·고급 영문법, 심지어 라틴어와 그리스어까지 이해하는 통역사라면?</p>
   </div>
-</section>
-
-<section class="features" id="features">
-  <div class="container">
-    <h2 class="section-title">핵심 기능</h2>
-    
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div class="feature-icon">⚡</div>
-        <h3>실시간 자막</h3>
-        <p>Apple 음성 인식으로 0.5초 내 자막 표시. 통역 현장의 속도를 따라갑니다.</p>
+  <div class="wrap">
+    <div class="vs reveal">
+      <div class="vs-card">
+        <div class="tag">일반 AI 번역</div>
+        <h3>AI에게 “해줘”</h3>
+        <p>문장이 끝나야 번역 시작. 전문 용어와 맥락은 운에 맡깁니다.</p>
       </div>
-      
-      <div class="feature-card">
-        <div class="feature-icon">🌍</div>
-        <h3>70+ 언어 지원</h3>
-        <p>Google Live Translate API로 70개 이상의 언어를 지원합니다. 국제 회의부터 다국적 팀 미팅까지 모든 언어를 커버합니다.</p>
-      </div>
-      
-      <div class="feature-card">
-        <div class="feature-icon">📚</div>
-        <h3>용어집 관리</h3>
-        <p>양방향 용어 주석과 CSV 임포트. 전문 용어를 한 번에 관리하세요.</p>
-      </div>
-      
-      <div class="feature-card">
-        <div class="feature-icon">✨</div>
-        <h3>직관적 인터페이스</h3>
-        <p>통역사를 위해 설계된 UI. 복잡한 설정 없이 바로 시작하세요.</p>
+      <div class="vs-mid">VS</div>
+      <div class="vs-card win">
+        <div class="tag">Boothmate</div>
+        <h3>학습된 통역 엔진</h3>
+        <p>통역사의 두뇌 프로세스를 학습. 의미가 확정되는 순간 먼저 통역합니다.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="media-section" id="media">
-  <div class="container">
-    <h2 class="section-title">갤러리</h2>
-    
-    <div class="media-grid">
-      <div class="media-item" style="padding: 0; overflow: hidden; position: relative;">
-        <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+<!-- FLOW DIAGRAM (offwhite) -->
+<section style="background:var(--offwhite)">
+  <div class="wrap sec-head center">
+    <p class="eyebrow grad reveal">처리 흐름</p>
+    <h2 class="headline reveal">입력부터 송출까지, 끊김 없이.</h2>
+    <p class="lead reveal">사운드가 들어오는 순간부터 청중의 화면에 자막이 뜨기까지, 모든 과정이 실시간으로 이어집니다.</p>
+  </div>
+  <div class="wrap reveal" style="max-width:900px;margin-top:48px">
+    <svg viewBox="0 0 980 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="flowttl flowdesc" style="width:100%;height:auto" font-family="inherit">
+      <title id="flowttl">Boothmate 실시간 처리 흐름</title>
+      <desc id="flowdesc">사운드 입력(XLR)에서 랩탑의 실시간 번역을 거쳐 자막 오버레이 창으로 번역이 송출되는 3단계 흐름</desc>
+      <defs>
+        <linearGradient id="fg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#0a84ff"/><stop offset="1" stop-color="#19c37d"/>
+        </linearGradient>
+        <linearGradient id="fgline" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#0a84ff"/><stop offset="1" stop-color="#19c37d"/>
+        </linearGradient>
+        <filter id="fsh" x="-20%" y="-20%" width="140%" height="160%">
+          <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0a2540" flood-opacity="0.12"/>
+        </filter>
+        <marker id="farrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#19c37d"/>
+        </marker>
+      </defs>
+      <text x="490" y="44" text-anchor="middle" font-size="17" font-weight="600" fill="url(#fg)" letter-spacing="0.5">실시간 처리 흐름</text>
+      <g fill="none" stroke="url(#fgline)" stroke-width="3" stroke-linecap="round">
+        <path d="M255 195 L375 195" marker-end="url(#farrow)"/>
+        <path d="M605 195 L725 195" marker-end="url(#farrow)"/>
+      </g>
+      <g fill="#0a84ff">
+        <circle r="3.5"><animateMotion path="M255 195 L370 195" dur="1.4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="1.4s" repeatCount="indefinite"/></circle>
+        <circle r="3.5" fill="#19c37d"><animateMotion path="M605 195 L720 195" dur="1.4s" begin="0.4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="1.4s" begin="0.4s" repeatCount="indefinite"/></circle>
+      </g>
+      <g filter="url(#fsh)"><rect x="35" y="95" width="220" height="170" rx="24" fill="#ffffff" stroke="#e6e6eb"/></g>
+      <rect x="111" y="120" width="68" height="68" rx="18" fill="#f1f7ff"/>
+      <g transform="translate(145,154)" stroke="url(#fg)" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="-9" y="-24" width="18" height="30" rx="9"/>
+        <path d="M-15 -2 a15 15 0 0 0 30 0"/>
+        <line x1="0" y1="13" x2="0" y2="22"/><line x1="-8" y1="22" x2="8" y2="22"/>
+        <circle cx="0" cy="-16" r="1.3" fill="url(#fg)" stroke="none"/><circle cx="0" cy="-8" r="1.3" fill="url(#fg)" stroke="none"/>
+      </g>
+      <text x="145" y="222" text-anchor="middle" font-size="18" font-weight="600" fill="#1d1d1f">사운드 입력</text>
+      <text x="145" y="245" text-anchor="middle" font-size="13.5" font-weight="500" fill="#6e6e73">XLR 연결</text>
+      <g filter="url(#fsh)"><rect x="380" y="95" width="220" height="170" rx="24" fill="#ffffff" stroke="#e6e6eb"/></g>
+      <rect x="456" y="120" width="68" height="68" rx="18" fill="#f1f7ff"/>
+      <g transform="translate(490,154)" stroke="url(#fg)" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="-19" y="-20" width="38" height="26" rx="3"/>
+        <path d="M-27 12 L27 12 L23 6 L-23 6 Z"/>
+        <circle cx="0" cy="-7" r="6.5" stroke-width="2.6"><animateTransform attributeName="transform" type="rotate" from="0 0 -7" to="360 0 -7" dur="2.4s" repeatCount="indefinite"/></circle>
+      </g>
+      <text x="490" y="222" text-anchor="middle" font-size="18" font-weight="600" fill="#1d1d1f">랩탑</text>
+      <text x="490" y="245" text-anchor="middle" font-size="13.5" font-weight="500" fill="#6e6e73">실시간 번역 중</text>
+      <circle cx="558" cy="124" r="5" fill="#19c37d"><animate attributeName="opacity" values="1;0.25;1" dur="1.3s" repeatCount="indefinite"/></circle>
+      <g filter="url(#fsh)"><rect x="725" y="95" width="220" height="170" rx="24" fill="#ffffff" stroke="#e6e6eb"/></g>
+      <rect x="801" y="120" width="68" height="68" rx="18" fill="#f1f7ff"/>
+      <g transform="translate(835,154)">
+        <rect x="-22" y="-20" width="44" height="32" rx="5" fill="none" stroke="url(#fg)" stroke-width="3"/>
+        <line x1="-22" y1="-11" x2="22" y2="-11" stroke="url(#fg)" stroke-width="2.4"/>
+        <circle cx="-17" cy="-15.5" r="1.5" fill="#19c37d"/>
+        <rect x="-15" y="-4" width="30" height="4" rx="2" fill="#0a84ff" opacity="0.55"/>
+        <rect x="-15" y="4" width="20" height="4" rx="2" fill="#19c37d"><animate attributeName="width" values="6;26;6" dur="2s" repeatCount="indefinite"/></rect>
+      </g>
+      <text x="835" y="222" text-anchor="middle" font-size="18" font-weight="600" fill="#1d1d1f">자막 오버레이</text>
+      <text x="835" y="245" text-anchor="middle" font-size="13.5" font-weight="500" fill="#6e6e73">번역 송출</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 2. GLOSSARY (light) -->
+<section>
+  <div class="wrap sec-head center">
+    <p class="eyebrow grad reveal">개입형 용어집</p>
+    <h2 class="headline reveal">놓치지 않을 거예요.</h2>
+    <p class="lead reveal">단순히 A→B를 치환하는 1차원적 용어집은 잊으세요. AI가 놓친 용어는 후처리로 잡아내는 개입형 용어집입니다.</p>
+  </div>
+  <div class="wrap">
+    <div class="points reveal">
+      <div class="point">
+        <div class="ic">🧠</div>
+        <h3>똑똑한 치환</h3>
+        <p>동사 시제 변화, 형용사–부사 간 변화까지 문맥에 맞게 똑똑하게 치환합니다.</p>
+      </div>
+      <div class="point">
+        <div class="ic">🗂️</div>
+        <h3>자유로운 불러오기</h3>
+        <p>CSV·TXT·엑셀 포맷의 용어집을 불러오고 내보낼 수 있습니다.</p>
+      </div>
+      <div class="point">
+        <div class="ic">🎯</div>
+        <h3>개입형 후처리</h3>
+        <p>AI가 미처 놓친 전문 용어라도 후처리로 잡아내 100% 정확하게.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. QR (offwhite) -->
+<section style="background:var(--offwhite)">
+  <div class="wrap sec-head center">
+    <p class="eyebrow grad reveal">QR 자막</p>
+    <h2 class="headline reveal">청중의 손안에, 바로.</h2>
+    <p class="lead reveal">자기 스마트폰에서 자막을 보기 원하는 청중을 위한 QR 링크를 생성합니다.</p>
+    <p class="lead reveal" style="margin-top:18px">행사 로고 파일을 업로드하면 로고의 Identity Color를 자동 인식한 QR을 생성해 청중 경험을 한층 강화합니다.</p>
+  </div>
+</section>
+
+<!-- 4. SAFETY NET (dark) -->
+<section class="dark">
+  <div class="wrap sec-head center">
+    <p class="eyebrow blue reveal">자막 음성 &amp; 안전망</p>
+    <h2 class="headline reveal">절대 나가면 안 되는<br>그 단어까지.</h2>
+    <p class="lead reveal">실시간 단어 수정 — 절대 송출되어선 안 되는 단어를 위한 마지막 안전망. 단어를 수정하면 청중 스마트폰의 단어도 실시간으로 함께 수정됩니다.</p>
+    <p class="lead reveal" style="margin-top:18px">여기에 자막 음성 지원까지. 보는 자막을 넘어 듣는 자막으로.</p>
+  </div>
+</section>
+
+<!-- 5. MORE TILES (light) -->
+<section>
+  <div class="wrap sec-head center">
+    <h2 class="headline reveal">그리고, 더 많은 것들.</h2>
+  </div>
+  <div class="wrap">
+    <div class="tiles reveal">
+      <div class="tile">
+        <div class="ic">💱</div>
+        <h3>환율 변환</h3>
+        <p>현장에서 언급되는 금액을 즉시 변환해 자막에 반영.</p>
+      </div>
+      <div class="tile">
+        <div class="ic">📐</div>
+        <h3>도량형 변환</h3>
+        <p>단위가 다른 청중도 헷갈리지 않도록 자동 변환.</p>
+      </div>
+      <div class="tile">
+        <div class="ic">💾</div>
+        <h3>자막 자동 저장</h3>
+        <p>최대 90일까지의 자막을 txt 포맷으로 자동 저장.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. LANGUAGES finale -->
+<section class="finale">
+  <div class="wrap">
+    <p class="eyebrow blue reveal" style="color:#2997ff">70여 개 언어 지원</p>
+    <h2 class="headline xl reveal">희귀 언어 통역사 섭외의<br>스트레스, 이제 과거로.</h2>
+    <p class="lead reveal" style="max-width:620px;margin:24px auto 0;color:#a1a1a6">영어·중국어·일어·불어·독일어 같은 주요 언어부터 희귀 언어까지, 한 화면에서.</p>
+  </div>
+</section>
+
+<!-- ===== 갤러리/데모 임시 숨김 시작 (복원하려면 이 줄과 아래 '갤러리 숨김 끝' 마커를 지우세요)
+<section id="gallery">
+  <div class="wrap sec-head center">
+    <p class="eyebrow grad reveal">갤러리</p>
+    <h2 class="headline reveal">직접 보세요.</h2>
+  </div>
+  <div class="wrap">
+    <div class="media-grid reveal">
+      <div class="media-item">
+        <video autoplay muted loop playsinline>
           <source src="boothmate_screenshot1.mp4" type="video/mp4">
         </video>
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; pointer-events: none;">
-          <span style="color: white; font-size: 32px; font-weight: 700; text-shadow: 0 2px 12px rgba(0,0,0,0.7); letter-spacing: 1px;">Boothmate</span>
-        </div>
+        <div class="media-overlay"><span>Boothmate</span></div>
       </div>
-      
-      <div class="media-item" style="padding: 0; overflow: hidden;">
-        <img src="boothmate002.jpg" alt="Boothmate 실사용 환경" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
-      </div>
-      
       <div class="media-item">
-        <div>
-          <div style="font-size: 48px; margin-bottom: 15px;">📱</div>
-          <p>앱 스크린샷 3</p>
-          <span class="media-label">용어집 기능 스크린샷</span>
-        </div>
+        <img src="boothmate002.jpg" alt="Boothmate 실사용 환경">
       </div>
-      
-      <div class="media-item">
-        <div>
-          <div style="font-size: 48px; margin-bottom: 15px;">📱</div>
-          <p>앱 스크린샷 4</p>
-          <span class="media-label">설정/테마 화면</span>
-        </div>
+      <div class="media-item ph">
+        <div><div class="ic">📱</div>앱 스크린샷 3<br><small>이미지 추가 예정</small></div>
+      </div>
+      <div class="media-item ph">
+        <div><div class="ic">📱</div>앱 스크린샷 4<br><small>이미지 추가 예정</small></div>
       </div>
     </div>
-
-    <div class="video-container">
-      <video controls playsinline style="width: 100%; height: 100%; object-fit: contain; border-radius: 12px;">
+    <div class="demo reveal">
+      <video controls playsinline>
         <source src="boothmate_demo_web.mp4" type="video/mp4">
         브라우저가 video 태그를 지원하지 않습니다.
       </video>
     </div>
   </div>
 </section>
+===== 갤러리 숨김 끝 ===== -->
 
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap reveal">
+    <h2 class="headline">지금, Boothmate를 만나보세요.</h2>
+    <div class="btnrow">
+      <a class="btn" href="https://online.boothmate.co.kr" target="_blank" rel="noopener">Boothmate Online</a>
+      <a class="btn ghost" href="#contact">문의하기</a>
+    </div>
+  </div>
+</section>
 
-
-<section id="contact" style="background: #1a1a1a; padding: 80px 0;">
-  <div class="container">
-    <h2 style="text-align: center; font-size: 36px; margin-bottom: 50px; color: #ffffff; font-weight: 700;">고객 문의</h2>
-    
-    <div style="max-width: 600px; margin: 0 auto; background: #1a1a1a; padding: 40px; border-radius: 12px; border: 1px solid #333333;">
-      <form action="https://formsubmit.co/dororok@gmail.com" method="POST" style="display: flex; flex-direction: column; gap: 20px;">
-        
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap sec-head center">
+    <h2 class="headline reveal">문의하기</h2>
+    <p class="lead reveal" style="margin-top:16px">행사 일정과 세션 정보를 남겨주시면 빠르게 회신드리겠습니다.</p>
+  </div>
+  <div class="wrap">
+    <div class="form-card reveal">
+      <form action="https://formsubmit.co/dororok@gmail.com" method="POST">
         <div>
-          <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #ffffff;">제목</label>
-          <input type="text" name="제목" required style="width: 100%; padding: 12px; border: 1px solid #333333; border-radius: 8px; font-size: 14px;">
+          <label>제목</label>
+          <input type="text" name="제목" required>
         </div>
-
         <div>
-          <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #ffffff;">행사명 (행사 제목, 일정 등)</label>
-          <input type="text" name="행사명" required style="width: 100%; padding: 12px; border: 1px solid #333333; border-radius: 8px; font-size: 14px;">
+          <label>행사명 (행사 제목, 일정 등)</label>
+          <input type="text" name="행사명" required>
         </div>
-
         <div>
-          <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #ffffff;">세션 개수</label>
-          <input type="number" name="세션_개수" min="1" required style="width: 100%; padding: 12px; border: 1px solid #333333; border-radius: 8px; font-size: 14px;">
+          <label>세션 개수</label>
+          <input type="number" name="세션_개수" min="1" required>
         </div>
-
         <div>
-          <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #ffffff;">문의 내용</label>
-          <textarea name="문의_내용" rows="6" required style="width: 100%; padding: 12px; border: 1px solid #333333; border-radius: 8px; font-size: 14px; font-family: inherit; resize: vertical;"></textarea>
+          <label>문의 내용</label>
+          <textarea name="문의_내용" rows="6" required></textarea>
         </div>
-
         <div>
-          <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #ffffff;">답변 받으실 연락처</label>
-          <input type="email" name="이메일" required style="width: 100%; padding: 12px; border: 1px solid #333333; border-radius: 8px; font-size: 14px; margin-bottom: 10px;" placeholder="이메일 주소">
-          <input type="tel" name="전화번호" style="width: 100%; padding: 12px; border: 1px solid #333333; border-radius: 8px; font-size: 14px;" placeholder="전화번호 (선택사항)">
+          <label>답변 받으실 연락처</label>
+          <input type="email" name="이메일" required placeholder="이메일 주소" style="margin-bottom:10px">
+          <input type="tel" name="전화번호" placeholder="전화번호 (선택사항)">
         </div>
-
-        <button type="submit" style="background: #ff6b35; color: white; padding: 14px 32px; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s;">
-          전송하기
-        </button>
+        <button type="submit" class="btn">전송하기</button>
       </form>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <div class="container">
-    <p>&copy; 2024 dororok AI Lab. 모든 권리 보유합니다.</p>
-    <p style="margin-top: 10px; font-size: 12px;">Boothmate는 통역사와 함께 성장합니다.</p>
+  <div class="wrap">
+    <p>Boothmate는 통역사와 함께 성장합니다.</p>
+    <p style="margin-top:8px">Copyright © 2026 dororok AI Lab. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+      });
+    },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e){io.observe(e);});
+  })();
+</script>
 
 </body>
 </html>
