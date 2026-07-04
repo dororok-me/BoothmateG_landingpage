@@ -108,6 +108,8 @@
   .statement .accent{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
   .statement .stmt-lead{font-size:clamp(21px,3vw,32px);font-weight:600;letter-spacing:-.02em;line-height:1.45;color:var(--ink);max-width:840px;margin:0 auto 16px}
   .statement .stmt-lead.gap{margin-bottom:56px}
+  .statement .v-dots{display:flex;flex-direction:column;align-items:center;gap:9px;margin:22px auto 46px}
+  .statement .v-dots span{width:7px;height:7px;border-radius:50%;background:var(--grad)}
 
   /* vs comparison */
   .vs{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:stretch;max-width:860px;margin:54px auto 0}
@@ -231,7 +233,8 @@
   <div class="wrap reveal">
     <p class="stmt-lead">시중에 출시된 수많은 통역 앱… 정작 중요한 컨퍼런스나 회의에서 그 앱 자체의 통역 품질에만 의지해야 한다면…</p>
     <p class="stmt-lead"><span class="accent">우리 업계에서만 통용되는 전문 용어는?</span></p>
-    <p class="stmt-lead gap"><span class="accent">우리 기관에서만 사용하는 직책의 외래어 표기는?</span></p>
+    <p class="stmt-lead"><span class="accent">우리 기관에서만 사용하는 직책의 외래어 표기는?</span></p>
+    <div class="v-dots" aria-hidden="true"><span></span><span></span><span></span></div>
     <h2>바쁘니까, <span class="accent">기능부터.</span></h2>
   </div>
 </section>
@@ -577,7 +580,7 @@
       <p>대표 이성득 · 사업자등록번호 804-04-00278</p>
       <p>통신판매업신고번호 2026-부산해운대-0752</p>
     </div>
-    <p>Copyright © 2026 dororok AI Lab. All rights reserved. · ver. 1.05.4</p>
+    <p>Copyright © 2026 dororok AI Lab. All rights reserved. · ver. 1.05.5</p>
   </div>
 </footer>
 
