@@ -137,7 +137,7 @@
     word-break:keep-all;overflow-wrap:break-word}  /* 한글이 단어 중간에서 안 잘리게 */
   .hc-eyebrow{
     font-size:clamp(12px,1.5vw,17px);font-weight:500;letter-spacing:.02em;
-    color:rgba(245,245,247,.82);margin:0 auto 16px;line-height:1.55;max-width:620px;
+    color:rgba(245,245,247,.82);margin:0 auto 130px;line-height:1.55;max-width:620px;
     text-wrap:balance;
     text-shadow:0 1px 14px rgba(0,0,0,.65);
   }
@@ -212,11 +212,19 @@
   .nav.on-hero .nav-links a:not(.nav-cta){color:#f5f5f7}
 
   @media (max-width:820px){
-    /* 영상을 상단 16:9 띠로 올리고 그 아래에 문구를 놓는다 (56.25vw = 16:9 높이) */
-    .hero-cine{padding:calc(56.25vw + 44px) 24px 92px}
+    /* 영상을 상단 16:9 띠로 올린다 (56.25vw = 16:9 높이) */
     .hc-media{bottom:auto;height:auto;aspect-ratio:16/9}
-    /* 글씨가 영상 위에 얹히지 않으므로 스크림은 상단만 살짝 */
-    .hc-scrim{background:linear-gradient(to bottom,rgba(0,0,0,.34) 0%,rgba(0,0,0,.10) 16%,rgba(0,0,0,0) 32%)}
+    /* eyebrow는 띠 위에 오버레이, 로고는 띠 하단을 26px 덮는다 */
+    .hero-cine{align-items:flex-start;min-height:74vh;min-height:74svh;padding:78px 24px 56px}
+    .hc-eyebrow{
+      margin-bottom:calc(56.25vw - 160px);color:rgba(245,245,247,.96);
+      text-shadow:0 1px 16px rgba(0,0,0,.9),0 0 34px rgba(0,0,0,.7);
+    }
+    /* 스크림은 띠 구간에만 — 아래 검은 영역까지 덮을 필요가 없다 */
+    .hc-scrim{
+      top:0;bottom:auto;height:calc(56.25vw + 56px);
+      background:linear-gradient(to bottom,rgba(0,0,0,.52) 0%,rgba(0,0,0,.34) 46%,rgba(0,0,0,.18) 82%,rgba(0,0,0,0) 100%);
+    }
     .hc-mark{width:min(168px,42vw);margin-bottom:14px}
     .hc-facts{margin-top:24px;gap:8px}
     .hc-facts a{padding:8px 14px}
@@ -236,8 +244,8 @@
     .hc-cue{display:none}
   }
   @media (max-width:820px) and (max-height:700px){
-    .hero-cine{padding-top:calc(56.25vw + 14px);padding-bottom:32px}
-    .hc-eyebrow{font-size:11.5px;margin-bottom:9px}
+    .hero-cine{padding-top:62px;padding-bottom:32px}
+    .hc-eyebrow{font-size:11.5px;margin-bottom:calc(56.25vw - 128px)}
     .hc-mark{width:min(124px,34vw);margin-bottom:8px}
     .hc-tag{font-size:21px}
     .hc-sub{font-size:12.5px;margin-top:9px}
