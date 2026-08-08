@@ -830,6 +830,11 @@
   var saveData = !!(conn && (conn.saveData || /^([23]g|slow-2g)$/.test(conn.effectiveType || '')));
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* 모바일은 세로 캔버스 영상이므로 포스터도 세로용으로 교체 */
+  if(video && window.matchMedia && window.matchMedia('(max-width:820px)').matches){
+    video.setAttribute('poster','boothmate_hero_poster_mobile.jpg');
+  }
+
   /* 데이터 절약 모드·모션 최소화 설정이면 영상 대신 포스터 이미지만 */
   if(video && (saveData || reduceMotion)){
     var still = video.getAttribute('poster');
