@@ -102,6 +102,140 @@
   .hero-img{margin:48px auto 0;max-width:1100px;border-radius:24px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.16)}
   .hero-img img{width:100%}
 
+  /* ================= CINEMATIC HERO  v2.0.0  (2026-08) ================= */
+  /* 배경 영상 풀블리드 + 문구/버튼 오버레이. 화면 비율은 object-fit:cover 가 자동 대응 */
+  .hero-cine{
+    position:relative;isolation:isolate;overflow:hidden;
+    background:#000;color:#f5f5f7;text-align:center;
+    display:flex;align-items:center;justify-content:center;
+    min-height:100vh;            /* 구형 브라우저 */
+    min-height:100svh;           /* iOS 주소창 대응 */
+    padding:100px 22px 112px;
+    margin-top:-48px;            /* sticky 네비 뒤로 영상이 들어가도록 */
+  }
+  .hc-media{position:absolute;inset:0;z-index:0}
+  .hc-media video{
+    width:100%;height:100%;object-fit:cover;object-position:center 45%;
+    display:block;transform:scale(1.02);
+  }
+  .hc-media.is-still video{display:none}
+
+  /* 텍스트 가독성용 스크림 — 영상이 흑백 고대비라 두 겹으로 깐다 */
+  .hc-scrim{
+    position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:
+      radial-gradient(118% 88% at 50% 44%, rgba(0,0,0,.26) 0%, rgba(0,0,0,.58) 52%, rgba(0,0,0,.84) 100%),
+      linear-gradient(to bottom, rgba(0,0,0,.70) 0%, rgba(0,0,0,.20) 26%, rgba(0,0,0,.34) 62%, rgba(0,0,0,.88) 100%);
+  }
+  /* 하단을 다음 섹션 배경색으로 녹여서 경계가 안 보이게 */
+  .hc-fade{
+    position:absolute;left:0;right:0;bottom:0;height:84px;z-index:2;pointer-events:none;
+    background:linear-gradient(to top, var(--offwhite) 0%, rgba(251,251,253,.70) 30%, rgba(251,251,253,0) 100%);
+  }
+
+  .hc-inner{position:relative;z-index:3;max-width:940px;margin:0 auto;width:100%;
+    word-break:keep-all;overflow-wrap:break-word}  /* 한글이 단어 중간에서 안 잘리게 */
+  .hc-eyebrow{
+    font-size:clamp(12px,1.5vw,17px);font-weight:500;letter-spacing:.02em;
+    color:rgba(245,245,247,.82);margin:0 auto 16px;line-height:1.55;max-width:620px;
+    text-wrap:balance;
+    text-shadow:0 1px 14px rgba(0,0,0,.65);
+  }
+  .hc-mark{display:block;width:min(300px,52vw);height:auto;margin:0 auto 20px}
+  .hero-cine h1{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .hc-tag{
+    font-size:clamp(23px,3.6vw,42px);font-weight:600;letter-spacing:-.028em;line-height:1.2;
+    text-wrap:balance;
+    color:#fff;text-shadow:0 2px 30px rgba(0,0,0,.55);
+  }
+  .hc-sub{
+    margin-top:15px;font-size:clamp(13.5px,1.7vw,19px);font-weight:400;line-height:1.55;
+    text-wrap:balance;
+    color:rgba(245,245,247,.82);text-shadow:0 1px 16px rgba(0,0,0,.5);
+  }
+  /* 키워드 줄 */
+  .hc-facts{
+    display:flex;justify-content:center;flex-wrap:wrap;gap:10px 12px;margin-top:32px;
+    list-style:none;padding:0;
+  }
+  .hc-facts a{
+    display:block;font-size:clamp(12.5px,1.35vw,15px);font-weight:600;letter-spacing:-.01em;
+    color:#fff;padding:9px 19px;border-radius:980px;white-space:nowrap;
+    box-shadow:0 6px 20px rgba(0,0,0,.34);
+    transition:transform .2s ease,box-shadow .2s ease,filter .2s ease;
+  }
+  .hc-facts a:hover{transform:translateY(-2px);filter:brightness(1.09);box-shadow:0 10px 26px rgba(0,0,0,.42)}
+  .hc-facts a:focus-visible{outline:2px solid #fff;outline-offset:3px}
+  /* 로고 그라디언트(파랑→초록)를 4단계로 쪼개 서로 다른 색을 준다 */
+  .hc-facts .f1{background:linear-gradient(120deg,#5b5bf0 0%,#0a84ff 100%)}
+  .hc-facts .f2{background:linear-gradient(120deg,#0a84ff 0%,#1fb6e8 100%)}
+  .hc-facts .f3{background:linear-gradient(120deg,#14bcd0 0%,#19c37d 100%)}
+  .hc-facts .f4{background:linear-gradient(120deg,#19c37d 0%,#63d95c 100%)}
+  @media (prefers-reduced-motion:reduce){
+    .hc-facts a{transition:none}
+    .hc-facts a:hover{transform:none}
+  }
+  .hc-actions{display:flex;gap:13px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+  .hc-btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:14px 28px;border-radius:980px;font-size:16.5px;font-weight:500;
+    transition:background .22s ease,border-color .22s ease,transform .22s ease;
+  }
+  .hc-btn.primary{background:var(--blue);color:#fff}
+  .hc-btn.primary:hover{background:#0077ed;transform:translateY(-1px)}
+  .hc-btn.ghost{
+    color:#f5f5f7;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.34);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  }
+  .hc-btn.ghost:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.62);transform:translateY(-1px)}
+
+  /* 스크롤 유도 */
+  .hc-cue{
+    position:absolute;left:50%;bottom:96px;transform:translateX(-50%);z-index:3;
+    display:flex;flex-direction:column;align-items:center;gap:8px;
+    font-size:11px;letter-spacing:.14em;color:rgba(245,245,247,.6);
+  }
+  .hc-cue i{display:block;width:1px;height:30px;background:linear-gradient(to bottom,rgba(255,255,255,.7),rgba(255,255,255,0));animation:hcCue 2.1s ease-in-out infinite}
+  @keyframes hcCue{0%,100%{opacity:.25;transform:scaleY(.55);transform-origin:top}50%{opacity:1;transform:scaleY(1);transform-origin:top}}
+
+  /* 등장 애니메이션 */
+  .hc-inner>*{opacity:0;transform:translateY(24px);animation:hcRise .95s cubic-bezier(.22,.61,.36,1) forwards}
+  .hc-inner>*:nth-child(1){animation-delay:.15s}
+  .hc-inner>*:nth-child(2){animation-delay:.28s}
+  .hc-inner>*:nth-child(4){animation-delay:.42s}
+  .hc-inner>*:nth-child(5){animation-delay:.54s}
+  .hc-inner>*:nth-child(6){animation-delay:.66s}
+  @keyframes hcRise{to{opacity:1;transform:none}}
+
+  /* 히어로 위에 있을 때의 네비 (스크롤하면 원래 흰 글래스로 복귀) */
+  .nav.on-hero{background:rgba(0,0,0,.14);border-bottom-color:rgba(255,255,255,.12)}
+  .nav.on-hero .nav-links a:not(.nav-cta){color:#f5f5f7}
+
+  @media (max-width:820px){
+    .hero-cine{padding:92px 24px 100px}
+    .hc-mark{width:min(238px,58vw);margin-bottom:16px}
+    .hc-facts{margin-top:24px;gap:8px}
+    .hc-facts a{padding:8px 14px}
+    .hc-actions{margin-top:24px;gap:10px;flex-direction:column;align-items:stretch}
+    .hc-btn{width:100%;padding:15px 22px;font-size:16px}
+    .hc-cue{bottom:88px;font-size:10px;letter-spacing:.18em}
+    .hc-fade{height:72px}
+  }
+  /* 세로가 짧은 기기 — 히어로가 화면을 다 먹지 않도록 더 조인다 */
+  @media (max-height:700px){
+    .hero-cine{padding:76px 24px 68px}
+    .hc-eyebrow{margin-bottom:12px}
+    .hc-mark{width:min(200px,48vw);margin-bottom:12px}
+    .hc-sub{margin-top:12px}
+    .hc-facts{margin-top:18px}
+    .hc-actions{margin-top:20px}
+    .hc-cue{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .hc-inner>*{opacity:1;transform:none;animation:none}
+    .hc-cue i{animation:none}
+  }
+
   /* transition statement */
   .statement{padding:120px 0;text-align:center}
   .statement h2{font-size:clamp(32px,5vw,52px);color:var(--ink)}
@@ -216,6 +350,46 @@
 </div>
 
 <!-- HERO -->
+<!-- HERO v2.0.0 — 배경 영상 풀블리드. 이전 정지 이미지 히어로는 아래 주석으로 보존 -->
+<header class="hero-cine" id="top">
+
+  <div class="hc-media" id="hcMedia" aria-hidden="true">
+    <video id="hcVideo" poster="boothmate_hero_poster.jpg"
+           autoplay muted loop playsinline preload="auto"
+           disablepictureinpicture disableremoteplayback>
+      <source src="boothmate_hero_mobile.mp4" type="video/mp4" media="(max-width:820px)">
+      <source src="boothmate_hero.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hc-scrim" aria-hidden="true"></div>
+  <div class="hc-fade" aria-hidden="true"></div>
+
+  <div class="hc-inner">
+    <p class="hc-eyebrow">마침내,<br>국제회의 동시통역사이자 애플 개발자가 만든 AI 동시통역 솔루션</p>
+    <img class="hc-mark" src="boothmate_logo_gradient.png" alt="Boothmate" width="790" height="550">
+    <h1>Boothmate</h1>
+    <p class="hc-tag">국제회의 통역사의 두뇌를 이식한<br>진정한 AI 동시통역</p>
+    <p class="hc-sub">컨퍼런스 현장을 그 누구보다 잘 아는 현직 통역사가<br>부스에서 쌓아 온 경험을 그대로 코드에 녹였습니다.</p>
+    <ul class="hc-facts">
+      <li><a href="#glossary" class="f1">개입형 용어집</a></li>
+      <li><a href="#qr" class="f2">QR 자막</a></li>
+      <li><a href="#languages" class="f3">70여 개 언어 지원</a></li>
+      <li><a href="#modes" class="f4">단방향 · 양방향 · 다방향</a></li>
+    </ul>
+    <!-- 버튼 제거. 되살리려면 아래 주석 해제
+    <div class="hc-actions">
+      <a class="hc-btn primary" href="https://online.boothmate.co.kr" target="_blank" rel="noopener">Boothmate Online 베타 체험</a>
+      <a class="hc-btn ghost" href="#engine">기능 살펴보기</a>
+    </div>
+    -->
+  </div>
+
+  <!-- 히어로가 짧아져 다음 섹션이 바로 보이므로 스크롤 유도는 제거. 되살리려면 아래 주석 해제
+  <a class="hc-cue" href="#engine" aria-label="아래로 스크롤"><span>SCROLL</span><i></i></a>
+  -->
+</header>
+
+<!-- 이전 히어로 (v2.0.0에서 영상 히어로로 교체). 되돌리려면 위 블록과 주석을 맞바꾸세요.
 <header class="hero" id="top">
   <div class="wrap">
     <p class="eyebrow reveal">마침내<br>국제회의 동시통역사이자 애플 개발자가 만든 통역 앱</p>
@@ -227,6 +401,7 @@
     <img src="booth_background.png" alt="국제회의 통역 부스 환경">
   </div>
 </header>
+-->
 
 <!-- TRANSITION STATEMENT -->
 <section class="statement">
@@ -422,7 +597,7 @@
 </section>
 
 <!-- 2. GLOSSARY (light) -->
-<section>
+<section id="glossary">
   <div class="wrap sec-head center">
     <p class="eyebrow grad reveal">강력한 개입형 용어집</p>
     <h2 class="headline reveal">놓치지 않을 거예요.</h2>
@@ -450,7 +625,7 @@
 </section>
 
 <!-- 3. QR (offwhite) -->
-<section style="background:var(--offwhite)">
+<section id="qr" style="background:var(--offwhite)">
   <div class="wrap sec-head center">
     <p class="eyebrow grad reveal">QR 자막</p>
     <h2 class="headline reveal">청중의 손안에, 바로.</h2>
@@ -494,7 +669,7 @@
 </section>
 
 <!-- 6. LANGUAGES finale -->
-<section class="finale">
+<section class="finale" id="languages">
   <div class="wrap">
     <p class="eyebrow blue reveal" style="color:#2997ff">70여 개 언어 지원</p>
     <h2 class="headline xl reveal">희귀 언어 통역사 섭외의<br>스트레스, 이제 과거로.</h2>
@@ -640,6 +815,68 @@
     }
     run();
   })();
+</script>
+
+<!-- CINEMATIC HERO CONTROLLER v2.0.0 (2026-08) -->
+<script>
+(function(){
+  var hero  = document.querySelector('.hero-cine');
+  var media = document.getElementById('hcMedia');
+  var video = document.getElementById('hcVideo');
+  var nav   = document.querySelector('.nav');
+  if(!hero) return;
+
+  var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  var saveData = !!(conn && (conn.saveData || /^([23]g|slow-2g)$/.test(conn.effectiveType || '')));
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 데이터 절약 모드·모션 최소화 설정이면 영상 대신 포스터 이미지만 */
+  if(video && (saveData || reduceMotion)){
+    var still = video.getAttribute('poster');
+    video.removeAttribute('autoplay');
+    video.pause();
+    if(still){
+      media.style.backgroundImage    = 'url(' + still + ')';
+      media.style.backgroundSize     = 'cover';
+      media.style.backgroundPosition = 'center 45%';
+      media.classList.add('is-still');
+    }
+  } else if(video){
+    var p = video.play();
+    if(p && p.catch) p.catch(function(){ /* 자동재생 차단 시 포스터 유지 */ });
+
+    /* 히어로가 화면 밖이면 정지 — 배터리·CPU 절약 */
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){ var q = video.play(); if(q && q.catch) q.catch(function(){}); }
+          else video.pause();
+        });
+      },{threshold:.01}).observe(hero);
+    }
+    document.addEventListener('visibilitychange', function(){
+      if(document.hidden) video.pause();
+      else if(!document.hidden){ var r = video.play(); if(r && r.catch) r.catch(function(){}); }
+    });
+  }
+
+  /* 히어로 위에서는 네비를 어둡게, 벗어나면 원래 흰 글래스로 */
+  if(nav){
+    var ticking = false;
+    function syncNav(){
+      if(ticking) return;
+      ticking = true;
+      requestAnimationFrame(function(){
+        ticking = false;
+        var bottom = hero.getBoundingClientRect().bottom;
+        nav.classList.toggle('on-hero', bottom > 96);
+      });
+    }
+    syncNav();
+    window.addEventListener('scroll', syncNav, {passive:true});
+    window.addEventListener('resize', syncNav, {passive:true});
+  }
+})();
 </script>
 
 <!-- redeploy 2026-07 -->
