@@ -289,6 +289,8 @@
   .points{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;max-width:920px;margin:56px auto 0}
   .point{text-align:center}
   .point .ic{font-size:32px;margin-bottom:14px}
+  .point .ic img{width:46px;height:46px;display:block;margin:0 auto;object-fit:contain}
+  .dark .point .ic img{filter:invert(1)}  /* 어두운 섹션에서도 보이게 */
   .point h3{font-size:19px;margin-bottom:8px}
   .point p{font-size:15px;color:var(--gray);line-height:1.55}
   .dark .point p{color:#a1a1a6}
@@ -481,7 +483,7 @@
   <div class="wrap">
     <div class="points reveal">
       <div class="point">
-        <div class="ic">🧠</div>
+        <div class="ic"><img src="icon_brain.png" alt="" width="160" height="160" loading="lazy"></div>
         <h3>똑똑한 치환</h3>
         <p>동사 시제 변화, 형용사–부사 간 변화까지 문맥에 맞게 똑똑하게 치환합니다.</p>
       </div>
