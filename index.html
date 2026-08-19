@@ -102,23 +102,26 @@
   .hero-img{margin:48px auto 0;max-width:1100px;border-radius:24px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.16)}
   .hero-img img{width:100%}
 
-  /* ================= CINEMATIC HERO  v2.0.0  (2026-08) ================= */
-  /* 배경 영상 풀블리드 + 문구/버튼 오버레이. 화면 비율은 object-fit:cover 가 자동 대응 */
+  /* ================= CINEMATIC HERO  v2.1.0  (2026-08) ================= */
+  /* 영상은 가로 100%로 깔고 높이는 16:9 비율이 정한다 — 좌우가 절대 잘리지 않는다.
+     창 크기가 바뀌면 히어로 높이가 함께 변하고, 문구는 그 안에서 재배치된다. */
   .hero-cine{
     position:relative;isolation:isolate;overflow:hidden;
     background:#000;color:#f5f5f7;text-align:center;
     display:flex;align-items:center;justify-content:center;
-    min-height:100vh;            /* 구형 브라우저 */
-    min-height:100svh;           /* iOS 주소창 대응 */
-    padding:100px 22px 112px;
+    min-height:56.25vw;          /* = 100vw × 9/16, 영상 전체가 들어가는 높이 */
+    padding:clamp(72px,7vw,100px) 22px clamp(104px,8vw,112px);  /* 하단 페이드(84px) 위로 문구가 겹치지 않게 */
     margin-top:-48px;            /* sticky 네비 뒤로 영상이 들어가도록 */
   }
-  .hc-media{position:absolute;inset:0;z-index:0}
+  /* 영상 띠: 가로 꽉 채우고 높이는 비율이 결정 (letterbox·crop 둘 다 없음) */
+  .hc-media{position:absolute;top:0;left:0;right:0;bottom:auto;height:auto;aspect-ratio:16/9;z-index:0}
   .hc-media video{
-    width:100%;height:100%;object-fit:cover;object-position:center 45%;
-    display:block;transform:scale(1.02);
+    width:100%;height:100%;object-fit:cover;object-position:center;
+    display:block;
   }
   .hc-media.is-still video{display:none}
+  /* aspect-ratio 미지원 구형 브라우저 대비 (16:9 = 56.25vw) */
+  @supports not (aspect-ratio:16/9){ .hc-media{height:56.25vw} }
 
   /* 텍스트 가독성용 스크림 — 영상이 흑백 고대비라 두 겹으로 깐다 */
   .hc-scrim{
@@ -137,7 +140,8 @@
     word-break:keep-all;overflow-wrap:break-word}  /* 한글이 단어 중간에서 안 잘리게 */
   .hc-eyebrow{
     font-size:clamp(12px,1.5vw,17px);font-weight:500;letter-spacing:.02em;
-    color:rgba(245,245,247,.82);margin:0 auto 130px;line-height:1.55;max-width:620px;
+    color:rgba(245,245,247,.82);line-height:1.55;max-width:620px;
+    margin:0 auto clamp(20px, calc(56.25vw - 620px), 130px);
     text-wrap:balance;
     text-shadow:0 1px 14px rgba(0,0,0,.65);
   }
@@ -823,7 +827,7 @@
       <p>Tel 051-703-6006 · <a href="mailto:dororok@gmail.com">dororok@gmail.com</a></p>
       <p><a href="https://online.boothmate.co.kr/terms.html" target="_blank" rel="noopener">이용약관</a> · <a href="https://online.boothmate.co.kr/privacy.html" target="_blank" rel="noopener">개인정보처리방침</a></p>
     </div>
-    <p>© 2026 Boothmate. All rights reserved. · ver. 1.05.8</p>
+    <p>© 2026 Boothmate. All rights reserved. · ver. 1.05.12</p>
   </div>
 </footer>
 
