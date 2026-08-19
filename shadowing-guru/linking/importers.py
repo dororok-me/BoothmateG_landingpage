@@ -8,6 +8,7 @@
   whisperx   WhisperX --output_format json (segments[].words[])
   words      {"words":[{"text","start","end"}]} 또는 그 배열
   textgrid   Montreal Forced Aligner 출력 (words 티어)
+  azure      Azure Speech PronunciationAssessment 원본 JSON
 """
 
 import json
@@ -78,10 +79,22 @@ def from_textgrid(path: str, tier: str = "words") -> List[Word]:
     return words
 
 
+def from_azure(path: str) -> List[Word]:
+    """Azure PronunciationAssessment 원본 JSON.
+
+    한 번 저장해두면 키 없이도 임계값을 다시 맞출 수 있다.
+    """
+    from .azure_align import parse_result
+    with open(path, encoding="utf-8") as f:
+        words, _ = parse_result(f.read())
+    return words
+
+
 LOADERS = {
     "whisperx": from_whisperx,
     "words": from_words,
     "textgrid": from_textgrid,
+    "azure": from_azure,
 }
 
 
@@ -93,7 +106,9 @@ def load(path: str, fmt: str = "auto") -> List[Word]:
         return from_textgrid(path)
 
     with open(path, encoding="utf-8") as f:
-        head = f.read(2048)
+        head = f.read(4096)
+    if '"NBest"' in head:
+        return from_azure(path)
     if '"segments"' in head:
         return from_whisperx(path)
     return from_words(path)

@@ -3,7 +3,8 @@
   predict "turn it off"          텍스트만으로 기대 연결 표시 (오디오 불필요)
   score aligned.json             정렬 결과 채점 (WhisperX/MFA/words)
   demo                           합성 프로파일 비교 (로직 검증)
-  align audio.wav script.txt     강제 정렬 후 채점 (torch 필요)
+  align audio.wav script.txt     MMS_FA 강제 정렬 후 채점 (torch 필요)
+  azure audio.wav script.txt     Azure 정렬 + 발음 채점 (권장 — iOS와 동일 정렬기)
 """
 
 import argparse
@@ -103,6 +104,28 @@ def cmd_align(args):
     _report(evaluate(words))
 
 
+def cmd_azure(args):
+    from .azure_align import align_with_azure
+    script = open(args.script, encoding="utf-8").read()
+    words, scores = align_with_azure(
+        args.audio, script, key=args.key, region=args.region,
+        language=args.language, dump_path=args.dump,
+    )
+    if args.dump:
+        print(f"Azure 원본 응답 저장: {args.dump}\n")
+
+    _report(evaluate(words))
+
+    print("\n  Azure 발음 채점")
+    for label, k in (("정확도", "accuracy"), ("유창성", "fluency"),
+                     ("완전성", "completeness"), ("종합", "pronunciation"),
+                     ("운율", "prosody")):
+        v = scores.get(k)
+        print(f"    {label:<6} {'-' if v is None else f'{v:.1f}'}")
+    if scores.get("omitted"):
+        print(f"    누락된 단어: {', '.join(scores['omitted'])}")
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="linking", description="연음 분석 엔진")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -112,9 +135,9 @@ def main(argv=None):
     p.set_defaults(fn=cmd_predict)
 
     p = sub.add_parser("score", help="정렬 결과 채점")
-    p.add_argument("words", help="WhisperX JSON · words JSON · MFA TextGrid")
+    p.add_argument("words", help="Azure JSON · WhisperX JSON · words JSON · MFA TextGrid")
     p.add_argument("--format", default="auto",
-                   choices=["auto", "whisperx", "words", "textgrid"])
+                   choices=["auto", "whisperx", "words", "textgrid", "azure"])
     p.set_defaults(fn=cmd_score)
 
     p = sub.add_parser("demo", help="합성 프로파일 비교")
@@ -128,6 +151,15 @@ def main(argv=None):
     p.add_argument("script")
     p.add_argument("--dump", help="정렬 결과를 JSON으로 저장")
     p.set_defaults(fn=cmd_align)
+
+    p = sub.add_parser("azure", help="Azure 정렬 + 발음 채점")
+    p.add_argument("audio")
+    p.add_argument("script")
+    p.add_argument("--key", help="기본값: $AZURE_SPEECH_KEY")
+    p.add_argument("--region", help="기본값: $AZURE_SPEECH_REGION")
+    p.add_argument("--language", default="en-US")
+    p.add_argument("--dump", help="Azure 원본 응답을 JSON으로 저장")
+    p.set_defaults(fn=cmd_azure)
 
     args = ap.parse_args(argv)
     args.fn(args)

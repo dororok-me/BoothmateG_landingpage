@@ -36,11 +36,12 @@ linking/
   lexicon.py     CMUdict 조회 (126k 엔트리). OOV는 추측하지 않고 건너뛴다
   rules.py       연음 규칙 14종 — 텍스트만으로 기대 연결 판정
   detect.py      경계 간격 + 길이 팽창으로 실현 여부 검출
-  importers.py   WhisperX / MFA TextGrid / words JSON 수용   ← 기본 입력 경로
-  align.py       자체 강제 정렬 (선택. torch + 모델 가중치 필요)
+  azure_align.py Azure Speech 정렬 + 발음 채점              ← 기본 경로
+  importers.py   Azure / WhisperX / MFA TextGrid / words JSON 수용
+  align.py       MMS_FA 자체 정렬 (대안. torch 필요)
   cli.py
 samples/synth.py 합성 타이밍 생성기 (로직 검증용)
-tests/           29개
+tests/           40개
 ```
 
 ## 설치 · 실행
@@ -54,11 +55,37 @@ python3 -m linking.cli score aligned.json           # 정렬 결과 채점
 python3 tests/test_rules.py && python3 tests/test_detect.py
 ```
 
-실제 오디오는 WhisperX로 정렬한 뒤 넣는다. 이게 스펙 §3의 실제 파이프라인이다.
+### 실제 오디오 — Azure 경로 (권장)
+
+iOS 앱이 Azure Speech SDK를 쓰므로 프로토타입도 같은 정렬기로 튜닝한다.
+정렬기가 다르면 단어 경계 정밀도가 달라 임계값이 이전되지 않는다.
+
+```bash
+pip install azure-cognitiveservices-speech
+export AZURE_SPEECH_KEY=...  AZURE_SPEECH_REGION=koreacentral
+
+# 16kHz 모노 wav로 변환 (아이폰 음성메모 m4a 등)
+afconvert -f WAVE -d LEI16@16000 -c 1 rec.m4a rec.wav
+
+echo "turn it off and take a look" > script.txt
+python3 -m linking.cli azure rec.wav script.txt --dump raw.json
+```
+
+한 번의 호출로 단어 타임스탬프(연음·속도·강세의 입력)와 음소별 발음 점수가
+함께 나온다. `--dump`으로 남긴 원본 응답은 키 없이 다시 채점할 수 있어,
+녹음한 사람과 임계값을 맞추는 사람이 달라도 된다.
+
+```bash
+python3 -m linking.cli score raw.json          # 형식 자동 인식
+```
+
+### 대안 경로
 
 ```bash
 whisperx clip.wav --output_format json --align_model WAV2VEC2_ASR_LARGE_LV60K_960H
 python3 -m linking.cli score clip.json --format whisperx
+
+python3 -m linking.cli align clip.wav script.txt    # MMS_FA 자체 정렬
 ```
 
 ## 설계상 중요한 결정 두 가지
@@ -121,7 +148,7 @@ python3 -m linking.cli score clip.json --format whisperx
 | 중급 | 37–58 |
 | 초급 | 1–10 |
 
-테스트 29개 전부 통과 (규칙 15 + 검출 10 + 정렬 4).
+테스트 40개 전부 통과 (규칙 15 + 검출 10 + 정렬 5 + Azure 파서 10).
 
 `align.py`의 정렬 경로는 합성 emission으로 검증했다 — 토크나이저 정규화,
 단어별 span 그룹핑, 프레임→초 변환까지. 모델 가중치만 실제 음향 판정을
@@ -133,7 +160,8 @@ python3 -m linking.cli score clip.json --format whisperx
 문헌과 관찰에 기반한 *가정*이다. 가정대로 만든 데이터를 가정대로 판별한 것에
 가깝다. 다음이 필요하다.
 
-- [ ] **실제 한국인 화자 녹음** — 같은 문장 20개 × 화자 10명 이상
+- [ ] **실제 한국인 화자 녹음** — 같은 문장 20개 × 화자 10명 이상.
+      Azure 경로로 뽑아야 임계값이 iOS 앱에 그대로 이전된다
 - [ ] **원어민 대조군** — 동일 문장
 - [ ] 임계값 재조정 — `GAP_LINKED` 0.35 / `GAP_BROKEN` 1.30 / `INFLATION_OK` 1.25 /
       `INFLATION_BAD` 1.75 는 전부 음향적 추정치다
