@@ -26,6 +26,51 @@ def _require():
         ) from e
 
 
+def _load_audio(path: str, target_sr: int):
+    """오디오를 (1, N) 모노 텐서로 읽어 target_sr로 맞춘다.
+
+    torchaudio 2.11부터 load()가 TorchCodec에 위임하는데, TorchCodec은
+    별도 설치에 FFmpeg까지 요구한다. soundfile을 먼저 쓰고 실패할 때만
+    torchaudio로 넘어간다 — soundfile은 wav/flac/ogg/mp3를 FFmpeg 없이 읽는다.
+    """
+    import os
+    import torch
+    import torchaudio
+
+    if not os.path.exists(path):
+        raise FileNotFoundError(f"오디오 파일이 없습니다: {path}")
+
+    waveform = sr = None
+    errors = []
+
+    try:
+        import soundfile as sf
+        import numpy as np
+        data, sr = sf.read(path, dtype="float32", always_2d=True)   # (N, ch)
+        waveform = torch.from_numpy(np.ascontiguousarray(data.T))   # (ch, N)
+    except Exception as e:
+        errors.append(f"soundfile: {e}")
+        try:
+            waveform, sr = torchaudio.load(path)
+        except Exception as e2:
+            errors.append(f"torchaudio: {e2}")
+
+    if waveform is None:
+        raise RuntimeError(
+            "오디오를 읽지 못했습니다.\n  " + "\n  ".join(errors) +
+            "\n\nwav로 변환해 다시 시도하세요. m4a는 soundfile이 읽지 못합니다:"
+            "\n  afconvert -f WAVE -d LEI16@16000 -c 1 입력.m4a 출력.wav"
+        )
+
+    if waveform.size(0) > 1:                        # 스테레오 → 모노
+        waveform = waveform.mean(dim=0, keepdim=True)
+    if waveform.dim() == 1:
+        waveform = waveform.unsqueeze(0)
+    if sr != target_sr:
+        waveform = torchaudio.functional.resample(waveform, sr, target_sr)
+    return waveform
+
+
 def _normalize(word: str, charset) -> str:
     """MMS_FA 토크나이저용 표기 정리.
 
@@ -46,11 +91,7 @@ def align_audio(audio_path: str, script: str) -> List[Word]:
     if not words:
         raise ValueError("스크립트가 비어 있습니다")
 
-    waveform, sr = torchaudio.load(audio_path)
-    if waveform.size(0) > 1:                       # 스테레오 → 모노
-        waveform = waveform.mean(dim=0, keepdim=True)
-    if sr != bundle.sample_rate:
-        waveform = torchaudio.functional.resample(waveform, sr, bundle.sample_rate)
+    waveform = _load_audio(audio_path, bundle.sample_rate)
 
     try:
         model = bundle.get_model()

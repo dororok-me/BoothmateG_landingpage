@@ -102,6 +102,41 @@ def test_empty_token_word_is_rejected_not_dropped():
     assert "raise ValueError" in src
 
 
+def test_audio_loading_without_torchcodec():
+    """torchaudio 2.11의 load()는 TorchCodec에 위임한다.
+
+    TorchCodec은 별도 설치 + FFmpeg를 요구하므로, soundfile 경로가 없으면
+    오디오를 하나도 읽지 못한다. 스테레오·비표준 샘플레이트도 함께 검증한다.
+    """
+    if not HAVE_TORCH:
+        return _skip()
+    try:
+        import numpy as np, soundfile as sf
+    except ImportError:
+        print("    (soundfile 없음 — 건너뜀)")
+        return
+    import tempfile, os
+    from linking.align import _load_audio
+
+    sr = 44100
+    sig = (0.2 * np.sin(2 * np.pi * 180 *
+           np.linspace(0, 1.5, int(sr * 1.5), endpoint=False))).astype("float32")
+
+    with tempfile.TemporaryDirectory() as d:
+        stereo = os.path.join(d, "s.wav")
+        sf.write(stereo, np.stack([sig, sig], axis=1), sr)
+
+        w = _load_audio(stereo, 16000)
+        assert w.dim() == 2 and w.size(0) == 1, f"모노 (1,N) 아님: {tuple(w.shape)}"
+        assert abs(w.size(1) / 16000 - 1.5) < 0.02, f"길이 어긋남: {w.size(1)/16000}"
+
+        try:
+            _load_audio(os.path.join(d, "missing.wav"), 16000)
+            raise AssertionError("없는 파일인데 통과했다")
+        except FileNotFoundError:
+            pass
+
+
 if __name__ == "__main__":
     import traceback
     fns = [(k, v) for k, v in sorted(globals().items()) if k.startswith("test_")]
