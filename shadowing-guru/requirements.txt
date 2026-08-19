@@ -1,0 +1,7 @@
+cmudict>=1.0
+numpy>=1.24
+
+# 선택 — 자체 강제 정렬(align.py). 없으면 WhisperX 결과를 importers로 받는다.
+# torch>=2.1
+# torchaudio>=2.1
+# soundfile>=0.12
