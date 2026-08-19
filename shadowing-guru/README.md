@@ -14,13 +14,18 @@ Shadowing Guru 설계 기준서 **P1** — 5개 채점 항목 중 유일하게 �
 
 ```
 $ python3 -m linking.cli predict "I want to talk about the news"
+"I want to talk about the news"
+연음 밀도 0.50   경계 6개
 
-연음 밀도 0.43   경계 6개
-
+             I | want          -
           want | to            필수 w=0.8  REDUCE, GEMINATE, ELIDE_T, UNRELEASED
-               |                 → 'to'는 힘을 빼고 짧게 흘리세요
+               |                 → 'to'는 힘을 빼고 짧게 흘리세요. 또박또박 읽으면 어색합니다
+            to | talk          -
           talk | about         필수 w=1.0  LINK_CV
-               |                 → 'talk'의 끝소리 /K/를 'about'에 붙여 발음하세요
+               |                 → 'talk'의 끝소리 /K/를 'about'에 붙여 한 덩어리로 발음하세요
+         about | the           필수 w=0.8  REDUCE
+               |                 → 'the'는 힘을 빼고 짧게 흘리세요. 또박또박 읽으면 어색합니다
+           the | news          -
 ```
 
 ## 구조
@@ -35,7 +40,7 @@ linking/
   align.py       자체 강제 정렬 (선택. torch + 모델 가중치 필요)
   cli.py
 samples/synth.py 합성 타이밍 생성기 (로직 검증용)
-tests/           25개
+tests/           29개
 ```
 
 ## 설치 · 실행
@@ -116,7 +121,11 @@ python3 -m linking.cli score clip.json --format whisperx
 | 중급 | 37–58 |
 | 초급 | 1–10 |
 
-테스트 25개 전부 통과 (규칙 15 + 검출 10).
+테스트 29개 전부 통과 (규칙 15 + 검출 10 + 정렬 4).
+
+`align.py`의 정렬 경로는 합성 emission으로 검증했다 — 토크나이저 정규화,
+단어별 span 그룹핑, 프레임→초 변환까지. 모델 가중치만 실제 음향 판정을
+담당하며 그 부분은 실제 오디오로만 확인할 수 있다.
 
 ### 확인되지 않은 것 — 여기가 P1의 남은 절반
 
@@ -144,3 +153,5 @@ python3 -m linking.cli score clip.json --format whisperx
   필드가 있으므로 규칙 집합을 악센트별로 분기해야 한다 (미구현).
 - 문장 경계·쉼표의 의도적 휴지를 아직 구분하지 않는다. 구두점이 있는 자리는
   간격 판정에서 빼야 한다.
+- `align.py`는 숫자·기호를 토큰화하지 못한다. 스크립트에서 철자로 풀어 써야
+  한다 (10 → ten). 조용히 버리면 단어 수가 어긋나므로 명시적 오류로 알린다.

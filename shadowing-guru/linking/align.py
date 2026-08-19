@@ -26,6 +26,15 @@ def _require():
         ) from e
 
 
+def _normalize(word: str, charset) -> str:
+    """MMS_FA 토크나이저용 표기 정리.
+
+    사전은 소문자 a-z와 ' * - 만 담고 있다(29자). 대문자나 구두점이 하나라도
+    섞이면 KeyError가 난다 — 정상 문장은 대부분 여기 걸린다.
+    """
+    return "".join(c for c in word.lower() if c in charset)
+
+
 def align_audio(audio_path: str, script: str) -> List[Word]:
     """오디오 + 스크립트 → 단어 타임스탬프."""
     _require()
@@ -54,9 +63,19 @@ def align_audio(audio_path: str, script: str) -> List[Word]:
             "WhisperX로 정렬한 뒤 importers.load()를 쓰세요."
         ) from e
 
+    charset = set(tokenizer.dictionary)
+    tokens_text = [_normalize(w, charset) for w in words]
+
+    empty = [w for w, t in zip(words, tokens_text) if not t]
+    if empty:
+        raise ValueError(
+            f"토큰으로 바꿀 수 없는 단어: {empty}\n"
+            "숫자·기호는 철자로 풀어 쓰세요 (10 → ten, & → and)."
+        )
+
     with torch.inference_mode():
         emission, _ = model(waveform)
-        spans = aligner(emission[0], tokenizer(words))
+        spans = aligner(emission[0], tokenizer(tokens_text))
 
     # 프레임 인덱스 → 초
     ratio = waveform.size(1) / emission.size(1) / bundle.sample_rate
