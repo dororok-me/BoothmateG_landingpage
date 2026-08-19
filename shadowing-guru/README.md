@@ -42,6 +42,8 @@ linking/
   cli.py
 samples/synth.py 합성 타이밍 생성기 (로직 검증용)
 tests/           40개
+tools/           골든 픽스처·사전 추출기
+ios/             Swift 포팅 (Domain 모듈) — ios/README.md 참조
 ```
 
 ## 설치 · 실행
@@ -170,6 +172,16 @@ python3 -m linking.cli align clip.wav script.txt    # MMS_FA 자체 정렬
       0.00으로 나와 난이도(§5)를 과소평가한다
 
 녹음만 확보되면 임계값 재조정은 하루면 끝난다. **판별 로직 자체는 서 있다.**
+
+## Swift 포팅
+
+iOS 앱은 네이티브 Swift로 확정됐다. 이 엔진의 규칙·임계값·테스트는
+`ios/` 의 Domain 모듈로 옮겨졌다. 파이썬 쪽을 고치면 `tools/export_golden.py`로
+픽스처를 다시 뽑아 Swift와의 일치를 유지한다.
+
+```bash
+python3 tools/export_golden.py && cd ios && swift test
+```
 
 ## 알려진 한계
 
