@@ -102,26 +102,23 @@
   .hero-img{margin:48px auto 0;max-width:1100px;border-radius:24px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.16)}
   .hero-img img{width:100%}
 
-  /* ================= CINEMATIC HERO  v2.1.0  (2026-08) ================= */
-  /* 영상은 가로 100%로 깔고 높이는 16:9 비율이 정한다 — 좌우가 절대 잘리지 않는다.
-     창 크기가 바뀌면 히어로 높이가 함께 변하고, 문구는 그 안에서 재배치된다. */
+  /* ================= CINEMATIC HERO  v2.0.0  (2026-08) ================= */
+  /* 배경 영상 풀블리드 + 문구/버튼 오버레이. 화면 비율은 object-fit:cover 가 자동 대응 */
   .hero-cine{
     position:relative;isolation:isolate;overflow:hidden;
     background:#000;color:#f5f5f7;text-align:center;
     display:flex;align-items:center;justify-content:center;
-    min-height:56.25vw;          /* = 100vw × 9/16, 영상 전체가 들어가는 높이 */
-    padding:clamp(72px,7vw,100px) 22px clamp(104px,8vw,112px);  /* 하단 페이드(84px) 위로 문구가 겹치지 않게 */
+    min-height:100vh;            /* 구형 브라우저 */
+    min-height:100svh;           /* iOS 주소창 대응 */
+    padding:100px 22px 112px;
     margin-top:-48px;            /* sticky 네비 뒤로 영상이 들어가도록 */
   }
-  /* 영상 띠: 가로 꽉 채우고 높이는 비율이 결정 (letterbox·crop 둘 다 없음) */
-  .hc-media{position:absolute;top:0;left:0;right:0;bottom:auto;height:auto;aspect-ratio:16/9;z-index:0}
+  .hc-media{position:absolute;inset:0;z-index:0}
   .hc-media video{
-    width:100%;height:100%;object-fit:cover;object-position:center;
-    display:block;
+    width:100%;height:100%;object-fit:cover;object-position:center 45%;
+    display:block;transform:scale(1.02);
   }
   .hc-media.is-still video{display:none}
-  /* aspect-ratio 미지원 구형 브라우저 대비 (16:9 = 56.25vw) */
-  @supports not (aspect-ratio:16/9){ .hc-media{height:56.25vw} }
 
   /* 텍스트 가독성용 스크림 — 영상이 흑백 고대비라 두 겹으로 깐다 */
   .hc-scrim{
@@ -139,9 +136,8 @@
   .hc-inner{position:relative;z-index:3;max-width:940px;margin:0 auto;width:100%;
     word-break:keep-all;overflow-wrap:break-word}  /* 한글이 단어 중간에서 안 잘리게 */
   .hc-eyebrow{
-    font-size:clamp(14.4px,1.8vw,20.4px);font-weight:500;letter-spacing:.02em;  /* 기존 대비 +20% */
-    color:rgba(245,245,247,.82);line-height:1.55;max-width:620px;
-    margin:0 auto clamp(20px, calc(56.25vw - 620px), 130px);
+    font-size:clamp(12px,1.5vw,17px);font-weight:500;letter-spacing:.02em;
+    color:rgba(245,245,247,.82);margin:0 auto 130px;line-height:1.55;max-width:620px;
     text-wrap:balance;
     text-shadow:0 1px 14px rgba(0,0,0,.65);
   }
@@ -258,7 +254,7 @@
   }
   @media (max-width:820px) and (max-height:700px){
     .hero-cine{padding-top:62px;padding-bottom:32px}
-    .hc-eyebrow{font-size:13.8px;margin-bottom:calc(56.25vw - 128px)}
+    .hc-eyebrow{font-size:11.5px;margin-bottom:calc(56.25vw - 128px)}
     .hc-mark{width:min(124px,34vw);margin-bottom:8px}
     .hc-tag{font-size:21px}
     .hc-sub{font-size:12.5px;margin-top:9px}
@@ -281,20 +277,43 @@
 
   /* vs comparison */
   .vs{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:stretch;max-width:860px;margin:54px auto 0}
-  .vs-card{background:#141414;border:1px solid #2a2a2c;border-radius:var(--radius);padding:34px 28px;text-align:center}
+  .vs-card{background:#141414;border:1px solid #2a2a2c;border-radius:var(--radius);padding:34px 28px;text-align:center;
+    display:flex;flex-direction:column}
+  .vs-card .vs-img{margin-top:auto;position:relative;z-index:1}   /* 삽화를 카드 바닥으로 */
+  /* 인물 뒤 광원 v1.0.0 (2026-08) — 어두운 정장이 카드 배경에 묻히지 않게 */
+  .vs-card{position:relative;overflow:hidden}
+  .vs-card::after{
+    content:"";position:absolute;left:50%;bottom:-12%;z-index:0;pointer-events:none;
+    width:74%;aspect-ratio:1/1;transform:translateX(-50%);
+    background:radial-gradient(circle at 50% 55%,
+      rgba(255,255,255,.16) 0%, rgba(255,255,255,.07) 38%, rgba(255,255,255,0) 68%);
+  }
+  .vs-card.win::after{
+    background:radial-gradient(circle at 50% 55%,
+      rgba(25,195,125,.30) 0%, rgba(25,195,125,.13) 36%, rgba(10,132,255,.06) 56%, rgba(0,0,0,0) 72%);
+  }
+
   .vs-card.win{background:linear-gradient(160deg,#0c2a1c,#0a1f33);border:1px solid rgba(25,195,125,.5)}
   .vs-card .tag{font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--gray2);margin-bottom:12px}
   .vs-card.win .tag{color:#19c37d}
   .vs-card h3{font-size:22px;margin-bottom:10px;color:#f5f5f7}
   .vs-card p{font-size:15px;color:#a1a1a6;line-height:1.55}
+  /* 카드 삽화 v1.0.0 (2026-08) — 아래쪽을 페이드시켜 카드에 녹아들게 */
+  .vs-card .vs-img{
+    display:block;height:196px;width:auto;max-width:100%;margin:18px auto -34px;
+    -webkit-mask-image:linear-gradient(to bottom,#000 62%,rgba(0,0,0,.35) 86%,transparent 100%);
+    mask-image:linear-gradient(to bottom,#000 62%,rgba(0,0,0,.35) 86%,transparent 100%);
+  }
   .vs-mid{display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:var(--gray2)}
 
   /* feature points (3-up) */
   .points{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;max-width:920px;margin:56px auto 0}
   .point{text-align:center}
   .point .ic{font-size:32px;margin-bottom:14px}
-  .point .ic img{width:46px;height:46px;display:block;margin:0 auto;object-fit:contain}
-  .dark .point .ic img{filter:invert(1)}  /* 어두운 섹션에서도 보이게 */
+  /* 그라디언트 라인 아이콘 v1.0.0 (2026-08) — 이모지 대체 */
+  .ic svg{display:block;margin:0 auto;width:46px;height:46px;
+    fill:none;stroke:url(#icg);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .tile .ic svg{width:44px;height:44px}
   .point h3{font-size:19px;margin-bottom:8px}
   .point p{font-size:15px;color:var(--gray);line-height:1.55}
   .dark .point p{color:#a1a1a6}
@@ -382,6 +401,7 @@
     .nav-links{gap:14px}
     .nav-links a:not(.nav-cta){display:none}
     .vs{grid-template-columns:1fr;gap:14px}
+    .vs-card .vs-img{height:172px}
     .vs-mid{padding:4px 0}
     .points{grid-template-columns:1fr;gap:34px}
     .tiles{grid-template-columns:1fr}
@@ -391,6 +411,64 @@
 </style>
 </head>
 <body>
+
+<!-- ICON SPRITE v1.0.0 (2026-08) — 그라디언트 라인 아이콘. 이모지 대체 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <linearGradient id="icg" gradientUnits="userSpaceOnUse" x1="2" y1="2" x2="22" y2="22">
+    <stop offset="0%" stop-color="#0a84ff"/><stop offset="100%" stop-color="#19c37d"/>
+  </linearGradient>
+
+  <g id="ic-brain">
+    <path d="M5.4 21c0-1.9 1.6-2.9 3.6-3.2.5-.1.8-.4.8-.9v-1.1c0-.7-.4-1.2-1.1-1.4l-1.1-.3c-.8-.2-1.2-.8-1-1.6.1-.5-.1-.9-.6-1.1l-.9-.4c-.7-.3-.9-1-.5-1.6.6-.9 1-1.8 1.1-2.8C6.1 3.9 8.7 2 11.8 2c3.6 0 6.5 2.8 6.5 6.3 0 1.8-.8 3.5-2 4.7-1 1-1.4 2.1-1.4 3.4v.6c0 .5.3.8.8.9 2 .3 3.6 1.3 3.6 3.2"/>
+    <circle cx="12.7" cy="8.2" r="1.9"/>
+    <path d="M12.7 5v1M12.7 10.4v1M15.9 8.2h-1M10.5 8.2h-1M15 5.9l-.7.7M11.1 9.8l-.7.7M15 10.5l-.7-.7M11.1 6.6l-.7-.7"/>
+  </g>
+
+  <g id="ic-import">
+    <path d="M14 2.6H6.4c-.9 0-1.6.7-1.6 1.6v15.6c0 .9.7 1.6 1.6 1.6h11.2c.9 0 1.6-.7 1.6-1.6V7.9z"/>
+    <path d="M14 2.6v4.5c0 .5.4.8.8.8h4.4"/>
+    <path d="M12 10.4v7.4"/><path d="M9.3 15.1 12 17.8l2.7-2.7"/>
+  </g>
+
+  <g id="ic-target">
+    <path d="M20.9 12a8.9 8.9 0 1 1-4.6-7.8"/>
+    <path d="M16.7 12a4.7 4.7 0 1 1-2.9-4.3"/>
+    <path d="M9.6 11.6 12 14l8.4-8.6"/>
+  </g>
+
+  <g id="ic-currency">
+    <path d="M5.4 2.8v10.2"/>
+    <path d="M8.3 5.8c0-1-.8-1.7-2-1.7H5.1c-1.2 0-2 .7-2 1.7 0 .9.6 1.5 1.7 1.7l1.5.3c1.1.2 1.8.8 1.8 1.8 0 1.1-.8 1.8-2 1.8H4.9c-1.2 0-2-.7-2-1.7"/>
+    <path d="M13.4 2.8 15.4 12.8 17.8 6.4 20.2 12.8 22.2 2.8"/>
+    <path d="M12.9 6.2h9.4M12.9 9.8h9.4"/>
+    <path d="M4.8 18h14.4"/><path d="M6.9 15.9l-2.2 2.1 2.2 2.1M17.1 15.9l2.2 2.1-2.2 2.1"/>
+  </g>
+
+  <g id="ic-ruler">
+    <rect x="2.2" y="7.6" width="19.6" height="8.8" rx="1.7"/>
+    <path d="M6.4 7.6v3.4M9.8 7.6v2.1M13.2 7.6v3.4M16.6 7.6v2.1"/>
+  </g>
+
+  <g id="ic-save">
+    <path d="M19.4 20.4H5.2c-.9 0-1.6-.7-1.6-1.6V5.2c0-.9.7-1.6 1.6-1.6h10.6l4.4 4.4v10.8c0 .9-.7 1.6-1.6 1.6z"/>
+    <path d="M7.6 3.6v5.2h8.2V3.6"/><path d="M7.6 20.4v-5.6h8.8v5.6"/>
+  </g>
+
+  <g id="ic-oneway">
+    <path d="M3.4 12h16.4"/><path d="M15.6 7.8 19.8 12l-4.2 4.2"/>
+  </g>
+
+  <g id="ic-twoway">
+    <path d="M3.6 8.6h16.8"/><path d="M16.6 5.2 20.4 8.6l-3.8 3.4"/>
+    <path d="M20.4 15.4H3.6"/><path d="M7.4 12 3.6 15.4 7.4 18.8"/>
+  </g>
+
+  <g id="ic-multi">
+    <circle cx="12" cy="12" r="9.2"/>
+    <path d="M2.8 12h18.4"/>
+    <path d="M12 2.8c2.4 2.5 3.7 5.8 3.7 9.2s-1.3 6.7-3.7 9.2c-2.4-2.5-3.7-5.8-3.7-9.2S9.6 5.3 12 2.8z"/>
+  </g>
+</defs></svg>
 
 <!-- NAV -->
 <div class="nav">
@@ -431,7 +509,7 @@
     <ul class="hc-facts">
       <li><a href="#glossary" class="f1">개입형 용어집</a></li>
       <li><a href="#qr" class="f2">QR 자막</a></li>
-      <li><a href="#languages" class="f3">다중 언어 동시 출력</a></li>
+      <li><a href="#languages" class="f3">70여 개 언어 지원</a></li>
       <li><a href="#modes" class="f4">단방향 · 양방향 · 다방향</a></li>
     </ul>
     <!-- 버튼 제거. 되살리려면 아래 주석 해제
@@ -476,7 +554,7 @@
 <section class="dark" id="engine">
   <div class="wrap sec-head center">
     <p class="eyebrow blue reveal">통역 엔진</p>
-    <h2 class="headline reveal">AI에게 “해줘?”<br>vs 전문 통역사와 매일 매일 학습하는 엔진</h2>
+    <h2 class="headline reveal">AI에게 “해줘?”<br>VS 전문 통역사와 매일 매일 학습하는 엔진</h2>
   </div>
   <div class="wrap">
     <div class="vs reveal">
@@ -484,12 +562,14 @@
         <div class="tag">일반 AI 번역</div>
         <h3>AI에게 “해줘”</h3>
         <p>전문 용어와 맥락은 운에 맡깁니다.</p>
+        <img class="vs-img" src="ai_shrug.png" alt="" width="520" height="405" loading="lazy">
       </div>
-      <div class="vs-mid">vs</div>
+      <div class="vs-mid">VS</div>
       <div class="vs-card win">
         <div class="tag">Boothmate</div>
         <h3>학습된 통역 엔진</h3>
-        <p>통역사의 두뇌 프로세스를 학습, 의미가 확정되는 순간 먼저 통역합니다.</p>
+        <p>통역사의 두뇌 프로세스를 학습. 의미가 확정되는 순간 먼저 통역합니다.</p>
+        <img class="vs-img" src="ai_bow.png" alt="" width="347" height="420" loading="lazy">
       </div>
     </div>
   </div>
@@ -509,17 +589,17 @@
   <div class="wrap">
     <div class="points reveal">
       <div class="point">
-        <div class="ic"><img src="icon_brain.png" alt="" width="160" height="160" loading="lazy"></div>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-brain"/></svg></div>
         <h3>똑똑한 치환</h3>
         <p>동사 시제 변화, 형용사–부사 간 변화까지 문맥에 맞게 똑똑하게 치환합니다.</p>
       </div>
       <div class="point">
-        <div class="ic">🗂️</div>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-import"/></svg></div>
         <h3>자유로운 불러오기</h3>
         <p>CSV·TXT·엑셀 포맷의 용어집을 불러오고 내보낼 수 있습니다.</p>
       </div>
       <div class="point">
-        <div class="ic">🎯</div>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-target"/></svg></div>
         <h3>개입형 후처리</h3>
         <p>AI가 미처 놓친 전문 용어라도 후처리로 잡아내 100% 정확하게.</p>
       </div>
@@ -537,17 +617,17 @@
   <div class="wrap">
     <div class="tiles reveal">
       <div class="tile">
-        <div class="ic">➡️</div>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-oneway"/></svg></div>
         <h3>단방향</h3>
         <p>강연, 발표 등에 적합합니다.</p>
       </div>
       <div class="tile">
-        <div class="ic">🔄</div>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-twoway"/></svg></div>
         <h3>양방향</h3>
         <p>두 언어를 통역하는 경우, 소스 언어를 자동으로 인식해 번역 방향을 끊김 없이 전환합니다.</p>
       </div>
       <div class="tile">
-        <div class="ic">🌐</div>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-multi"/></svg></div>
         <h3>다방향</h3>
         <p>3개 이상의 언어를 통역하는 경우, 소스 언어가 해당 언어로 동시에 번역됩니다.</p>
       </div>
@@ -719,17 +799,17 @@
   <div class="wrap">
     <div class="tiles reveal">
       <div class="tile">
-        <div class="ic">💱</div>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-currency"/></svg></div>
         <h3>환율 변환</h3>
         <p>현장에서 언급되는 금액을 즉시 변환해 자막에 반영.</p>
       </div>
       <div class="tile">
-        <div class="ic">📐</div>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-ruler"/></svg></div>
         <h3>도량형 변환</h3>
         <p>단위가 다른 청중도 헷갈리지 않도록 자동 변환.</p>
       </div>
       <div class="tile">
-        <div class="ic">💾</div>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-save"/></svg></div>
         <h3>자막 자동 저장</h3>
         <p>최대 90일까지의 자막을 txt 포맷으로 자동 저장.</p>
       </div>
@@ -827,7 +907,7 @@
       <p>Tel 051-703-6006 · <a href="mailto:dororok@gmail.com">dororok@gmail.com</a></p>
       <p><a href="https://online.boothmate.co.kr/terms.html" target="_blank" rel="noopener">이용약관</a> · <a href="https://online.boothmate.co.kr/privacy.html" target="_blank" rel="noopener">개인정보처리방침</a></p>
     </div>
-    <p>© 2026 Boothmate. All rights reserved. · ver. 1.05.15</p>
+    <p>© 2026 Boothmate. All rights reserved. · ver. 1.05.8</p>
   </div>
 </footer>
 
