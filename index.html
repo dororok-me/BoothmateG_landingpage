@@ -911,7 +911,7 @@
       <p>Tel 051-703-6006 · <a href="mailto:dororok@gmail.com">dororok@gmail.com</a></p>
       <p><a href="https://online.boothmate.co.kr/terms.html" target="_blank" rel="noopener">이용약관</a> · <a href="https://online.boothmate.co.kr/privacy.html" target="_blank" rel="noopener">개인정보처리방침</a></p>
     </div>
-    <p>© 2026 Boothmate. All rights reserved. · ver. 1.05.16</p>
+    <p>© 2026 Boothmate. All rights reserved. · ver. 1.05.17</p>
   </div>
 </footer>
 
@@ -970,7 +970,7 @@
   })();
 </script>
 
-<!-- CINEMATIC HERO CONTROLLER v2.0.0 (2026-08) -->
+<!-- CINEMATIC HERO CONTROLLER v2.1.0 (2026-08) -->
 <script>
 (function(){
   var hero  = document.querySelector('.hero-cine');
@@ -988,33 +988,63 @@
     video.setAttribute('poster','boothmate_hero_poster_mobile.jpg');
   }
 
-  /* 데이터 절약 모드·모션 최소화 설정이면 영상 대신 포스터 이미지만 */
+  /* 영상 대신 포스터 정지 화면으로 전환 — 데이터 절약 모드, 그리고
+     iOS 저전력 모드처럼 자동재생이 막힌 경우에도 쓴다.
+     video 를 감추므로 브라우저가 덧씌우는 재생 버튼도 함께 사라진다. */
+  function showStill(){
+    var still = video && video.getAttribute('poster');
+    if(!still || media.classList.contains('is-still')) return;
+    media.style.backgroundImage    = 'url(' + still + ')';
+    media.style.backgroundSize     = 'cover';
+    media.style.backgroundPosition = 'center 45%';
+    media.classList.add('is-still');
+  }
+  function hideStill(){
+    if(!media.classList.contains('is-still')) return;
+    media.classList.remove('is-still');
+    media.style.backgroundImage = '';
+  }
+
   if(video && (saveData || reduceMotion)){
-    var still = video.getAttribute('poster');
     video.removeAttribute('autoplay');
     video.pause();
-    if(still){
-      media.style.backgroundImage    = 'url(' + still + ')';
-      media.style.backgroundSize     = 'cover';
-      media.style.backgroundPosition = 'center 45%';
-      media.classList.add('is-still');
-    }
+    showStill();
   } else if(video){
-    var p = video.play();
-    if(p && p.catch) p.catch(function(){ /* 자동재생 차단 시 포스터 유지 */ });
+    /* 자동재생이 막히면 정지 화면으로 두고, 첫 탭·클릭에서 재생을 다시 시도한다 */
+    var armed = false;
+    function armGesture(){
+      if(armed) return;
+      armed = true;
+      var once = function(){
+        armed = false;
+        document.removeEventListener('pointerdown', once);
+        document.removeEventListener('touchend', once);
+        attemptPlay();
+      };
+      document.addEventListener('pointerdown', once, {passive:true});
+      document.addEventListener('touchend', once, {passive:true});
+    }
+    function attemptPlay(){
+      var r = video.play();
+      if(r && r.catch) r.catch(function(){ showStill(); armGesture(); });
+    }
+    /* 실제로 재생이 시작될 때만 정지 화면을 걷는다
+       — play() 프로미스보다 playing 이벤트가 확실하다 */
+    video.addEventListener('playing', hideStill);
+    attemptPlay();
 
     /* 히어로가 화면 밖이면 정지 — 배터리·CPU 절약 */
     if('IntersectionObserver' in window){
       new IntersectionObserver(function(entries){
         entries.forEach(function(en){
-          if(en.isIntersecting){ var q = video.play(); if(q && q.catch) q.catch(function(){}); }
+          if(en.isIntersecting) attemptPlay();
           else video.pause();
         });
       },{threshold:.01}).observe(hero);
     }
     document.addEventListener('visibilitychange', function(){
       if(document.hidden) video.pause();
-      else if(!document.hidden){ var r = video.play(); if(r && r.catch) r.catch(function(){}); }
+      else attemptPlay();
     });
   }
 
