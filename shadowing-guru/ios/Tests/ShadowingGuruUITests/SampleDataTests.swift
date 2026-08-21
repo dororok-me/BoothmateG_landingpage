@@ -4,7 +4,7 @@ import ShadowingGuruDomain
 
 /// 번들 샘플이 실제로 읽히고 Domain에 그대로 물리는지 확인한다.
 ///
-/// UI 자체는 컴파일이 곱 검증이지만, 리소스 적재와 타입 변환은 조용히
+/// UI 자체는 컴파일이 곧 검증이지만, 리소스 적재와 타입 변환은 조용히
 /// 실패할 수 있어 테스트로 덮는다.
 final class SampleDataTests: XCTestCase {
 

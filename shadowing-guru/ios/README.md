@@ -99,7 +99,7 @@ Tests/
 | 문장 분석 | 12 |
 | 검출·채점 | 33 (경계 192개) |
 
-첫 `swift test`에서 실패가 나면 그것이 곳 포팅 오류 목록이다. 실패 메시지에
+첫 `swift test`에서 실패가 나면 그것이 곧 포팅 오류 목록이다. 실패 메시지에
 어느 단어쌍·어느 경계인지가 찍힌다.
 
 ### 픽스처 재생성
@@ -118,7 +118,7 @@ python3 tools/check_golden_shape.py  # JSON ↔ Swift Decodable 구조 대조
 컴파일러가 잡아주지 않는 것들이라 주석과 테스트로 못 박아 두었다.
 
 - **`Detector.classFactors`는 배열이어야 한다.** 이중모음과 일반 모음 집합이
-  걹치므로 순서가 판정을 바꿔다. 사전으로 바꾸면 순서가 사라진다.
+  겹치므로 순서가 판정을 바꾼다. 사전으로 바꾸면 순서가 사라진다.
   → `DetectorTests.testPhoneFactorOrderMatters`
 - **`Rules.boundaryRules`의 순서가 곧 `tags` 순서다.** 골든 픽스처가 순서까지 본다.
 - **동점 처리.** `primaryTag`·`focus`는 가중치가 같으면 앞선 것을 택한다.

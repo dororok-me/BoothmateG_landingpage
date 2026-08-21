@@ -176,7 +176,7 @@ public struct ResultView: View {
     }
 }
 
-/// 화면 전반에서 쓰는 카드. 왼쪽 색띄가 의미를 나른다.
+/// 화면 전반에서 쓰는 카드. 왼쪽 색띠가 의미를 나른다.
 struct Card<Content: View>: View {
     let accent: Color
     let content: Content
