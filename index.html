@@ -102,23 +102,26 @@
   .hero-img{margin:48px auto 0;max-width:1100px;border-radius:24px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.16)}
   .hero-img img{width:100%}
 
-  /* ================= CINEMATIC HERO  v2.0.0  (2026-08) ================= */
-  /* 배경 영상 풀블리드 + 문구/버튼 오버레이. 화면 비율은 object-fit:cover 가 자동 대응 */
+  /* ================= CINEMATIC HERO  v2.1.0  (2026-08) ================= */
+  /* 영상은 가로 100%로 깔고 높이는 16:9 비율이 정한다 — 좌우가 절대 잘리지 않는다.
+     창 크기가 바뀌면 히어로 높이가 함께 변하고, 문구는 그 안에서 재배치된다. */
   .hero-cine{
     position:relative;isolation:isolate;overflow:hidden;
     background:#000;color:#f5f5f7;text-align:center;
     display:flex;align-items:center;justify-content:center;
-    min-height:100vh;            /* 구형 브라우저 */
-    min-height:100svh;           /* iOS 주소창 대응 */
-    padding:100px 22px 112px;
+    min-height:56.25vw;          /* = 100vw × 9/16, 영상 전체가 들어가는 높이 */
+    padding:clamp(72px,7vw,100px) 22px clamp(104px,8vw,112px);  /* 하단 페이드(84px) 위로 문구가 겹치지 않게 */
     margin-top:-48px;            /* sticky 네비 뒤로 영상이 들어가도록 */
   }
-  .hc-media{position:absolute;inset:0;z-index:0}
+  /* 영상 띠: 가로 꽉 채우고 높이는 비율이 결정 (letterbox·crop 둘 다 없음) */
+  .hc-media{position:absolute;top:0;left:0;right:0;bottom:auto;height:auto;aspect-ratio:16/9;z-index:0}
   .hc-media video{
-    width:100%;height:100%;object-fit:cover;object-position:center 45%;
-    display:block;transform:scale(1.02);
+    width:100%;height:100%;object-fit:cover;object-position:center;
+    display:block;
   }
   .hc-media.is-still video{display:none}
+  /* aspect-ratio 미지원 구형 브라우저 대비 (16:9 = 56.25vw) */
+  @supports not (aspect-ratio:16/9){ .hc-media{height:56.25vw} }
 
   /* 텍스트 가독성용 스크림 — 영상이 흑백 고대비라 두 겹으로 깐다 */
   .hc-scrim{
@@ -136,8 +139,9 @@
   .hc-inner{position:relative;z-index:3;max-width:940px;margin:0 auto;width:100%;
     word-break:keep-all;overflow-wrap:break-word}  /* 한글이 단어 중간에서 안 잘리게 */
   .hc-eyebrow{
-    font-size:clamp(12px,1.5vw,17px);font-weight:500;letter-spacing:.02em;
-    color:rgba(245,245,247,.82);margin:0 auto 130px;line-height:1.55;max-width:620px;
+    font-size:clamp(14.4px,1.8vw,20.4px);font-weight:500;letter-spacing:.02em;  /* 기존 대비 +20% */
+    color:rgba(245,245,247,.82);line-height:1.55;max-width:620px;
+    margin:0 auto clamp(20px, calc(56.25vw - 620px), 130px);
     text-wrap:balance;
     text-shadow:0 1px 14px rgba(0,0,0,.65);
   }
@@ -254,7 +258,7 @@
   }
   @media (max-width:820px) and (max-height:700px){
     .hero-cine{padding-top:62px;padding-bottom:32px}
-    .hc-eyebrow{font-size:11.5px;margin-bottom:calc(56.25vw - 128px)}
+    .hc-eyebrow{font-size:13.8px;margin-bottom:calc(56.25vw - 128px)}
     .hc-mark{width:min(124px,34vw);margin-bottom:8px}
     .hc-tag{font-size:21px}
     .hc-sub{font-size:12.5px;margin-top:9px}
@@ -509,7 +513,7 @@
     <ul class="hc-facts">
       <li><a href="#glossary" class="f1">개입형 용어집</a></li>
       <li><a href="#qr" class="f2">QR 자막</a></li>
-      <li><a href="#languages" class="f3">70여 개 언어 지원</a></li>
+      <li><a href="#languages" class="f3">다중 언어 동시 출력</a></li>
       <li><a href="#modes" class="f4">단방향 · 양방향 · 다방향</a></li>
     </ul>
     <!-- 버튼 제거. 되살리려면 아래 주석 해제
@@ -554,7 +558,7 @@
 <section class="dark" id="engine">
   <div class="wrap sec-head center">
     <p class="eyebrow blue reveal">통역 엔진</p>
-    <h2 class="headline reveal">AI에게 “해줘?”<br>VS 전문 통역사와 매일 매일 학습하는 엔진</h2>
+    <h2 class="headline reveal">AI에게 “해줘?”<br>vs 전문 통역사와 매일 매일 학습하는 엔진</h2>
   </div>
   <div class="wrap">
     <div class="vs reveal">
@@ -564,7 +568,7 @@
         <p>전문 용어와 맥락은 운에 맡깁니다.</p>
         <img class="vs-img" src="ai_shrug.png" alt="" width="520" height="405" loading="lazy">
       </div>
-      <div class="vs-mid">VS</div>
+      <div class="vs-mid">vs</div>
       <div class="vs-card win">
         <div class="tag">Boothmate</div>
         <h3>학습하고 개선하는 통역 엔진</h3>
@@ -777,7 +781,7 @@
 <section id="qr" style="background:var(--offwhite)">
   <div class="wrap sec-head center">
     <p class="eyebrow grad reveal">QR 자막</p>
-    <h2 class="headline reveal">청중의 손안에, 바로.</h2>
+    <h2 class="headline reveal">청중의 스마트폰에서도, 바로.</h2>
     <p class="lead reveal">자기 스마트폰에서 자막을 보기 원하는 청중을 위한 QR 링크를 생성합니다.</p>
     <p class="lead reveal" style="margin-top:18px">행사 로고 파일을 업로드하면 로고의 Identity Color를 자동 인식한 QR을 생성해 청중 경험을 한층 강화합니다.</p>
   </div>
@@ -907,7 +911,7 @@
       <p>Tel 051-703-6006 · <a href="mailto:dororok@gmail.com">dororok@gmail.com</a></p>
       <p><a href="https://online.boothmate.co.kr/terms.html" target="_blank" rel="noopener">이용약관</a> · <a href="https://online.boothmate.co.kr/privacy.html" target="_blank" rel="noopener">개인정보처리방침</a></p>
     </div>
-    <p>© 2026 Boothmate. All rights reserved. · ver. 1.05.8</p>
+    <p>© 2026 Boothmate. All rights reserved. · ver. 1.05.16</p>
   </div>
 </footer>
 
