@@ -8,6 +8,33 @@
 <link rel="icon" type="image/png" href="https://online.boothmate.co.kr/logo.png">
 <link rel="apple-touch-icon" href="https://online.boothmate.co.kr/logo.png">
 <meta name="description" content="국제회의 동시통역사이자 애플 개발자가 만든 통역 앱. 통역사의 두뇌 프로세스를 학습한 실시간 동시통역 자막 엔진, 개입형 용어집, QR 자막, 70여 개 언어 지원.">
+
+<!-- 링크 미리보기 — 카카오톡·문자·슬랙이 긁어 가는 카드. og 태그가 하나도 없으면 긁어 가는 쪽이
+     본문에서 가장 큰 그림을 알아서 고른다. 여기서는 그게 워드마크(boothmate_logo_gradient.png,
+     790x550)였고, 카드 자리는 1.91:1 인데 그림은 1.44:1 이라 가운데만 남기고 잘려 'Booth' 의
+     윗동이 날아간 채로 나갔다. 링크를 받은 사람이 처음 보는 것이 이 카드인데, 잘린 상표가 먼저
+     보이면 잘못 온 링크처럼 읽힌다.
+     카드 비율에 맞춰 미리 만들어 둔 og-cover.png(1200x630)로 못 박는다. 워드마크 파일은 그대로
+     쓰되 폭의 1/4(300px)만 차지하고 나머지는 여백이라, 채팅 창에서 카드가 640px 안팎으로 줄어도
+     로고는 160px 안팎으로 온전히 남는다. 배경은 히어로와 같은 --offwhite(#fbfbfd), 밑줄은
+     --grad(#0a84ff→#19c37d).
+     주소는 절대 경로여야 한다 — 긁어 가는 서버는 상대 경로를 풀지 못한다. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Boothmate">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="Boothmate — 통역사가 만든 통역앱">
+<meta property="og:description" content="실시간 동시통역 자막 · 개입형 용어집 · 70여 개 언어">
+<meta property="og:url" content="https://boothmate.co.kr/">
+<meta property="og:image" content="https://boothmate.co.kr/og-cover.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Boothmate">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Boothmate — 통역사가 만든 통역앱">
+<meta name="twitter:description" content="실시간 동시통역 자막 · 개입형 용어집 · 70여 개 언어">
+<meta name="twitter:image" content="https://boothmate.co.kr/og-cover.png">
+
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
