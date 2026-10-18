@@ -1,0 +1,690 @@
+{
+ "version": 1,
+ "clips": [
+  {
+   "id": "clip-0",
+   "transcript": "turn it off and take a look",
+   "kind": "일상 대화",
+   "difficulty": 1,
+   "attempts": [
+    {
+     "id": "0-native",
+     "label": "원어민",
+     "profile": "native",
+     "linkingScore": 96.5,
+     "speechRate": 6.201,
+     "words": [
+      {
+       "text": "turn",
+       "start": 0.2,
+       "end": 0.378
+      },
+      {
+       "text": "it",
+       "start": 0.3844,
+       "end": 0.4961
+      },
+      {
+       "text": "off",
+       "start": 0.5022,
+       "end": 0.6472
+      },
+      {
+       "text": "and",
+       "start": 0.6544,
+       "end": 0.8254
+      },
+      {
+       "text": "take",
+       "start": 0.8481,
+       "end": 1.029
+      },
+      {
+       "text": "a",
+       "start": 1.0383,
+       "end": 1.1103
+      },
+      {
+       "text": "look",
+       "start": 1.1471,
+       "end": 1.3289
+      }
+     ]
+    },
+    {
+     "id": "0-intermediate",
+     "label": "중급 학습자",
+     "profile": "intermediate",
+     "linkingScore": 44.2,
+     "speechRate": 4.345,
+     "words": [
+      {
+       "text": "turn",
+       "start": 0.2,
+       "end": 0.3759
+      },
+      {
+       "text": "it",
+       "start": 0.4646,
+       "end": 0.5893
+      },
+      {
+       "text": "off",
+       "start": 0.6497,
+       "end": 0.8122
+      },
+      {
+       "text": "and",
+       "start": 0.8407,
+       "end": 1.0121
+      },
+      {
+       "text": "take",
+       "start": 1.058,
+       "end": 1.3612
+      },
+      {
+       "text": "a",
+       "start": 1.4462,
+       "end": 1.5261
+      },
+      {
+       "text": "look",
+       "start": 1.6028,
+       "end": 1.8109
+      }
+     ]
+    },
+    {
+     "id": "0-learner",
+     "label": "입문 학습자",
+     "profile": "learner",
+     "linkingScore": 5.45,
+     "speechRate": 2.95,
+     "words": [
+      {
+       "text": "turn",
+       "start": 0.2,
+       "end": 0.443
+      },
+      {
+       "text": "it",
+       "start": 0.5426,
+       "end": 0.6715
+      },
+      {
+       "text": "off",
+       "start": 0.8866,
+       "end": 1.1666
+      },
+      {
+       "text": "and",
+       "start": 1.3598,
+       "end": 1.5787
+      },
+      {
+       "text": "take",
+       "start": 1.6661,
+       "end": 1.896
+      },
+      {
+       "text": "a",
+       "start": 2.1551,
+       "end": 2.2629
+      },
+      {
+       "text": "look",
+       "start": 2.3628,
+       "end": 2.573
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "clip-1",
+   "transcript": "I want to talk about the news",
+   "kind": "뉴스 도입",
+   "difficulty": 2,
+   "attempts": [
+    {
+     "id": "1-native",
+     "label": "원어민",
+     "profile": "native",
+     "linkingScore": 100.0,
+     "speechRate": 6.231,
+     "words": [
+      {
+       "text": "I",
+       "start": 0.2,
+       "end": 0.3062
+      },
+      {
+       "text": "want",
+       "start": 0.3262,
+       "end": 0.5426
+      },
+      {
+       "text": "to",
+       "start": 0.5548,
+       "end": 0.6771
+      },
+      {
+       "text": "talk",
+       "start": 0.705,
+       "end": 0.8539
+      },
+      {
+       "text": "about",
+       "start": 0.8588,
+       "end": 1.1108
+      },
+      {
+       "text": "the",
+       "start": 1.1258,
+       "end": 1.2544
+      },
+      {
+       "text": "news",
+       "start": 1.2895,
+       "end": 1.4839
+      }
+     ]
+    },
+    {
+     "id": "1-intermediate",
+     "label": "중급 학습자",
+     "profile": "intermediate",
+     "linkingScore": 40.75,
+     "speechRate": 4.816,
+     "words": [
+      {
+       "text": "I",
+       "start": 0.2,
+       "end": 0.3178
+      },
+      {
+       "text": "want",
+       "start": 0.3713,
+       "end": 0.6362
+      },
+      {
+       "text": "to",
+       "start": 0.7019,
+       "end": 0.8362
+      },
+      {
+       "text": "talk",
+       "start": 0.8673,
+       "end": 1.0462
+      },
+      {
+       "text": "about",
+       "start": 1.1376,
+       "end": 1.4085
+      },
+      {
+       "text": "the",
+       "start": 1.4367,
+       "end": 1.6047
+      },
+      {
+       "text": "news",
+       "start": 1.6663,
+       "end": 1.8612
+      }
+     ]
+    },
+    {
+     "id": "1-learner",
+     "label": "입문 학습자",
+     "profile": "learner",
+     "linkingScore": 5.86,
+     "speechRate": 3.64,
+     "words": [
+      {
+       "text": "I",
+       "start": 0.2,
+       "end": 0.332
+      },
+      {
+       "text": "want",
+       "start": 0.4443,
+       "end": 0.7286
+      },
+      {
+       "text": "to",
+       "start": 0.8204,
+       "end": 0.9621
+      },
+      {
+       "text": "talk",
+       "start": 1.0323,
+       "end": 1.2504
+      },
+      {
+       "text": "about",
+       "start": 1.4426,
+       "end": 1.7809
+      },
+      {
+       "text": "the",
+       "start": 1.8956,
+       "end": 2.0682
+      },
+      {
+       "text": "news",
+       "start": 2.126,
+       "end": 2.3978
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "clip-2",
+   "transcript": "he is in bed with an old man",
+   "kind": "서술문",
+   "difficulty": 2,
+   "attempts": [
+    {
+     "id": "2-native",
+     "label": "원어민",
+     "profile": "native",
+     "linkingScore": 98.32,
+     "speechRate": 5.79,
+     "words": [
+      {
+       "text": "he",
+       "start": 0.2,
+       "end": 0.3478
+      },
+      {
+       "text": "is",
+       "start": 0.358,
+       "end": 0.5027
+      },
+      {
+       "text": "in",
+       "start": 0.5066,
+       "end": 0.6369
+      },
+      {
+       "text": "bed",
+       "start": 0.6724,
+       "end": 0.8317
+      },
+      {
+       "text": "with",
+       "start": 0.8511,
+       "end": 1.0494
+      },
+      {
+       "text": "an",
+       "start": 1.0542,
+       "end": 1.1909
+      },
+      {
+       "text": "old",
+       "start": 1.194,
+       "end": 1.3869
+      },
+      {
+       "text": "man",
+       "start": 1.4037,
+       "end": 1.5816
+      }
+     ]
+    },
+    {
+     "id": "2-intermediate",
+     "label": "중급 학습자",
+     "profile": "intermediate",
+     "linkingScore": 66.11,
+     "speechRate": 4.588,
+     "words": [
+      {
+       "text": "he",
+       "start": 0.2,
+       "end": 0.3457
+      },
+      {
+       "text": "is",
+       "start": 0.4277,
+       "end": 0.5897
+      },
+      {
+       "text": "in",
+       "start": 0.6291,
+       "end": 0.7829
+      },
+      {
+       "text": "bed",
+       "start": 0.8336,
+       "end": 1.0123
+      },
+      {
+       "text": "with",
+       "start": 1.0325,
+       "end": 1.2349
+      },
+      {
+       "text": "an",
+       "start": 1.2611,
+       "end": 1.415
+      },
+      {
+       "text": "old",
+       "start": 1.4559,
+       "end": 1.6585
+      },
+      {
+       "text": "man",
+       "start": 1.7228,
+       "end": 1.9436
+      }
+     ]
+    },
+    {
+     "id": "2-learner",
+     "label": "입문 학습자",
+     "profile": "learner",
+     "linkingScore": 1.96,
+     "speechRate": 3.122,
+     "words": [
+      {
+       "text": "he",
+       "start": 0.2,
+       "end": 0.3999
+      },
+      {
+       "text": "is",
+       "start": 0.5138,
+       "end": 0.6644
+      },
+      {
+       "text": "in",
+       "start": 0.7857,
+       "end": 0.9288
+      },
+      {
+       "text": "bed",
+       "start": 1.0069,
+       "end": 1.2297
+      },
+      {
+       "text": "with",
+       "start": 1.3752,
+       "end": 1.5954
+      },
+      {
+       "text": "an",
+       "start": 1.8438,
+       "end": 2.0143
+      },
+      {
+       "text": "old",
+       "start": 2.2247,
+       "end": 2.4423
+      },
+      {
+       "text": "man",
+       "start": 2.5472,
+       "end": 2.7622
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "clip-3",
+   "transcript": "did you get it at eight",
+   "kind": "질문",
+   "difficulty": 3,
+   "attempts": [
+    {
+     "id": "3-native",
+     "label": "원어민",
+     "profile": "native",
+     "linkingScore": 85.04,
+     "speechRate": 6.974,
+     "words": [
+      {
+       "text": "did",
+       "start": 0.2,
+       "end": 0.3585
+      },
+      {
+       "text": "you",
+       "start": 0.3589,
+       "end": 0.4819
+      },
+      {
+       "text": "get",
+       "start": 0.4942,
+       "end": 0.6456
+      },
+      {
+       "text": "it",
+       "start": 0.6552,
+       "end": 0.7806
+      },
+      {
+       "text": "at",
+       "start": 0.7955,
+       "end": 0.9209
+      },
+      {
+       "text": "eight",
+       "start": 0.922,
+       "end": 1.0603
+      }
+     ]
+    },
+    {
+     "id": "3-intermediate",
+     "label": "중급 학습자",
+     "profile": "intermediate",
+     "linkingScore": 18.66,
+     "speechRate": 5.08,
+     "words": [
+      {
+       "text": "did",
+       "start": 0.2,
+       "end": 0.3593
+      },
+      {
+       "text": "you",
+       "start": 0.4147,
+       "end": 0.5562
+      },
+      {
+       "text": "get",
+       "start": 0.5845,
+       "end": 0.7478
+      },
+      {
+       "text": "it",
+       "start": 0.836,
+       "end": 0.9575
+      },
+      {
+       "text": "at",
+       "start": 1.0371,
+       "end": 1.1583
+      },
+      {
+       "text": "eight",
+       "start": 1.2186,
+       "end": 1.3812
+      }
+     ]
+    },
+    {
+     "id": "3-learner",
+     "label": "입문 학습자",
+     "profile": "learner",
+     "linkingScore": 0.0,
+     "speechRate": 2.972,
+     "words": [
+      {
+       "text": "did",
+       "start": 0.2,
+       "end": 0.3742
+      },
+      {
+       "text": "you",
+       "start": 0.5157,
+       "end": 0.686
+      },
+      {
+       "text": "get",
+       "start": 0.7806,
+       "end": 1.0839
+      },
+      {
+       "text": "it",
+       "start": 1.3173,
+       "end": 1.4655
+      },
+      {
+       "text": "at",
+       "start": 1.7054,
+       "end": 1.9493
+      },
+      {
+       "text": "eight",
+       "start": 2.0608,
+       "end": 2.2188
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "clip-4",
+   "transcript": "far away from her own home",
+   "kind": "묘사",
+   "difficulty": 3,
+   "attempts": [
+    {
+     "id": "4-native",
+     "label": "원어민",
+     "profile": "native",
+     "linkingScore": 100.0,
+     "speechRate": 5.773,
+     "words": [
+      {
+       "text": "far",
+       "start": 0.2,
+       "end": 0.39
+      },
+      {
+       "text": "away",
+       "start": 0.3905,
+       "end": 0.6076
+      },
+      {
+       "text": "from",
+       "start": 0.6221,
+       "end": 0.8722
+      },
+      {
+       "text": "her",
+       "start": 0.8774,
+       "end": 1.0246
+      },
+      {
+       "text": "own",
+       "start": 1.0312,
+       "end": 1.1769
+      },
+      {
+       "text": "home",
+       "start": 1.1864,
+       "end": 1.4126
+      }
+     ]
+    },
+    {
+     "id": "4-intermediate",
+     "label": "중급 학습자",
+     "profile": "intermediate",
+     "linkingScore": 64.14,
+     "speechRate": 4.159,
+     "words": [
+      {
+       "text": "far",
+       "start": 0.2,
+       "end": 0.4111
+      },
+      {
+       "text": "away",
+       "start": 0.446,
+       "end": 0.7242
+      },
+      {
+       "text": "from",
+       "start": 0.7963,
+       "end": 1.0841
+      },
+      {
+       "text": "her",
+       "start": 1.1386,
+       "end": 1.3038
+      },
+      {
+       "text": "own",
+       "start": 1.3757,
+       "end": 1.5653
+      },
+      {
+       "text": "home",
+       "start": 1.6356,
+       "end": 1.883
+      }
+     ]
+    },
+    {
+     "id": "4-learner",
+     "label": "입문 학습자",
+     "profile": "learner",
+     "linkingScore": 0.0,
+     "speechRate": 3.031,
+     "words": [
+      {
+       "text": "far",
+       "start": 0.2,
+       "end": 0.5319
+      },
+      {
+       "text": "away",
+       "start": 0.6599,
+       "end": 0.9651
+      },
+      {
+       "text": "from",
+       "start": 1.1701,
+       "end": 1.5152
+      },
+      {
+       "text": "her",
+       "start": 1.677,
+       "end": 1.8279
+      },
+      {
+       "text": "own",
+       "start": 1.9551,
+       "end": 2.1549
+      },
+      {
+       "text": "home",
+       "start": 2.2168,
+       "end": 2.5096
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

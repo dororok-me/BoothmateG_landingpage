@@ -1,0 +1,4181 @@
+{
+ "version": 1,
+ "note": "linking 엔진 파이썬 구현의 출력. Swift 포팅은 이와 일치해야 한다.",
+ "tolerance": 1e-06,
+ "lexicon": [
+  {
+   "word": "turn",
+   "phones": [
+    "T",
+    "ER",
+    "N"
+   ],
+   "syllables": 1,
+   "normalized": "turn"
+  },
+  {
+   "word": "it",
+   "phones": [
+    "IH",
+    "T"
+   ],
+   "syllables": 1,
+   "normalized": "it"
+  },
+  {
+   "word": "off",
+   "phones": [
+    "AO",
+    "F"
+   ],
+   "syllables": 1,
+   "normalized": "off"
+  },
+  {
+   "word": "and",
+   "phones": [
+    "AH",
+    "N",
+    "D"
+   ],
+   "syllables": 1,
+   "normalized": "and"
+  },
+  {
+   "word": "take",
+   "phones": [
+    "T",
+    "EY",
+    "K"
+   ],
+   "syllables": 1,
+   "normalized": "take"
+  },
+  {
+   "word": "a",
+   "phones": [
+    "AH"
+   ],
+   "syllables": 1,
+   "normalized": "a"
+  },
+  {
+   "word": "look",
+   "phones": [
+    "L",
+    "UH",
+    "K"
+   ],
+   "syllables": 1,
+   "normalized": "look"
+  },
+  {
+   "word": "next",
+   "phones": [
+    "N",
+    "EH",
+    "K",
+    "S",
+    "T"
+   ],
+   "syllables": 1,
+   "normalized": "next"
+  },
+  {
+   "word": "day",
+   "phones": [
+    "D",
+    "EY"
+   ],
+   "syllables": 1,
+   "normalized": "day"
+  },
+  {
+   "word": "did",
+   "phones": [
+    "D",
+    "IH",
+    "D"
+   ],
+   "syllables": 1,
+   "normalized": "did"
+  },
+  {
+   "word": "you",
+   "phones": [
+    "Y",
+    "UW"
+   ],
+   "syllables": 1,
+   "normalized": "you"
+  },
+  {
+   "word": "get",
+   "phones": [
+    "G",
+    "EH",
+    "T"
+   ],
+   "syllables": 1,
+   "normalized": "get"
+  },
+  {
+   "word": "go",
+   "phones": [
+    "G",
+    "OW"
+   ],
+   "syllables": 1,
+   "normalized": "go"
+  },
+  {
+   "word": "on",
+   "phones": [
+    "AA",
+    "N"
+   ],
+   "syllables": 1,
+   "normalized": "on"
+  },
+  {
+   "word": "he",
+   "phones": [
+    "HH",
+    "IY"
+   ],
+   "syllables": 1,
+   "normalized": "he"
+  },
+  {
+   "word": "is",
+   "phones": [
+    "IH",
+    "Z"
+   ],
+   "syllables": 1,
+   "normalized": "is"
+  },
+  {
+   "word": "in",
+   "phones": [
+    "IH",
+    "N"
+   ],
+   "syllables": 1,
+   "normalized": "in"
+  },
+  {
+   "word": "bed",
+   "phones": [
+    "B",
+    "EH",
+    "D"
+   ],
+   "syllables": 1,
+   "normalized": "bed"
+  },
+  {
+   "word": "big",
+   "phones": [
+    "B",
+    "IH",
+    "G"
+   ],
+   "syllables": 1,
+   "normalized": "big"
+  },
+  {
+   "word": "girl",
+   "phones": [
+    "G",
+    "ER",
+    "L"
+   ],
+   "syllables": 1,
+   "normalized": "girl"
+  },
+  {
+   "word": "with",
+   "phones": [
+    "W",
+    "IH",
+    "DH"
+   ],
+   "syllables": 1,
+   "normalized": "with"
+  },
+  {
+   "word": "an",
+   "phones": [
+    "AE",
+    "N"
+   ],
+   "syllables": 1,
+   "normalized": "an"
+  },
+  {
+   "word": "old",
+   "phones": [
+    "OW",
+    "L",
+    "D"
+   ],
+   "syllables": 1,
+   "normalized": "old"
+  },
+  {
+   "word": "man",
+   "phones": [
+    "M",
+    "AE",
+    "N"
+   ],
+   "syllables": 1,
+   "normalized": "man"
+  },
+  {
+   "word": "want",
+   "phones": [
+    "W",
+    "AA",
+    "N",
+    "T"
+   ],
+   "syllables": 1,
+   "normalized": "want"
+  },
+  {
+   "word": "to",
+   "phones": [
+    "T",
+    "UW"
+   ],
+   "syllables": 1,
+   "normalized": "to"
+  },
+  {
+   "word": "talk",
+   "phones": [
+    "T",
+    "AO",
+    "K"
+   ],
+   "syllables": 1,
+   "normalized": "talk"
+  },
+  {
+   "word": "about",
+   "phones": [
+    "AH",
+    "B",
+    "AW",
+    "T"
+   ],
+   "syllables": 2,
+   "normalized": "about"
+  },
+  {
+   "word": "the",
+   "phones": [
+    "DH",
+    "AH"
+   ],
+   "syllables": 1,
+   "normalized": "the"
+  },
+  {
+   "word": "news",
+   "phones": [
+    "N",
+    "UW",
+    "Z"
+   ],
+   "syllables": 1,
+   "normalized": "news"
+  },
+  {
+   "word": "tell",
+   "phones": [
+    "T",
+    "EH",
+    "L"
+   ],
+   "syllables": 1,
+   "normalized": "tell"
+  },
+  {
+   "word": "him",
+   "phones": [
+    "HH",
+    "IH",
+    "M"
+   ],
+   "syllables": 1,
+   "normalized": "him"
+  },
+  {
+   "word": "said",
+   "phones": [
+    "S",
+    "EH",
+    "D"
+   ],
+   "syllables": 1,
+   "normalized": "said"
+  },
+  {
+   "word": "hello",
+   "phones": [
+    "HH",
+    "AH",
+    "L",
+    "OW"
+   ],
+   "syllables": 2,
+   "normalized": "hello"
+  },
+  {
+   "word": "this",
+   "phones": [
+    "DH",
+    "IH",
+    "S"
+   ],
+   "syllables": 1,
+   "normalized": "this"
+  },
+  {
+   "word": "sunday",
+   "phones": [
+    "S",
+    "AH",
+    "N",
+    "D",
+    "EY"
+   ],
+   "syllables": 2,
+   "normalized": "sunday"
+  },
+  {
+   "word": "at",
+   "phones": [
+    "AE",
+    "T"
+   ],
+   "syllables": 1,
+   "normalized": "at"
+  },
+  {
+   "word": "eight",
+   "phones": [
+    "EY",
+    "T"
+   ],
+   "syllables": 1,
+   "normalized": "eight"
+  },
+  {
+   "word": "far",
+   "phones": [
+    "F",
+    "AA",
+    "R"
+   ],
+   "syllables": 1,
+   "normalized": "far"
+  },
+  {
+   "word": "away",
+   "phones": [
+    "AH",
+    "W",
+    "EY"
+   ],
+   "syllables": 2,
+   "normalized": "away"
+  },
+  {
+   "word": "from",
+   "phones": [
+    "F",
+    "R",
+    "AH",
+    "M"
+   ],
+   "syllables": 1,
+   "normalized": "from"
+  },
+  {
+   "word": "her",
+   "phones": [
+    "HH",
+    "ER"
+   ],
+   "syllables": 1,
+   "normalized": "her"
+  },
+  {
+   "word": "own",
+   "phones": [
+    "OW",
+    "N"
+   ],
+   "syllables": 1,
+   "normalized": "own"
+  },
+  {
+   "word": "home",
+   "phones": [
+    "HH",
+    "OW",
+    "M"
+   ],
+   "syllables": 1,
+   "normalized": "home"
+  },
+  {
+   "word": "strength",
+   "phones": [
+    "S",
+    "T",
+    "R",
+    "EH",
+    "NG",
+    "K",
+    "TH"
+   ],
+   "syllables": 1,
+   "normalized": "strength"
+  },
+  {
+   "word": "don't",
+   "phones": [
+    "D",
+    "OW",
+    "N",
+    "T"
+   ],
+   "syllables": 1,
+   "normalized": "don't"
+  },
+  {
+   "word": "well-known",
+   "phones": null,
+   "syllables": 0,
+   "normalized": "wellknown"
+  },
+  {
+   "word": "cars",
+   "phones": [
+    "K",
+    "AA",
+    "R",
+    "Z"
+   ],
+   "syllables": 1,
+   "normalized": "cars"
+  },
+  {
+   "word": "time",
+   "phones": [
+    "T",
+    "AY",
+    "M"
+   ],
+   "syllables": 1,
+   "normalized": "time"
+  },
+  {
+   "word": "miss",
+   "phones": [
+    "M",
+    "IH",
+    "S"
+   ],
+   "syllables": 1,
+   "normalized": "miss"
+  },
+  {
+   "word": "cat",
+   "phones": [
+    "K",
+    "AE",
+    "T"
+   ],
+   "syllables": 1,
+   "normalized": "cat"
+  },
+  {
+   "word": "Turn",
+   "phones": [
+    "T",
+    "ER",
+    "N"
+   ],
+   "syllables": 1,
+   "normalized": "turn"
+  },
+  {
+   "word": "off,",
+   "phones": [
+    "AO",
+    "F"
+   ],
+   "syllables": 1,
+   "normalized": "off"
+  },
+  {
+   "word": "look.",
+   "phones": [
+    "L",
+    "UH",
+    "K"
+   ],
+   "syllables": 1,
+   "normalized": "look"
+  },
+  {
+   "word": "I",
+   "phones": [
+    "AY"
+   ],
+   "syllables": 1,
+   "normalized": "i"
+  },
+  {
+   "word": "zzqqx",
+   "phones": null,
+   "syllables": 0,
+   "normalized": "zzqqx"
+  }
+ ],
+ "rules": [
+  {
+   "left": "turn",
+   "right": "it",
+   "skipped": null,
+   "tags": [
+    "LINK_CV"
+   ],
+   "expectsLink": true,
+   "weight": 1.0,
+   "primaryTag": "LINK_CV"
+  },
+  {
+   "left": "talk",
+   "right": "about",
+   "skipped": null,
+   "tags": [
+    "LINK_CV"
+   ],
+   "expectsLink": true,
+   "weight": 1.0,
+   "primaryTag": "LINK_CV"
+  },
+  {
+   "left": "an",
+   "right": "old",
+   "skipped": null,
+   "tags": [
+    "LINK_CV"
+   ],
+   "expectsLink": true,
+   "weight": 1.0,
+   "primaryTag": "LINK_CV"
+  },
+  {
+   "left": "him",
+   "right": "I",
+   "skipped": null,
+   "tags": [
+    "LINK_CV"
+   ],
+   "expectsLink": true,
+   "weight": 1.0,
+   "primaryTag": "LINK_CV"
+  },
+  {
+   "left": "far",
+   "right": "away",
+   "skipped": null,
+   "tags": [
+    "LINK_CV"
+   ],
+   "expectsLink": true,
+   "weight": 1.0,
+   "primaryTag": "LINK_CV"
+  },
+  {
+   "left": "at",
+   "right": "eight",
+   "skipped": null,
+   "tags": [
+    "LINK_CV",
+    "FLAP"
+   ],
+   "expectsLink": true,
+   "weight": 1.0,
+   "primaryTag": "LINK_CV"
+  },
+  {
+   "left": "with",
+   "right": "an",
+   "skipped": null,
+   "tags": [
+    "LINK_CV",
+    "REDUCE"
+   ],
+   "expectsLink": true,
+   "weight": 1.0,
+   "primaryTag": "LINK_CV"
+  },
+  {
+   "left": "is",
+   "right": "in",
+   "skipped": null,
+   "tags": [
+    "LINK_CV",
+    "REDUCE"
+   ],
+   "expectsLink": true,
+   "weight": 1.0,
+   "primaryTag": "LINK_CV"
+  },
+  {
+   "left": "you",
+   "right": "get",
+   "skipped": null,
+   "tags": [],
+   "expectsLink": false,
+   "weight": 0.0,
+   "primaryTag": null
+  },
+  {
+   "left": "the",
+   "right": "news",
+   "skipped": null,
+   "tags": [],
+   "expectsLink": false,
+   "weight": 0.0,
+   "primaryTag": null
+  },
+  {
+   "left": "I",
+   "right": "want",
+   "skipped": null,
+   "tags": [],
+   "expectsLink": false,
+   "weight": 0.0,
+   "primaryTag": null
+  },
+  {
+   "left": "to",
+   "right": "talk",
+   "skipped": null,
+   "tags": [],
+   "expectsLink": false,
+   "weight": 0.0,
+   "primaryTag": null
+  },
+  {
+   "left": "girl",
+   "right": "with",
+   "skipped": null,
+   "tags": [],
+   "expectsLink": false,
+   "weight": 0.0,
+   "primaryTag": null
+  },
+  {
+   "left": "own",
+   "right": "home",
+   "skipped": null,
+   "tags": [],
+   "expectsLink": false,
+   "weight": 0.0,
+   "primaryTag": null
+  },
+  {
+   "left": "a",
+   "right": "look",
+   "skipped": null,
+   "tags": [],
+   "expectsLink": false,
+   "weight": 0.0,
+   "primaryTag": null
+  },
+  {
+   "left": "said",
+   "right": "hello",
+   "skipped": null,
+   "tags": [],
+   "expectsLink": false,
+   "weight": 0.0,
+   "primaryTag": null
+  },
+  {
+   "left": "he",
+   "right": "is",
+   "skipped": null,
+   "tags": [
+    "REDUCE",
+    "GLIDE_Y"
+   ],
+   "expectsLink": true,
+   "weight": 0.8,
+   "primaryTag": "REDUCE"
+  },
+  {
+   "left": "go",
+   "right": "on",
+   "skipped": null,
+   "tags": [
+    "REDUCE",
+    "GLIDE_W"
+   ],
+   "expectsLink": true,
+   "weight": 0.8,
+   "primaryTag": "REDUCE"
+  },
+  {
+   "left": "sunday",
+   "right": "at",
+   "skipped": null,
+   "tags": [
+    "REDUCE",
+    "GLIDE_Y"
+   ],
+   "expectsLink": true,
+   "weight": 0.8,
+   "primaryTag": "REDUCE"
+  },
+  {
+   "left": "her",
+   "right": "own",
+   "skipped": null,
+   "tags": [
+    "LINK_R"
+   ],
+   "expectsLink": true,
+   "weight": 0.6,
+   "primaryTag": "LINK_R"
+  },
+  {
+   "left": "big",
+   "right": "girl",
+   "skipped": null,
+   "tags": [
+    "GEMINATE",
+    "UNRELEASED"
+   ],
+   "expectsLink": true,
+   "weight": 0.6,
+   "primaryTag": "GEMINATE"
+  },
+  {
+   "left": "this",
+   "right": "sunday",
+   "skipped": null,
+   "tags": [
+    "GEMINATE"
+   ],
+   "expectsLink": true,
+   "weight": 0.6,
+   "primaryTag": "GEMINATE"
+  },
+  {
+   "left": "want",
+   "right": "to",
+   "skipped": null,
+   "tags": [
+    "REDUCE",
+    "GEMINATE",
+    "ELIDE_T",
+    "UNRELEASED"
+   ],
+   "expectsLink": true,
+   "weight": 0.8,
+   "primaryTag": "REDUCE"
+  },
+  {
+   "left": "next",
+   "right": "day",
+   "skipped": null,
+   "tags": [
+    "ELIDE_T",
+    "UNRELEASED"
+   ],
+   "expectsLink": false,
+   "weight": 0.5,
+   "primaryTag": "ELIDE_T"
+  },
+  {
+   "left": "old",
+   "right": "man",
+   "skipped": null,
+   "tags": [
+    "ELIDE_D"
+   ],
+   "expectsLink": false,
+   "weight": 0.5,
+   "primaryTag": "ELIDE_D"
+  },
+  {
+   "left": "and",
+   "right": "take",
+   "skipped": null,
+   "tags": [
+    "ELIDE_D",
+    "UNRELEASED"
+   ],
+   "expectsLink": false,
+   "weight": 0.5,
+   "primaryTag": "ELIDE_D"
+  },
+  {
+   "left": "get",
+   "right": "it",
+   "skipped": null,
+   "tags": [
+    "LINK_CV",
+    "FLAP"
+   ],
+   "expectsLink": true,
+   "weight": 1.0,
+   "primaryTag": "LINK_CV"
+  },
+  {
+   "left": "it",
+   "right": "off",
+   "skipped": null,
+   "tags": [
+    "LINK_CV",
+    "FLAP"
+   ],
+   "expectsLink": true,
+   "weight": 1.0,
+   "primaryTag": "LINK_CV"
+  },
+  {
+   "left": "did",
+   "right": "you",
+   "skipped": null,
+   "tags": [
+    "REDUCE",
+    "PALATALIZE"
+   ],
+   "expectsLink": true,
+   "weight": 0.8,
+   "primaryTag": "REDUCE"
+  },
+  {
+   "left": "miss",
+   "right": "you",
+   "skipped": null,
+   "tags": [
+    "REDUCE",
+    "PALATALIZE"
+   ],
+   "expectsLink": true,
+   "weight": 0.8,
+   "primaryTag": "REDUCE"
+  },
+  {
+   "left": "did",
+   "right": "it",
+   "skipped": null,
+   "tags": [
+    "LINK_CV",
+    "FLAP"
+   ],
+   "expectsLink": true,
+   "weight": 1.0,
+   "primaryTag": "LINK_CV"
+  },
+  {
+   "left": "big",
+   "right": "cat",
+   "skipped": null,
+   "tags": [
+    "UNRELEASED"
+   ],
+   "expectsLink": false,
+   "weight": 0.4,
+   "primaryTag": "UNRELEASED"
+  },
+  {
+   "left": "big",
+   "right": "man",
+   "skipped": null,
+   "tags": [],
+   "expectsLink": false,
+   "weight": 0.0,
+   "primaryTag": null
+  },
+  {
+   "left": "tell",
+   "right": "him",
+   "skipped": null,
+   "tags": [
+    "REDUCE",
+    "H_DROP"
+   ],
+   "expectsLink": true,
+   "weight": 0.8,
+   "primaryTag": "REDUCE"
+  },
+  {
+   "left": "in",
+   "right": "bed",
+   "skipped": null,
+   "tags": [
+    "NASAL_ASSIM"
+   ],
+   "expectsLink": false,
+   "weight": 0.3,
+   "primaryTag": "NASAL_ASSIM"
+  },
+  {
+   "left": "in",
+   "right": "cars",
+   "skipped": null,
+   "tags": [
+    "NASAL_ASSIM"
+   ],
+   "expectsLink": false,
+   "weight": 0.3,
+   "primaryTag": "NASAL_ASSIM"
+  },
+  {
+   "left": "in",
+   "right": "time",
+   "skipped": null,
+   "tags": [],
+   "expectsLink": false,
+   "weight": 0.0,
+   "primaryTag": null
+  },
+  {
+   "left": "about",
+   "right": "the",
+   "skipped": null,
+   "tags": [
+    "REDUCE"
+   ],
+   "expectsLink": true,
+   "weight": 0.8,
+   "primaryTag": "REDUCE"
+  },
+  {
+   "left": "take",
+   "right": "a",
+   "skipped": null,
+   "tags": [
+    "LINK_CV",
+    "REDUCE"
+   ],
+   "expectsLink": true,
+   "weight": 1.0,
+   "primaryTag": "LINK_CV"
+  },
+  {
+   "left": "from",
+   "right": "her",
+   "skipped": null,
+   "tags": [
+    "REDUCE",
+    "H_DROP"
+   ],
+   "expectsLink": true,
+   "weight": 0.8,
+   "primaryTag": "REDUCE"
+  },
+  {
+   "left": "zzqqx",
+   "right": "it",
+   "skipped": "OOV:zzqqx",
+   "tags": [],
+   "expectsLink": false,
+   "weight": 0.0,
+   "primaryTag": null
+  },
+  {
+   "left": "turn",
+   "right": "zzqqx",
+   "skipped": "OOV:zzqqx",
+   "tags": [],
+   "expectsLink": false,
+   "weight": 0.0,
+   "primaryTag": null
+  },
+  {
+   "left": "Turn",
+   "right": "it,",
+   "skipped": null,
+   "tags": [
+    "LINK_CV"
+   ],
+   "expectsLink": true,
+   "weight": 1.0,
+   "primaryTag": "LINK_CV"
+  },
+  {
+   "left": "off,",
+   "right": "and",
+   "skipped": null,
+   "tags": [
+    "LINK_CV",
+    "REDUCE"
+   ],
+   "expectsLink": true,
+   "weight": 1.0,
+   "primaryTag": "LINK_CV"
+  }
+ ],
+ "sentences": [
+  {
+   "sentence": "turn it off",
+   "boundaryCount": 2,
+   "linkDensity": 1.0,
+   "requiredIndices": [
+    0,
+    1
+   ]
+  },
+  {
+   "sentence": "turn it off and take a look",
+   "boundaryCount": 6,
+   "linkDensity": 0.666667,
+   "requiredIndices": [
+    0,
+    1,
+    2,
+    4
+   ]
+  },
+  {
+   "sentence": "I want to talk about the news",
+   "boundaryCount": 6,
+   "linkDensity": 0.5,
+   "requiredIndices": [
+    1,
+    3,
+    4
+   ]
+  },
+  {
+   "sentence": "I want to talk about the news today",
+   "boundaryCount": 7,
+   "linkDensity": 0.428571,
+   "requiredIndices": [
+    1,
+    3,
+    4
+   ]
+  },
+  {
+   "sentence": "he is in bed with an old man",
+   "boundaryCount": 7,
+   "linkDensity": 0.571429,
+   "requiredIndices": [
+    0,
+    1,
+    4,
+    5
+   ]
+  },
+  {
+   "sentence": "did you get it at eight",
+   "boundaryCount": 5,
+   "linkDensity": 0.8,
+   "requiredIndices": [
+    0,
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "sentence": "next day delivery",
+   "boundaryCount": 2,
+   "linkDensity": 0.0,
+   "requiredIndices": []
+  },
+  {
+   "sentence": "far away from her own home",
+   "boundaryCount": 5,
+   "linkDensity": 0.8,
+   "requiredIndices": [
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "sentence": "big girl with an old man",
+   "boundaryCount": 5,
+   "linkDensity": 0.6,
+   "requiredIndices": [
+    0,
+    2,
+    3
+   ]
+  },
+  {
+   "sentence": "this sunday at eight",
+   "boundaryCount": 3,
+   "linkDensity": 1.0,
+   "requiredIndices": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "sentence": "tell him I said hello",
+   "boundaryCount": 4,
+   "linkDensity": 0.5,
+   "requiredIndices": [
+    0,
+    1
+   ]
+  },
+  {
+   "sentence": "go on and take a look",
+   "boundaryCount": 5,
+   "linkDensity": 0.6,
+   "requiredIndices": [
+    0,
+    1,
+    3
+   ]
+  }
+ ],
+ "detect": [
+  {
+   "name": "native|0|turn it off and take a look",
+   "words": [
+    {
+     "text": "turn",
+     "start": 0.2,
+     "end": 0.378
+    },
+    {
+     "text": "it",
+     "start": 0.3844,
+     "end": 0.4961
+    },
+    {
+     "text": "off",
+     "start": 0.5022,
+     "end": 0.6472
+    },
+    {
+     "text": "and",
+     "start": 0.6544,
+     "end": 0.8254
+    },
+    {
+     "text": "take",
+     "start": 0.8481,
+     "end": 1.029
+    },
+    {
+     "text": "a",
+     "start": 1.0383,
+     "end": 1.1103
+    },
+    {
+     "text": "look",
+     "start": 1.1471,
+     "end": 1.3289
+    }
+   ],
+   "meanPhone": 0.0612,
+   "speechRate": 6.200726,
+   "score": 96.495039,
+   "focusIndex": null,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "linked",
+     "gap": 0.0064,
+     "normGap": 0.104575,
+     "inflation": 1.292665,
+     "credit": 0.91467
+    },
+    {
+     "index": 1,
+     "verdict": "linked",
+     "gap": 0.0061,
+     "normGap": 0.099673,
+     "inflation": 1.177525,
+     "credit": 1.0
+    },
+    {
+     "index": 2,
+     "verdict": "linked",
+     "gap": 0.0072,
+     "normGap": 0.117647,
+     "inflation": 1.280692,
+     "credit": 0.938615
+    },
+    {
+     "index": 3,
+     "verdict": "linked",
+     "gap": 0.0227,
+     "normGap": 0.370915,
+     "inflation": 1.24183,
+     "credit": 0.977984
+    },
+    {
+     "index": 4,
+     "verdict": "linked",
+     "gap": 0.0093,
+     "normGap": 0.151961,
+     "inflation": 1.182353,
+     "credit": 1.0
+    },
+    {
+     "index": 5,
+     "verdict": "n/a",
+     "gap": 0.0368,
+     "normGap": 0.601307,
+     "inflation": 1.176471,
+     "credit": 0.0
+    }
+   ]
+  },
+  {
+   "name": "native|1|turn it off and take a look",
+   "words": [
+    {
+     "text": "turn",
+     "start": 0.2,
+     "end": 0.3589
+    },
+    {
+     "text": "it",
+     "start": 0.3703,
+     "end": 0.482
+    },
+    {
+     "text": "off",
+     "start": 0.4888,
+     "end": 0.6309
+    },
+    {
+     "text": "and",
+     "start": 0.6323,
+     "end": 0.7883
+    },
+    {
+     "text": "take",
+     "start": 0.8085,
+     "end": 1.0038
+    },
+    {
+     "text": "a",
+     "start": 1.0105,
+     "end": 1.0882
+    },
+    {
+     "text": "look",
+     "start": 1.1012,
+     "end": 1.2819
+    }
+   ],
+   "meanPhone": 0.060141,
+   "speechRate": 6.470099,
+   "score": 96.616946,
+   "focusIndex": null,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "linked",
+     "gap": 0.0114,
+     "normGap": 0.189554,
+     "inflation": 1.174274,
+     "credit": 1.0
+    },
+    {
+     "index": 1,
+     "verdict": "linked",
+     "gap": 0.0068,
+     "normGap": 0.113067,
+     "inflation": 1.198256,
+     "credit": 1.0
+    },
+    {
+     "index": 2,
+     "verdict": "linked",
+     "gap": 0.0014,
+     "normGap": 0.023279,
+     "inflation": 1.277175,
+     "credit": 0.94565
+    },
+    {
+     "index": 3,
+     "verdict": "linked",
+     "gap": 0.0202,
+     "normGap": 0.335876,
+     "inflation": 1.152843,
+     "credit": 1.0
+    },
+    {
+     "index": 4,
+     "verdict": "linked",
+     "gap": 0.0067,
+     "normGap": 0.111405,
+     "inflation": 1.298944,
+     "credit": 0.902113
+    },
+    {
+     "index": 5,
+     "verdict": "n/a",
+     "gap": 0.013,
+     "normGap": 0.216158,
+     "inflation": 1.29196,
+     "credit": 0.0
+    }
+   ]
+  },
+  {
+   "name": "native|2|turn it off and take a look",
+   "words": [
+    {
+     "text": "turn",
+     "start": 0.2,
+     "end": 0.3811
+    },
+    {
+     "text": "it",
+     "start": 0.3819,
+     "end": 0.4904
+    },
+    {
+     "text": "off",
+     "start": 0.5015,
+     "end": 0.644
+    },
+    {
+     "text": "and",
+     "start": 0.6531,
+     "end": 0.8247
+    },
+    {
+     "text": "take",
+     "start": 0.8353,
+     "end": 1.0207
+    },
+    {
+     "text": "a",
+     "start": 1.0315,
+     "end": 1.1125
+    },
+    {
+     "text": "look",
+     "start": 1.1507,
+     "end": 1.3206
+    }
+   ],
+   "meanPhone": 0.061176,
+   "speechRate": 6.246654,
+   "score": 96.676471,
+   "focusIndex": null,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "linked",
+     "gap": 0.0008,
+     "normGap": 0.013077,
+     "inflation": 1.315684,
+     "credit": 0.868632
+    },
+    {
+     "index": 1,
+     "verdict": "linked",
+     "gap": 0.0111,
+     "normGap": 0.181442,
+     "inflation": 1.144231,
+     "credit": 1.0
+    },
+    {
+     "index": 2,
+     "verdict": "linked",
+     "gap": 0.0091,
+     "normGap": 0.14875,
+     "inflation": 1.259096,
+     "credit": 0.981809
+    },
+    {
+     "index": 3,
+     "verdict": "linked",
+     "gap": 0.0106,
+     "normGap": 0.173269,
+     "inflation": 1.246667,
+     "credit": 1.0
+    },
+    {
+     "index": 4,
+     "verdict": "linked",
+     "gap": 0.0108,
+     "normGap": 0.176538,
+     "inflation": 1.212231,
+     "credit": 1.0
+    },
+    {
+     "index": 5,
+     "verdict": "n/a",
+     "gap": 0.0382,
+     "normGap": 0.624423,
+     "inflation": 1.324038,
+     "credit": 0.0
+    }
+   ]
+  },
+  {
+   "name": "intermediate|0|turn it off and take a look",
+   "words": [
+    {
+     "text": "turn",
+     "start": 0.2,
+     "end": 0.4057
+    },
+    {
+     "text": "it",
+     "start": 0.4636,
+     "end": 0.5884
+    },
+    {
+     "text": "off",
+     "start": 0.6448,
+     "end": 0.8119
+    },
+    {
+     "text": "and",
+     "start": 0.8748,
+     "end": 1.0695
+    },
+    {
+     "text": "take",
+     "start": 1.1198,
+     "end": 1.3221
+    },
+    {
+     "text": "a",
+     "start": 1.3978,
+     "end": 1.4781
+    },
+    {
+     "text": "look",
+     "start": 1.5527,
+     "end": 1.7642
+    }
+   ],
+   "meanPhone": 0.069788,
+   "speechRate": 4.475131,
+   "score": 43.644541,
+   "focusIndex": 4,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "partial",
+     "gap": 0.0579,
+     "normGap": 0.829653,
+     "inflation": 1.309995,
+     "credit": 0.495102
+    },
+    {
+     "index": 1,
+     "verdict": "partial",
+     "gap": 0.0564,
+     "normGap": 0.808159,
+     "inflation": 1.153721,
+     "credit": 0.517727
+    },
+    {
+     "index": 2,
+     "verdict": "partial",
+     "gap": 0.0629,
+     "normGap": 0.901298,
+     "inflation": 1.294263,
+     "credit": 0.419686
+    },
+    {
+     "index": 3,
+     "verdict": "partial",
+     "gap": 0.0503,
+     "normGap": 0.720752,
+     "inflation": 1.239942,
+     "credit": 0.609735
+    },
+    {
+     "index": 4,
+     "verdict": "broken",
+     "gap": 0.0757,
+     "normGap": 1.08471,
+     "inflation": 1.159508,
+     "credit": 0.226621
+    },
+    {
+     "index": 5,
+     "verdict": "n/a",
+     "gap": 0.0746,
+     "normGap": 1.068948,
+     "inflation": 1.150624,
+     "credit": 0.0
+    }
+   ]
+  },
+  {
+   "name": "intermediate|1|turn it off and take a look",
+   "words": [
+    {
+     "text": "turn",
+     "start": 0.2,
+     "end": 0.3759
+    },
+    {
+     "text": "it",
+     "start": 0.4646,
+     "end": 0.5893
+    },
+    {
+     "text": "off",
+     "start": 0.6497,
+     "end": 0.8122
+    },
+    {
+     "text": "and",
+     "start": 0.8407,
+     "end": 1.0121
+    },
+    {
+     "text": "take",
+     "start": 1.058,
+     "end": 1.3612
+    },
+    {
+     "text": "a",
+     "start": 1.4462,
+     "end": 1.5261
+    },
+    {
+     "text": "look",
+     "start": 1.6028,
+     "end": 1.8109
+    }
+   ],
+   "meanPhone": 0.0721,
+   "speechRate": 4.345397,
+   "score": 44.199496,
+   "focusIndex": 0,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "broken",
+     "gap": 0.0887,
+     "normGap": 1.230236,
+     "inflation": 1.084297,
+     "credit": 0.073436
+    },
+    {
+     "index": 1,
+     "verdict": "partial",
+     "gap": 0.0604,
+     "normGap": 0.837725,
+     "inflation": 1.115834,
+     "credit": 0.486605
+    },
+    {
+     "index": 2,
+     "verdict": "linked",
+     "gap": 0.0285,
+     "normGap": 0.395284,
+     "inflation": 1.218278,
+     "credit": 0.952332
+    },
+    {
+     "index": 3,
+     "verdict": "partial",
+     "gap": 0.0459,
+     "normGap": 0.636616,
+     "inflation": 1.056557,
+     "credit": 0.698299
+    },
+    {
+     "index": 4,
+     "verdict": "broken",
+     "gap": 0.085,
+     "normGap": 1.178918,
+     "inflation": 1.682108,
+     "credit": 0.127455
+    },
+    {
+     "index": 5,
+     "verdict": "n/a",
+     "gap": 0.0767,
+     "normGap": 1.0638,
+     "inflation": 1.108183,
+     "credit": 0.0
+    }
+   ]
+  },
+  {
+   "name": "intermediate|2|turn it off and take a look",
+   "words": [
+    {
+     "text": "turn",
+     "start": 0.2,
+     "end": 0.4104
+    },
+    {
+     "text": "it",
+     "start": 0.4355,
+     "end": 0.5552
+    },
+    {
+     "text": "off",
+     "start": 0.6415,
+     "end": 0.8046
+    },
+    {
+     "text": "and",
+     "start": 0.8791,
+     "end": 1.0749
+    },
+    {
+     "text": "take",
+     "start": 1.1044,
+     "end": 1.3136
+    },
+    {
+     "text": "a",
+     "start": 1.3987,
+     "end": 1.493
+    },
+    {
+     "text": "look",
+     "start": 1.5699,
+     "end": 1.763
+    }
+   ],
+   "meanPhone": 0.069741,
+   "speechRate": 4.478567,
+   "score": 37.193715,
+   "focusIndex": 1,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "linked",
+     "gap": 0.0251,
+     "normGap": 0.359902,
+     "inflation": 1.340831,
+     "credit": 0.818339
+    },
+    {
+     "index": 1,
+     "verdict": "broken",
+     "gap": 0.0863,
+     "normGap": 1.237433,
+     "inflation": 1.10732,
+     "credit": 0.065861
+    },
+    {
+     "index": 2,
+     "verdict": "broken",
+     "gap": 0.0745,
+     "normGap": 1.068235,
+     "inflation": 1.264134,
+     "credit": 0.243963
+    },
+    {
+     "index": 3,
+     "verdict": "linked",
+     "gap": 0.0295,
+     "normGap": 0.422993,
+     "inflation": 1.247788,
+     "credit": 0.923166
+    },
+    {
+     "index": 4,
+     "verdict": "broken",
+     "gap": 0.0851,
+     "normGap": 1.220226,
+     "inflation": 1.199865,
+     "credit": 0.083973
+    },
+    {
+     "index": 5,
+     "verdict": "n/a",
+     "gap": 0.0769,
+     "normGap": 1.102648,
+     "inflation": 1.352142,
+     "credit": 0.0
+    }
+   ]
+  },
+  {
+   "name": "learner|0|turn it off and take a look",
+   "words": [
+    {
+     "text": "turn",
+     "start": 0.2,
+     "end": 0.4358
+    },
+    {
+     "text": "it",
+     "start": 0.5973,
+     "end": 0.8197
+    },
+    {
+     "text": "off",
+     "start": 1.0429,
+     "end": 1.3025
+    },
+    {
+     "text": "and",
+     "start": 1.5469,
+     "end": 1.7609
+    },
+    {
+     "text": "take",
+     "start": 1.8841,
+     "end": 2.2397
+    },
+    {
+     "text": "a",
+     "start": 2.4968,
+     "end": 2.6006
+    },
+    {
+     "text": "look",
+     "start": 2.7399,
+     "end": 2.9414
+    }
+   ],
+   "meanPhone": 0.093688,
+   "speechRate": 2.55344,
+   "score": 0.0,
+   "focusIndex": 0,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "broken",
+     "gap": 0.1615,
+     "normGap": 1.723802,
+     "inflation": 1.118604,
+     "credit": 0.0
+    },
+    {
+     "index": 1,
+     "verdict": "broken",
+     "gap": 0.2232,
+     "normGap": 2.38237,
+     "inflation": 1.531504,
+     "credit": 0.0
+    },
+    {
+     "index": 2,
+     "verdict": "broken",
+     "gap": 0.2444,
+     "normGap": 2.608652,
+     "inflation": 1.49778,
+     "credit": 0.0
+    },
+    {
+     "index": 3,
+     "verdict": "broken",
+     "gap": 0.1232,
+     "normGap": 1.315,
+     "inflation": 1.015187,
+     "credit": 0.0
+    },
+    {
+     "index": 4,
+     "verdict": "broken",
+     "gap": 0.2571,
+     "normGap": 2.744208,
+     "inflation": 1.518227,
+     "credit": 0.0
+    },
+    {
+     "index": 5,
+     "verdict": "n/a",
+     "gap": 0.1393,
+     "normGap": 1.486846,
+     "inflation": 1.10793,
+     "credit": 0.0
+    }
+   ]
+  },
+  {
+   "name": "learner|1|turn it off and take a look",
+   "words": [
+    {
+     "text": "turn",
+     "start": 0.2,
+     "end": 0.3903
+    },
+    {
+     "text": "it",
+     "start": 0.6101,
+     "end": 0.8344
+    },
+    {
+     "text": "off",
+     "start": 1.0352,
+     "end": 1.294
+    },
+    {
+     "text": "and",
+     "start": 1.5261,
+     "end": 1.7355
+    },
+    {
+     "text": "take",
+     "start": 1.7758,
+     "end": 2.0094
+    },
+    {
+     "text": "a",
+     "start": 2.1383,
+     "end": 2.246
+    },
+    {
+     "text": "look",
+     "start": 2.3851,
+     "end": 2.5688
+    }
+   ],
+   "meanPhone": 0.082812,
+   "speechRate": 2.955083,
+   "score": 9.512914,
+   "focusIndex": 0,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "broken",
+     "gap": 0.2198,
+     "normGap": 2.654212,
+     "inflation": 1.021326,
+     "credit": 0.0
+    },
+    {
+     "index": 1,
+     "verdict": "broken",
+     "gap": 0.2008,
+     "normGap": 2.424776,
+     "inflation": 1.747453,
+     "credit": 0.0
+    },
+    {
+     "index": 2,
+     "verdict": "broken",
+     "gap": 0.2321,
+     "normGap": 2.802742,
+     "inflation": 1.689276,
+     "credit": 0.0
+    },
+    {
+     "index": 3,
+     "verdict": "linked",
+     "gap": 0.0403,
+     "normGap": 0.486646,
+     "inflation": 1.123834,
+     "credit": 0.856162
+    },
+    {
+     "index": 4,
+     "verdict": "broken",
+     "gap": 0.1289,
+     "normGap": 1.556542,
+     "inflation": 1.128342,
+     "credit": 0.0
+    },
+    {
+     "index": 5,
+     "verdict": "n/a",
+     "gap": 0.1391,
+     "normGap": 1.679713,
+     "inflation": 1.30054,
+     "credit": 0.0
+    }
+   ]
+  },
+  {
+   "name": "learner|2|turn it off and take a look",
+   "words": [
+    {
+     "text": "turn",
+     "start": 0.2,
+     "end": 0.443
+    },
+    {
+     "text": "it",
+     "start": 0.5426,
+     "end": 0.6715
+    },
+    {
+     "text": "off",
+     "start": 0.8866,
+     "end": 1.1666
+    },
+    {
+     "text": "and",
+     "start": 1.3598,
+     "end": 1.5787
+    },
+    {
+     "text": "take",
+     "start": 1.6661,
+     "end": 1.896
+    },
+    {
+     "text": "a",
+     "start": 2.1551,
+     "end": 2.2629
+    },
+    {
+     "text": "look",
+     "start": 2.3628,
+     "end": 2.573
+    }
+   ],
+   "meanPhone": 0.083453,
+   "speechRate": 2.949853,
+   "score": 5.447125,
+   "focusIndex": 0,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "broken",
+     "gap": 0.0996,
+     "normGap": 1.193487,
+     "inflation": 1.294143,
+     "credit": 0.112119
+    },
+    {
+     "index": 1,
+     "verdict": "broken",
+     "gap": 0.2151,
+     "normGap": 2.577501,
+     "inflation": 0.996505,
+     "credit": 0.0
+    },
+    {
+     "index": 2,
+     "verdict": "broken",
+     "gap": 0.1932,
+     "normGap": 2.315077,
+     "inflation": 1.813613,
+     "credit": 0.0
+    },
+    {
+     "index": 3,
+     "verdict": "broken",
+     "gap": 0.0874,
+     "normGap": 1.047297,
+     "inflation": 1.165793,
+     "credit": 0.266003
+    },
+    {
+     "index": 4,
+     "verdict": "broken",
+     "gap": 0.2591,
+     "normGap": 3.104744,
+     "inflation": 1.101938,
+     "credit": 0.0
+    },
+    {
+     "index": 5,
+     "verdict": "n/a",
+     "gap": 0.0999,
+     "normGap": 1.197082,
+     "inflation": 1.291746,
+     "credit": 0.0
+    }
+   ]
+  },
+  {
+   "name": "native|0|I want to talk about the news",
+   "words": [
+    {
+     "text": "I",
+     "start": 0.2,
+     "end": 0.3108
+    },
+    {
+     "text": "want",
+     "start": 0.3423,
+     "end": 0.5533
+    },
+    {
+     "text": "to",
+     "start": 0.561,
+     "end": 0.6755
+    },
+    {
+     "text": "talk",
+     "start": 0.7079,
+     "end": 0.8605
+    },
+    {
+     "text": "about",
+     "start": 0.8692,
+     "end": 1.1489
+    },
+    {
+     "text": "the",
+     "start": 1.1531,
+     "end": 1.2975
+    },
+    {
+     "text": "news",
+     "start": 1.3242,
+     "end": 1.5078
+    }
+   ],
+   "meanPhone": 0.062979,
+   "speechRate": 6.117143,
+   "score": 98.836631,
+   "focusIndex": null,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "n/a",
+     "gap": 0.0315,
+     "normGap": 0.500167,
+     "inflation": 1.256656,
+     "credit": 0.0
+    },
+    {
+     "index": 1,
+     "verdict": "linked",
+     "gap": 0.0077,
+     "normGap": 0.122263,
+     "inflation": 1.175553,
+     "credit": 1.0
+    },
+    {
+     "index": 2,
+     "verdict": "n/a",
+     "gap": 0.0324,
+     "normGap": 0.514458,
+     "inflation": 1.172947,
+     "credit": 0.0
+    },
+    {
+     "index": 3,
+     "verdict": "linked",
+     "gap": 0.0087,
+     "normGap": 0.138141,
+     "inflation": 1.153825,
+     "credit": 1.0
+    },
+    {
+     "index": 4,
+     "verdict": "linked",
+     "gap": 0.0042,
+     "normGap": 0.066689,
+     "inflation": 1.268905,
+     "credit": 0.96219
+    },
+    {
+     "index": 5,
+     "verdict": "n/a",
+     "gap": 0.0267,
+     "normGap": 0.423951,
+     "inflation": 1.239367,
+     "credit": 0.0
+    }
+   ]
+  },
+  {
+   "name": "native|1|I want to talk about the news",
+   "words": [
+    {
+     "text": "I",
+     "start": 0.2,
+     "end": 0.2989
+    },
+    {
+     "text": "want",
+     "start": 0.3335,
+     "end": 0.5563
+    },
+    {
+     "text": "to",
+     "start": 0.5637,
+     "end": 0.679
+    },
+    {
+     "text": "talk",
+     "start": 0.7068,
+     "end": 0.8716
+    },
+    {
+     "text": "about",
+     "start": 0.872,
+     "end": 1.1486
+    },
+    {
+     "text": "the",
+     "start": 1.1601,
+     "end": 1.2878
+    },
+    {
+     "text": "news",
+     "start": 1.3084,
+     "end": 1.5064
+    }
+   ],
+   "meanPhone": 0.063374,
+   "speechRate": 6.123699,
+   "score": 100.0,
+   "focusIndex": null,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "n/a",
+     "gap": 0.0346,
+     "normGap": 0.545968,
+     "inflation": 1.114703,
+     "credit": 0.0
+    },
+    {
+     "index": 1,
+     "verdict": "linked",
+     "gap": 0.0074,
+     "normGap": 0.116768,
+     "inflation": 1.233563,
+     "credit": 1.0
+    },
+    {
+     "index": 2,
+     "verdict": "n/a",
+     "gap": 0.0278,
+     "normGap": 0.438668,
+     "inflation": 1.173785,
+     "credit": 0.0
+    },
+    {
+     "index": 3,
+     "verdict": "linked",
+     "gap": 0.0004,
+     "normGap": 0.006312,
+     "inflation": 1.238309,
+     "credit": 1.0
+    },
+    {
+     "index": 4,
+     "verdict": "linked",
+     "gap": 0.0115,
+     "normGap": 0.181463,
+     "inflation": 1.247025,
+     "credit": 1.0
+    },
+    {
+     "index": 5,
+     "verdict": "n/a",
+     "gap": 0.0206,
+     "normGap": 0.325056,
+     "inflation": 1.089206,
+     "credit": 0.0
+    }
+   ]
+  },
+  {
+   "name": "native|2|I want to talk about the news",
+   "words": [
+    {
+     "text": "I",
+     "start": 0.2,
+     "end": 0.3127
+    },
+    {
+     "text": "want",
+     "start": 0.3508,
+     "end": 0.5494
+    },
+    {
+     "text": "to",
+     "start": 0.562,
+     "end": 0.6826
+    },
+    {
+     "text": "talk",
+     "start": 0.711,
+     "end": 0.8637
+    },
+    {
+     "text": "about",
+     "start": 0.8728,
+     "end": 1.1387
+    },
+    {
+     "text": "the",
+     "start": 1.1452,
+     "end": 1.2816
+    },
+    {
+     "text": "news",
+     "start": 1.3119,
+     "end": 1.5183
+    }
+   ],
+   "meanPhone": 0.062805,
+   "speechRate": 6.068421,
+   "score": 100.0,
+   "focusIndex": null,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "n/a",
+     "gap": 0.0381,
+     "normGap": 0.606637,
+     "inflation": 1.28174,
+     "credit": 0.0
+    },
+    {
+     "index": 1,
+     "verdict": "linked",
+     "gap": 0.0126,
+     "normGap": 0.20062,
+     "inflation": 1.109528,
+     "credit": 1.0
+    },
+    {
+     "index": 2,
+     "verdict": "n/a",
+     "gap": 0.0284,
+     "normGap": 0.452191,
+     "inflation": 1.238852,
+     "credit": 0.0
+    },
+    {
+     "index": 3,
+     "verdict": "linked",
+     "gap": 0.0091,
+     "normGap": 0.144892,
+     "inflation": 1.157774,
+     "credit": 1.0
+    },
+    {
+     "index": 4,
+     "verdict": "linked",
+     "gap": 0.0065,
+     "normGap": 0.103495,
+     "inflation": 1.209635,
+     "credit": 1.0
+    },
+    {
+     "index": 5,
+     "verdict": "n/a",
+     "gap": 0.0303,
+     "normGap": 0.482444,
+     "inflation": 1.173942,
+     "credit": 0.0
+    }
+   ]
+  },
+  {
+   "name": "intermediate|0|I want to talk about the news",
+   "words": [
+    {
+     "text": "I",
+     "start": 0.2,
+     "end": 0.328
+    },
+    {
+     "text": "want",
+     "start": 0.3935,
+     "end": 0.6315
+    },
+    {
+     "text": "to",
+     "start": 0.6975,
+     "end": 0.8265
+    },
+    {
+     "text": "talk",
+     "start": 0.8935,
+     "end": 1.0643
+    },
+    {
+     "text": "about",
+     "start": 1.1368,
+     "end": 1.461
+    },
+    {
+     "text": "the",
+     "start": 1.5064,
+     "end": 1.6725
+    },
+    {
+     "text": "news",
+     "start": 1.7296,
+     "end": 1.9345
+    }
+   ],
+   "meanPhone": 0.071632,
+   "speechRate": 4.61228,
+   "score": 45.495245,
+   "focusIndex": 3,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "n/a",
+     "gap": 0.0655,
+     "normGap": 0.914401,
+     "inflation": 1.276372,
+     "credit": 0.0
+    },
+    {
+     "index": 1,
+     "verdict": "partial",
+     "gap": 0.066,
+     "normGap": 0.921381,
+     "inflation": 1.165809,
+     "credit": 0.398546
+    },
+    {
+     "index": 2,
+     "verdict": "n/a",
+     "gap": 0.067,
+     "normGap": 0.935342,
+     "inflation": 1.161859,
+     "credit": 0.0
+    },
+    {
+     "index": 3,
+     "verdict": "broken",
+     "gap": 0.0725,
+     "normGap": 1.012123,
+     "inflation": 1.13544,
+     "credit": 0.303028
+    },
+    {
+     "index": 4,
+     "verdict": "partial",
+     "gap": 0.0454,
+     "normGap": 0.633799,
+     "inflation": 1.293125,
+     "credit": 0.701265
+    },
+    {
+     "index": 5,
+     "verdict": "n/a",
+     "gap": 0.0571,
+     "normGap": 0.797134,
+     "inflation": 1.253411,
+     "credit": 0.0
+    }
+   ]
+  },
+  {
+   "name": "intermediate|1|I want to talk about the news",
+   "words": [
+    {
+     "text": "I",
+     "start": 0.2,
+     "end": 0.3094
+    },
+    {
+     "text": "want",
+     "start": 0.3803,
+     "end": 0.6366
+    },
+    {
+     "text": "to",
+     "start": 0.7012,
+     "end": 0.8315
+    },
+    {
+     "text": "talk",
+     "start": 0.8906,
+     "end": 1.1411
+    },
+    {
+     "text": "about",
+     "start": 1.2363,
+     "end": 1.5294
+    },
+    {
+     "text": "the",
+     "start": 1.5496,
+     "end": 1.705
+    },
+    {
+     "text": "news",
+     "start": 1.7683,
+     "end": 1.9721
+    }
+   ],
+   "meanPhone": 0.073621,
+   "speechRate": 4.514418,
+   "score": 44.733543,
+   "focusIndex": 3,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "n/a",
+     "gap": 0.0709,
+     "normGap": 0.96304,
+     "inflation": 1.06142,
+     "credit": 0.0
+    },
+    {
+     "index": 1,
+     "verdict": "partial",
+     "gap": 0.0646,
+     "normGap": 0.877466,
+     "inflation": 1.221523,
+     "credit": 0.444772
+    },
+    {
+     "index": 2,
+     "verdict": "n/a",
+     "gap": 0.0591,
+     "normGap": 0.80276,
+     "inflation": 1.141854,
+     "credit": 0.0
+    },
+    {
+     "index": 3,
+     "verdict": "broken",
+     "gap": 0.0952,
+     "normGap": 1.293108,
+     "inflation": 1.620266,
+     "credit": 0.007254
+    },
+    {
+     "index": 4,
+     "verdict": "linked",
+     "gap": 0.0202,
+     "normGap": 0.274378,
+     "inflation": 1.137485,
+     "credit": 1.0
+    },
+    {
+     "index": 5,
+     "verdict": "n/a",
+     "gap": 0.0633,
+     "normGap": 0.859808,
+     "inflation": 1.140978,
+     "credit": 0.0
+    }
+   ]
+  },
+  {
+   "name": "intermediate|2|I want to talk about the news",
+   "words": [
+    {
+     "text": "I",
+     "start": 0.2,
+     "end": 0.3309
+    },
+    {
+     "text": "want",
+     "start": 0.4078,
+     "end": 0.6264
+    },
+    {
+     "text": "to",
+     "start": 0.7216,
+     "end": 0.8602
+    },
+    {
+     "text": "talk",
+     "start": 0.9204,
+     "end": 1.0914
+    },
+    {
+     "text": "about",
+     "start": 1.166,
+     "end": 1.4688
+    },
+    {
+     "text": "the",
+     "start": 1.5275,
+     "end": 1.6811
+    },
+    {
+     "text": "news",
+     "start": 1.7445,
+     "end": 1.9848
+    }
+   ],
+   "meanPhone": 0.071358,
+   "speechRate": 4.482295,
+   "score": 25.768195,
+   "focusIndex": 3,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "n/a",
+     "gap": 0.0769,
+     "normGap": 1.077666,
+     "inflation": 1.310297,
+     "credit": 0.0
+    },
+    {
+     "index": 1,
+     "verdict": "broken",
+     "gap": 0.0952,
+     "normGap": 1.33412,
+     "inflation": 1.074888,
+     "credit": 0.0
+    },
+    {
+     "index": 2,
+     "verdict": "n/a",
+     "gap": 0.0602,
+     "normGap": 0.843635,
+     "inflation": 1.253111,
+     "credit": 0.0
+    },
+    {
+     "index": 3,
+     "verdict": "broken",
+     "gap": 0.0746,
+     "normGap": 1.045434,
+     "inflation": 1.141129,
+     "credit": 0.267964
+    },
+    {
+     "index": 4,
+     "verdict": "partial",
+     "gap": 0.0587,
+     "normGap": 0.822614,
+     "inflation": 1.2124,
+     "credit": 0.502512
+    },
+    {
+     "index": 5,
+     "verdict": "n/a",
+     "gap": 0.0634,
+     "normGap": 0.888479,
+     "inflation": 1.16353,
+     "credit": 0.0
+    }
+   ]
+  },
+  {
+   "name": "learner|0|I want to talk about the news",
+   "words": [
+    {
+     "text": "I",
+     "start": 0.2,
+     "end": 0.3467
+    },
+    {
+     "text": "want",
+     "start": 0.4701,
+     "end": 0.7344
+    },
+    {
+     "text": "to",
+     "start": 0.9113,
+     "end": 1.0544
+    },
+    {
+     "text": "talk",
+     "start": 1.1806,
+     "end": 1.4625
+    },
+    {
+     "text": "about",
+     "start": 1.7069,
+     "end": 2.0399
+    },
+    {
+     "text": "the",
+     "start": 2.2584,
+     "end": 2.4404
+    },
+    {
+     "text": "news",
+     "start": 2.5079,
+     "end": 2.7799
+    }
+   ],
+   "meanPhone": 0.085421,
+   "speechRate": 3.100895,
+   "score": 0.0,
+   "focusIndex": 3,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "n/a",
+     "gap": 0.1234,
+     "normGap": 1.444609,
+     "inflation": 1.226697,
+     "credit": 0.0
+    },
+    {
+     "index": 1,
+     "verdict": "broken",
+     "gap": 0.1769,
+     "normGap": 2.070918,
+     "inflation": 1.085644,
+     "credit": 0.0
+    },
+    {
+     "index": 2,
+     "verdict": "n/a",
+     "gap": 0.1262,
+     "normGap": 1.477388,
+     "inflation": 1.080794,
+     "credit": 0.0
+    },
+    {
+     "index": 3,
+     "verdict": "broken",
+     "gap": 0.2444,
+     "normGap": 2.861121,
+     "inflation": 1.571487,
+     "credit": 0.0
+    },
+    {
+     "index": 4,
+     "verdict": "broken",
+     "gap": 0.2185,
+     "normGap": 2.557917,
+     "inflation": 1.11381,
+     "credit": 0.0
+    },
+    {
+     "index": 5,
+     "verdict": "n/a",
+     "gap": 0.0675,
+     "normGap": 0.790203,
+     "inflation": 1.151688,
+     "credit": 0.0
+    }
+   ]
+  },
+  {
+   "name": "learner|1|I want to talk about the news",
+   "words": [
+    {
+     "text": "I",
+     "start": 0.2,
+     "end": 0.3184
+    },
+    {
+     "text": "want",
+     "start": 0.4516,
+     "end": 0.7438
+    },
+    {
+     "text": "to",
+     "start": 0.918,
+     "end": 1.063
+    },
+    {
+     "text": "talk",
+     "start": 1.1747,
+     "end": 1.4593
+    },
+    {
+     "text": "about",
+     "start": 1.6914,
+     "end": 2.0172
+    },
+    {
+     "text": "the",
+     "start": 2.1076,
+     "end": 2.2805
+    },
+    {
+     "text": "news",
+     "start": 2.3998,
+     "end": 2.6224
+    }
+   ],
+   "meanPhone": 0.082184,
+   "speechRate": 3.30251,
+   "score": 6.47877,
+   "focusIndex": 3,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "n/a",
+     "gap": 0.1332,
+     "normGap": 1.620749,
+     "inflation": 1.029047,
+     "credit": 0.0
+    },
+    {
+     "index": 1,
+     "verdict": "broken",
+     "gap": 0.1742,
+     "normGap": 2.119629,
+     "inflation": 1.247518,
+     "credit": 0.0
+    },
+    {
+     "index": 2,
+     "verdict": "n/a",
+     "gap": 0.1117,
+     "normGap": 1.359142,
+     "inflation": 1.138277,
+     "credit": 0.0
+    },
+    {
+     "index": 3,
+     "verdict": "broken",
+     "gap": 0.2321,
+     "normGap": 2.824143,
+     "inflation": 1.649025,
+     "credit": 0.0
+    },
+    {
+     "index": 4,
+     "verdict": "broken",
+     "gap": 0.0904,
+     "normGap": 1.099968,
+     "inflation": 1.132647,
+     "credit": 0.21056
+    },
+    {
+     "index": 5,
+     "verdict": "n/a",
+     "gap": 0.1193,
+     "normGap": 1.451617,
+     "inflation": 1.137195,
+     "credit": 0.0
+    }
+   ]
+  },
+  {
+   "name": "learner|2|I want to talk about the news",
+   "words": [
+    {
+     "text": "I",
+     "start": 0.2,
+     "end": 0.3512
+    },
+    {
+     "text": "want",
+     "start": 0.4955,
+     "end": 0.7302
+    },
+    {
+     "text": "to",
+     "start": 0.9622,
+     "end": 1.1199
+    },
+    {
+     "text": "talk",
+     "start": 1.2336,
+     "end": 1.4216
+    },
+    {
+     "text": "about",
+     "start": 1.6147,
+     "end": 1.9553
+    },
+    {
+     "text": "the",
+     "start": 2.1186,
+     "end": 2.2887
+    },
+    {
+     "text": "news",
+     "start": 2.4082,
+     "end": 2.6864
+    }
+   ],
+   "meanPhone": 0.080026,
+   "speechRate": 3.217503,
+   "score": 0.0,
+   "focusIndex": 3,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "n/a",
+     "gap": 0.1443,
+     "normGap": 1.803157,
+     "inflation": 1.349556,
+     "credit": 0.0
+    },
+    {
+     "index": 1,
+     "verdict": "broken",
+     "gap": 0.232,
+     "normGap": 2.899046,
+     "inflation": 1.029047,
+     "credit": 0.0
+    },
+    {
+     "index": 2,
+     "verdict": "n/a",
+     "gap": 0.1137,
+     "normGap": 1.420783,
+     "inflation": 1.271356,
+     "credit": 0.0
+    },
+    {
+     "index": 3,
+     "verdict": "broken",
+     "gap": 0.1931,
+     "normGap": 2.412956,
+     "inflation": 1.11868,
+     "credit": 0.0
+    },
+    {
+     "index": 4,
+     "verdict": "broken",
+     "gap": 0.1633,
+     "normGap": 2.040579,
+     "inflation": 1.216029,
+     "credit": 0.0
+    },
+    {
+     "index": 5,
+     "verdict": "n/a",
+     "gap": 0.1195,
+     "normGap": 1.493259,
+     "inflation": 1.148946,
+     "credit": 0.0
+    }
+   ]
+  },
+  {
+   "name": "native|0|he is in bed with an old man",
+   "words": [
+    {
+     "text": "he",
+     "start": 0.2,
+     "end": 0.3464
+    },
+    {
+     "text": "is",
+     "start": 0.3578,
+     "end": 0.4948
+    },
+    {
+     "text": "in",
+     "start": 0.5024,
+     "end": 0.628
+    },
+    {
+     "text": "bed",
+     "start": 0.6436,
+     "end": 0.8005
+    },
+    {
+     "text": "with",
+     "start": 0.8373,
+     "end": 1.0212
+    },
+    {
+     "text": "an",
+     "start": 1.0325,
+     "end": 1.1624
+    },
+    {
+     "text": "old",
+     "start": 1.1761,
+     "end": 1.3902
+    },
+    {
+     "text": "man",
+     "start": 1.4268,
+     "end": 1.6013
+    }
+   ],
+   "meanPhone": 0.063415,
+   "speechRate": 5.708985,
+   "score": 97.401024,
+   "focusIndex": null,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "linked",
+     "gap": 0.0114,
+     "normGap": 0.179768,
+     "inflation": 1.247893,
+     "credit": 1.0
+    },
+    {
+     "index": 1,
+     "verdict": "linked",
+     "gap": 0.0076,
+     "normGap": 0.119845,
+     "inflation": 1.167769,
+     "credit": 1.0
+    },
+    {
+     "index": 2,
+     "verdict": "linked",
+     "gap": 0.0156,
+     "normGap": 0.245999,
+     "inflation": 1.165061,
+     "credit": 1.0
+    },
+    {
+     "index": 3,
+     "verdict": "n/a",
+     "gap": 0.0368,
+     "normGap": 0.580304,
+     "inflation": 1.17818,
+     "credit": 0.0
+    },
+    {
+     "index": 4,
+     "verdict": "linked",
+     "gap": 0.0113,
+     "normGap": 0.178191,
+     "inflation": 1.183651,
+     "credit": 1.0
+    },
+    {
+     "index": 5,
+     "verdict": "linked",
+     "gap": 0.0137,
+     "normGap": 0.216037,
+     "inflation": 1.204948,
+     "credit": 1.0
+    },
+    {
+     "index": 6,
+     "verdict": "linked",
+     "gap": 0.0366,
+     "normGap": 0.577151,
+     "inflation": 1.274027,
+     "credit": 0.760894
+    }
+   ]
+  },
+  {
+   "name": "native|1|he is in bed with an old man",
+   "words": [
+    {
+     "text": "he",
+     "start": 0.2,
+     "end": 0.3306
+    },
+    {
+     "text": "is",
+     "start": 0.3433,
+     "end": 0.488
+    },
+    {
+     "text": "in",
+     "start": 0.4954,
+     "end": 0.6219
+    },
+    {
+     "text": "bed",
+     "start": 0.6545,
+     "end": 0.8017
+    },
+    {
+     "text": "with",
+     "start": 0.836,
+     "end": 1.0177
+    },
+    {
+     "text": "an",
+     "start": 1.0178,
+     "end": 1.1442
+    },
+    {
+     "text": "old",
+     "start": 1.1476,
+     "end": 1.3605
+    },
+    {
+     "text": "man",
+     "start": 1.3666,
+     "end": 1.5329
+    }
+   ],
+   "meanPhone": 0.061815,
+   "speechRate": 6.001951,
+   "score": 97.035911,
+   "focusIndex": null,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "linked",
+     "gap": 0.0127,
+     "normGap": 0.205452,
+     "inflation": 1.14203,
+     "credit": 1.0
+    },
+    {
+     "index": 1,
+     "verdict": "linked",
+     "gap": 0.0074,
+     "normGap": 0.119712,
+     "inflation": 1.265327,
+     "credit": 0.969345
+    },
+    {
+     "index": 2,
+     "verdict": "linked",
+     "gap": 0.0326,
+     "normGap": 0.52738,
+     "inflation": 1.203782,
+     "credit": 0.813284
+    },
+    {
+     "index": 3,
+     "verdict": "n/a",
+     "gap": 0.0343,
+     "normGap": 0.554882,
+     "inflation": 1.133952,
+     "credit": 0.0
+    },
+    {
+     "index": 4,
+     "verdict": "linked",
+     "gap": 0.0001,
+     "normGap": 0.001618,
+     "inflation": 1.199762,
+     "credit": 1.0
+    },
+    {
+     "index": 5,
+     "verdict": "linked",
+     "gap": 0.0034,
+     "normGap": 0.055003,
+     "inflation": 1.20283,
+     "credit": 1.0
+    },
+    {
+     "index": 6,
+     "verdict": "linked",
+     "gap": 0.0061,
+     "normGap": 0.098682,
+     "inflation": 1.299678,
+     "credit": 0.900643
+    }
+   ]
+  },
+  {
+   "name": "native|2|he is in bed with an old man",
+   "words": [
+    {
+     "text": "he",
+     "start": 0.2,
+     "end": 0.3489
+    },
+    {
+     "text": "is",
+     "start": 0.3631,
+     "end": 0.492
+    },
+    {
+     "text": "in",
+     "start": 0.5045,
+     "end": 0.6368
+    },
+    {
+     "text": "bed",
+     "start": 0.6526,
+     "end": 0.8128
+    },
+    {
+     "text": "with",
+     "start": 0.8381,
+     "end": 1.0118
+    },
+    {
+     "text": "an",
+     "start": 1.0177,
+     "end": 1.1498
+    },
+    {
+     "text": "old",
+     "start": 1.164,
+     "end": 1.3642
+    },
+    {
+     "text": "man",
+     "start": 1.3786,
+     "end": 1.5452
+    }
+   ],
+   "meanPhone": 0.062145,
+   "speechRate": 5.947071,
+   "score": 98.382811,
+   "focusIndex": null,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "linked",
+     "gap": 0.0142,
+     "normGap": 0.228498,
+     "inflation": 1.29514,
+     "credit": 0.90972
+    },
+    {
+     "index": 1,
+     "verdict": "linked",
+     "gap": 0.0125,
+     "normGap": 0.201142,
+     "inflation": 1.121179,
+     "credit": 1.0
+    },
+    {
+     "index": 2,
+     "verdict": "linked",
+     "gap": 0.0158,
+     "normGap": 0.254244,
+     "inflation": 1.252289,
+     "credit": 0.995421
+    },
+    {
+     "index": 3,
+     "verdict": "n/a",
+     "gap": 0.0253,
+     "normGap": 0.407112,
+     "inflation": 1.227544,
+     "credit": 0.0
+    },
+    {
+     "index": 4,
+     "verdict": "linked",
+     "gap": 0.0059,
+     "normGap": 0.094939,
+     "inflation": 1.140847,
+     "credit": 1.0
+    },
+    {
+     "index": 5,
+     "verdict": "linked",
+     "gap": 0.0142,
+     "normGap": 0.228498,
+     "inflation": 1.250396,
+     "credit": 0.999207
+    },
+    {
+     "index": 6,
+     "verdict": "linked",
+     "gap": 0.0144,
+     "normGap": 0.231716,
+     "inflation": 1.21566,
+     "credit": 1.0
+    }
+   ]
+  },
+  {
+   "name": "intermediate|0|he is in bed with an old man",
+   "words": [
+    {
+     "text": "he",
+     "start": 0.2,
+     "end": 0.3692
+    },
+    {
+     "text": "is",
+     "start": 0.4574,
+     "end": 0.6119
+    },
+    {
+     "text": "in",
+     "start": 0.6779,
+     "end": 0.8194
+    },
+    {
+     "text": "bed",
+     "start": 0.8576,
+     "end": 1.0352
+    },
+    {
+     "text": "with",
+     "start": 1.1096,
+     "end": 1.3181
+    },
+    {
+     "text": "an",
+     "start": 1.4061,
+     "end": 1.5544
+    },
+    {
+     "text": "old",
+     "start": 1.6563,
+     "end": 1.9054
+    },
+    {
+     "text": "man",
+     "start": 1.9796,
+     "end": 2.1751
+    }
+   ],
+   "meanPhone": 0.07221,
+   "speechRate": 4.050428,
+   "score": 20.542297,
+   "focusIndex": 4,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "broken",
+     "gap": 0.0882,
+     "normGap": 1.221437,
+     "inflation": 1.266576,
+     "credit": 0.082697
+    },
+    {
+     "index": 1,
+     "verdict": "partial",
+     "gap": 0.066,
+     "normGap": 0.914001,
+     "inflation": 1.156537,
+     "credit": 0.406315
+    },
+    {
+     "index": 2,
+     "verdict": "linked",
+     "gap": 0.0382,
+     "normGap": 0.529013,
+     "inflation": 1.152684,
+     "credit": 0.811566
+    },
+    {
+     "index": 3,
+     "verdict": "n/a",
+     "gap": 0.0744,
+     "normGap": 1.030328,
+     "inflation": 1.171187,
+     "credit": 0.0
+    },
+    {
+     "index": 4,
+     "verdict": "broken",
+     "gap": 0.088,
+     "normGap": 1.218668,
+     "inflation": 1.178535,
+     "credit": 0.085613
+    },
+    {
+     "index": 5,
+     "verdict": "broken",
+     "gap": 0.1019,
+     "normGap": 1.411162,
+     "inflation": 1.208078,
+     "credit": 0.0
+    },
+    {
+     "index": 6,
+     "verdict": "broken",
+     "gap": 0.0742,
+     "normGap": 1.027559,
+     "inflation": 1.301759,
+     "credit": 0.286781
+    }
+   ]
+  },
+  {
+   "name": "intermediate|1|he is in bed with an old man",
+   "words": [
+    {
+     "text": "he",
+     "start": 0.2,
+     "end": 0.3446
+    },
+    {
+     "text": "is",
+     "start": 0.4409,
+     "end": 0.6072
+    },
+    {
+     "text": "in",
+     "start": 0.6718,
+     "end": 0.8147
+    },
+    {
+     "text": "bed",
+     "start": 0.8821,
+     "end": 1.0446
+    },
+    {
+     "text": "with",
+     "start": 1.1147,
+     "end": 1.3199
+    },
+    {
+     "text": "an",
+     "start": 1.3401,
+     "end": 1.4829
+    },
+    {
+     "text": "old",
+     "start": 1.5235,
+     "end": 1.7708
+    },
+    {
+     "text": "man",
+     "start": 1.7926,
+     "end": 1.9753
+    }
+   ],
+   "meanPhone": 0.069715,
+   "speechRate": 4.506281,
+   "score": 57.935642,
+   "focusIndex": 0,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "broken",
+     "gap": 0.0963,
+     "normGap": 1.381338,
+     "inflation": 1.121167,
+     "credit": 0.0
+    },
+    {
+     "index": 1,
+     "verdict": "partial",
+     "gap": 0.0646,
+     "normGap": 0.92663,
+     "inflation": 1.28942,
+     "credit": 0.393021
+    },
+    {
+     "index": 2,
+     "verdict": "partial",
+     "gap": 0.0674,
+     "normGap": 0.966793,
+     "inflation": 1.205749,
+     "credit": 0.350744
+    },
+    {
+     "index": 3,
+     "verdict": "n/a",
+     "gap": 0.0701,
+     "normGap": 1.005522,
+     "inflation": 1.109961,
+     "credit": 0.0
+    },
+    {
+     "index": 4,
+     "verdict": "linked",
+     "gap": 0.0202,
+     "normGap": 0.289751,
+     "inflation": 1.201393,
+     "credit": 1.0
+    },
+    {
+     "index": 5,
+     "verdict": "linked",
+     "gap": 0.0406,
+     "normGap": 0.582371,
+     "inflation": 1.204906,
+     "credit": 0.755399
+    },
+    {
+     "index": 6,
+     "verdict": "linked",
+     "gap": 0.0218,
+     "normGap": 0.312702,
+     "inflation": 1.338604,
+     "credit": 0.822793
+    }
+   ]
+  },
+  {
+   "name": "intermediate|2|he is in bed with an old man",
+   "words": [
+    {
+     "text": "he",
+     "start": 0.2,
+     "end": 0.373
+    },
+    {
+     "text": "is",
+     "start": 0.4783,
+     "end": 0.7152
+    },
+    {
+     "text": "in",
+     "start": 0.8015,
+     "end": 0.9514
+    },
+    {
+     "text": "bed",
+     "start": 1.0077,
+     "end": 1.1904
+    },
+    {
+     "text": "with",
+     "start": 1.2199,
+     "end": 1.425
+    },
+    {
+     "text": "an",
+     "start": 1.5101,
+     "end": 1.6703
+    },
+    {
+     "text": "old",
+     "start": 1.7393,
+     "end": 1.9618
+    },
+    {
+     "text": "man",
+     "start": 1.984,
+     "end": 2.1668
+    }
+   ],
+   "meanPhone": 0.075655,
+   "speechRate": 4.067521,
+   "score": 30.066858,
+   "focusIndex": 1,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "broken",
+     "gap": 0.1053,
+     "normGap": 1.391845,
+     "inflation": 1.236052,
+     "credit": 0.0
+    },
+    {
+     "index": 1,
+     "verdict": "broken",
+     "gap": 0.0863,
+     "normGap": 1.140705,
+     "inflation": 1.692605,
+     "credit": 0.114789
+    },
+    {
+     "index": 2,
+     "verdict": "partial",
+     "gap": 0.0563,
+     "normGap": 0.744168,
+     "inflation": 1.165508,
+     "credit": 0.585087
+    },
+    {
+     "index": 3,
+     "verdict": "n/a",
+     "gap": 0.0295,
+     "normGap": 0.389928,
+     "inflation": 1.149957,
+     "credit": 0.0
+    },
+    {
+     "index": 4,
+     "verdict": "broken",
+     "gap": 0.0851,
+     "normGap": 1.124843,
+     "inflation": 1.106527,
+     "credit": 0.184376
+    },
+    {
+     "index": 5,
+     "verdict": "partial",
+     "gap": 0.069,
+     "normGap": 0.912035,
+     "inflation": 1.245592,
+     "credit": 0.408384
+    },
+    {
+     "index": 6,
+     "verdict": "linked",
+     "gap": 0.0222,
+     "normGap": 0.293437,
+     "inflation": 1.109805,
+     "credit": 1.0
+    }
+   ]
+  },
+  {
+   "name": "learner|0|he is in bed with an old man",
+   "words": [
+    {
+     "text": "he",
+     "start": 0.2,
+     "end": 0.3939
+    },
+    {
+     "text": "is",
+     "start": 0.6128,
+     "end": 0.8751
+    },
+    {
+     "text": "in",
+     "start": 1.0339,
+     "end": 1.2092
+    },
+    {
+     "text": "bed",
+     "start": 1.3016,
+     "end": 1.5061
+    },
+    {
+     "text": "with",
+     "start": 1.6016,
+     "end": 1.8191
+    },
+    {
+     "text": "an",
+     "start": 2.0143,
+     "end": 2.1637
+    },
+    {
+     "text": "old",
+     "start": 2.4208,
+     "end": 2.6959
+    },
+    {
+     "text": "man",
+     "start": 2.7701,
+     "end": 3.0138
+    }
+   ],
+   "meanPhone": 0.086085,
+   "speechRate": 2.84313,
+   "score": 6.568039,
+   "focusIndex": 1,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "broken",
+     "gap": 0.2189,
+     "normGap": 2.542836,
+     "inflation": 1.217527,
+     "credit": 0.0
+    },
+    {
+     "index": 1,
+     "verdict": "broken",
+     "gap": 0.1588,
+     "normGap": 1.844688,
+     "inflation": 1.647021,
+     "credit": 0.0
+    },
+    {
+     "index": 2,
+     "verdict": "broken",
+     "gap": 0.0924,
+     "normGap": 1.073358,
+     "inflation": 1.197858,
+     "credit": 0.238571
+    },
+    {
+     "index": 3,
+     "verdict": "n/a",
+     "gap": 0.0955,
+     "normGap": 1.109369,
+     "inflation": 1.131219,
+     "credit": 0.0
+    },
+    {
+     "index": 4,
+     "verdict": "broken",
+     "gap": 0.1952,
+     "normGap": 2.267526,
+     "inflation": 1.031254,
+     "credit": 0.0
+    },
+    {
+     "index": 5,
+     "verdict": "broken",
+     "gap": 0.2571,
+     "normGap": 2.986583,
+     "inflation": 1.020879,
+     "credit": 0.0
+    },
+    {
+     "index": 6,
+     "verdict": "partial",
+     "gap": 0.0742,
+     "normGap": 0.861939,
+     "inflation": 1.205916,
+     "credit": 0.461117
+    }
+   ]
+  },
+  {
+   "name": "learner|1|he is in bed with an old man",
+   "words": [
+    {
+     "text": "he",
+     "start": 0.2,
+     "end": 0.3565
+    },
+    {
+     "text": "is",
+     "start": 0.5905,
+     "end": 0.8702
+    },
+    {
+     "text": "in",
+     "start": 1.0366,
+     "end": 1.2055
+    },
+    {
+     "text": "bed",
+     "start": 1.2558,
+     "end": 1.4271
+    },
+    {
+     "text": "with",
+     "start": 1.5147,
+     "end": 1.8534
+    },
+    {
+     "text": "an",
+     "start": 2.0661,
+     "end": 2.2144
+    },
+    {
+     "text": "old",
+     "start": 2.4577,
+     "end": 2.674
+    },
+    {
+     "text": "man",
+     "start": 2.7735,
+     "end": 3.0316
+    }
+   ],
+   "meanPhone": 0.08689,
+   "speechRate": 2.825258,
+   "score": 6.722406,
+   "focusIndex": 1,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "broken",
+     "gap": 0.234,
+     "normGap": 2.69306,
+     "inflation": 0.973583,
+     "credit": 0.0
+    },
+    {
+     "index": 1,
+     "verdict": "broken",
+     "gap": 0.1664,
+     "normGap": 1.915065,
+     "inflation": 1.740007,
+     "credit": 0.0
+    },
+    {
+     "index": 2,
+     "verdict": "linked",
+     "gap": 0.0503,
+     "normGap": 0.578893,
+     "inflation": 1.143434,
+     "credit": 0.75906
+    },
+    {
+     "index": 3,
+     "verdict": "n/a",
+     "gap": 0.0876,
+     "normGap": 1.008171,
+     "inflation": 0.93879,
+     "credit": 0.0
+    },
+    {
+     "index": 4,
+     "verdict": "broken",
+     "gap": 0.2127,
+     "normGap": 2.447923,
+     "inflation": 1.591033,
+     "credit": 0.0
+    },
+    {
+     "index": 5,
+     "verdict": "broken",
+     "gap": 0.2433,
+     "normGap": 2.800092,
+     "inflation": 1.003974,
+     "credit": 0.0
+    },
+    {
+     "index": 6,
+     "verdict": "broken",
+     "gap": 0.0995,
+     "normGap": 1.145126,
+     "inflation": 0.939379,
+     "credit": 0.163025
+    }
+   ]
+  },
+  {
+   "name": "learner|2|he is in bed with an old man",
+   "words": [
+    {
+     "text": "he",
+     "start": 0.2,
+     "end": 0.3998
+    },
+    {
+     "text": "is",
+     "start": 0.6509,
+     "end": 0.9095
+    },
+    {
+     "text": "in",
+     "start": 1.1246,
+     "end": 1.2943
+    },
+    {
+     "text": "bed",
+     "start": 1.401,
+     "end": 1.6069
+    },
+    {
+     "text": "with",
+     "start": 1.6643,
+     "end": 1.993
+    },
+    {
+     "text": "an",
+     "start": 2.2522,
+     "end": 2.5231
+    },
+    {
+     "text": "old",
+     "start": 2.6587,
+     "end": 2.8754
+    },
+    {
+     "text": "man",
+     "start": 2.9665,
+     "end": 3.1821
+    }
+   ],
+   "meanPhone": 0.093295,
+   "speechRate": 2.682673,
+   "score": 4.774795,
+   "focusIndex": 1,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "broken",
+     "gap": 0.2511,
+     "normGap": 2.691463,
+     "inflation": 1.157618,
+     "credit": 0.0
+    },
+    {
+     "index": 1,
+     "verdict": "broken",
+     "gap": 0.2151,
+     "normGap": 2.30559,
+     "inflation": 1.498299,
+     "credit": 0.0
+    },
+    {
+     "index": 2,
+     "verdict": "broken",
+     "gap": 0.1067,
+     "normGap": 1.143684,
+     "inflation": 1.069977,
+     "credit": 0.164543
+    },
+    {
+     "index": 3,
+     "verdict": "n/a",
+     "gap": 0.0574,
+     "normGap": 0.615253,
+     "inflation": 1.050942,
+     "credit": 0.0
+    },
+    {
+     "index": 4,
+     "verdict": "broken",
+     "gap": 0.2592,
+     "normGap": 2.778284,
+     "inflation": 1.438054,
+     "credit": 0.0
+    },
+    {
+     "index": 5,
+     "verdict": "broken",
+     "gap": 0.1356,
+     "normGap": 1.453454,
+     "inflation": 1.708054,
+     "credit": 0.0
+    },
+    {
+     "index": 6,
+     "verdict": "broken",
+     "gap": 0.0911,
+     "normGap": 0.976472,
+     "inflation": 0.876506,
+     "credit": 0.340555
+    }
+   ]
+  },
+  {
+   "name": "pause",
+   "words": [
+    {
+     "text": "turn",
+     "start": 0.0,
+     "end": 0.3
+    },
+    {
+     "text": "it",
+     "start": 0.6,
+     "end": 0.75
+    },
+    {
+     "text": "off",
+     "start": 0.78,
+     "end": 1.0
+    }
+   ],
+   "meanPhone": 0.095714,
+   "speechRate": 3.0,
+   "score": 50.0,
+   "focusIndex": 0,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "broken",
+     "gap": 0.3,
+     "normGap": 3.134328,
+     "inflation": 1.393035,
+     "credit": 0.0
+    },
+    {
+     "index": 1,
+     "verdict": "linked",
+     "gap": 0.03,
+     "normGap": 0.313433,
+     "inflation": 1.011074,
+     "credit": 1.0
+    }
+   ]
+  },
+  {
+   "name": "epenthesis",
+   "words": [
+    {
+     "text": "turn",
+     "start": 0.0,
+     "end": 0.62
+    },
+    {
+     "text": "it",
+     "start": 0.62,
+     "end": 0.74
+    },
+    {
+     "text": "off",
+     "start": 0.74,
+     "end": 0.92
+    }
+   ],
+   "meanPhone": 0.131429,
+   "speechRate": 3.26087,
+   "score": 50.0,
+   "focusIndex": 0,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "broken",
+     "gap": 0.0,
+     "normGap": 0.0,
+     "inflation": 2.096618,
+     "credit": 0.0
+    },
+    {
+     "index": 1,
+     "verdict": "linked",
+     "gap": 0.0,
+     "normGap": 0.0,
+     "inflation": 0.58906,
+     "credit": 1.0
+    }
+   ]
+  },
+  {
+   "name": "oov-mixed",
+   "words": [
+    {
+     "text": "turn",
+     "start": 0.0,
+     "end": 0.25
+    },
+    {
+     "text": "it",
+     "start": 0.26,
+     "end": 0.38
+    },
+    {
+     "text": "zzqqx",
+     "start": 0.39,
+     "end": 0.6
+    },
+    {
+     "text": "off",
+     "start": 0.61,
+     "end": 0.8
+    }
+   ],
+   "meanPhone": 0.08,
+   "speechRate": 3.75,
+   "score": 72.222222,
+   "focusIndex": null,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "partial",
+     "gap": 0.01,
+     "normGap": 0.125,
+     "inflation": 1.388889,
+     "credit": 0.722222
+    },
+    {
+     "index": 1,
+     "verdict": "n/a",
+     "gap": 0.01,
+     "normGap": 0.125,
+     "inflation": 0.967742,
+     "credit": 0.0
+    },
+    {
+     "index": 2,
+     "verdict": "n/a",
+     "gap": 0.01,
+     "normGap": 0.125,
+     "inflation": null,
+     "credit": 0.0
+    }
+   ]
+  },
+  {
+   "name": "clean",
+   "words": [
+    {
+     "text": "turn",
+     "start": 0.2,
+     "end": 0.45
+    },
+    {
+     "text": "it",
+     "start": 0.452,
+     "end": 0.562
+    },
+    {
+     "text": "off",
+     "start": 0.564,
+     "end": 0.784
+    }
+   ],
+   "meanPhone": 0.082857,
+   "speechRate": 5.136986,
+   "score": 90.900383,
+   "focusIndex": null,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "linked",
+     "gap": 0.002,
+     "normGap": 0.024138,
+     "inflation": 1.340996,
+     "credit": 0.818008
+    },
+    {
+     "index": 1,
+     "verdict": "linked",
+     "gap": 0.002,
+     "normGap": 0.024138,
+     "inflation": 0.856507,
+     "credit": 1.0
+    }
+   ]
+  },
+  {
+   "name": "rate-fast",
+   "words": [
+    {
+     "text": "turn",
+     "start": 0.2,
+     "end": 0.3617
+    },
+    {
+     "text": "it",
+     "start": 0.3672,
+     "end": 0.4854
+    },
+    {
+     "text": "off",
+     "start": 0.4864,
+     "end": 0.6143
+    },
+    {
+     "text": "and",
+     "start": 0.6182,
+     "end": 0.7798
+    },
+    {
+     "text": "take",
+     "start": 0.8013,
+     "end": 0.9989
+    },
+    {
+     "text": "a",
+     "start": 1.0084,
+     "end": 1.0792
+    },
+    {
+     "text": "look",
+     "start": 1.1065,
+     "end": 1.2852
+    }
+   ],
+   "meanPhone": 0.059794,
+   "speechRate": 6.450424,
+   "score": 95.567522,
+   "focusIndex": null,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "linked",
+     "gap": 0.0055,
+     "normGap": 0.091982,
+     "inflation": 1.201902,
+     "credit": 1.0
+    },
+    {
+     "index": 1,
+     "verdict": "linked",
+     "gap": 0.001,
+     "normGap": 0.016724,
+     "inflation": 1.275344,
+     "credit": 0.949312
+    },
+    {
+     "index": 2,
+     "verdict": "linked",
+     "gap": 0.0039,
+     "normGap": 0.065224,
+     "inflation": 1.15622,
+     "credit": 1.0
+    },
+    {
+     "index": 3,
+     "verdict": "linked",
+     "gap": 0.0215,
+     "normGap": 0.359567,
+     "inflation": 1.201159,
+     "credit": 0.989929
+    },
+    {
+     "index": 4,
+     "verdict": "linked",
+     "gap": 0.0095,
+     "normGap": 0.158879,
+     "inflation": 1.321869,
+     "credit": 0.856262
+    },
+    {
+     "index": 5,
+     "verdict": "n/a",
+     "gap": 0.0273,
+     "normGap": 0.456567,
+     "inflation": 1.184063,
+     "credit": 0.0
+    }
+   ]
+  },
+  {
+   "name": "rate-slow-2x",
+   "words": [
+    {
+     "text": "turn",
+     "start": 0.4,
+     "end": 0.7234
+    },
+    {
+     "text": "it",
+     "start": 0.7344,
+     "end": 0.9708
+    },
+    {
+     "text": "off",
+     "start": 0.9728,
+     "end": 1.2286
+    },
+    {
+     "text": "and",
+     "start": 1.2364,
+     "end": 1.5596
+    },
+    {
+     "text": "take",
+     "start": 1.6026,
+     "end": 1.9978
+    },
+    {
+     "text": "a",
+     "start": 2.0168,
+     "end": 2.1584
+    },
+    {
+     "text": "look",
+     "start": 2.213,
+     "end": 2.5704
+    }
+   ],
+   "meanPhone": 0.119588,
+   "speechRate": 3.225212,
+   "score": 95.567522,
+   "focusIndex": null,
+   "results": [
+    {
+     "index": 0,
+     "verdict": "linked",
+     "gap": 0.011,
+     "normGap": 0.091982,
+     "inflation": 1.201902,
+     "credit": 1.0
+    },
+    {
+     "index": 1,
+     "verdict": "linked",
+     "gap": 0.002,
+     "normGap": 0.016724,
+     "inflation": 1.275344,
+     "credit": 0.949312
+    },
+    {
+     "index": 2,
+     "verdict": "linked",
+     "gap": 0.0078,
+     "normGap": 0.065224,
+     "inflation": 1.15622,
+     "credit": 1.0
+    },
+    {
+     "index": 3,
+     "verdict": "linked",
+     "gap": 0.043,
+     "normGap": 0.359567,
+     "inflation": 1.201159,
+     "credit": 0.989929
+    },
+    {
+     "index": 4,
+     "verdict": "linked",
+     "gap": 0.019,
+     "normGap": 0.158879,
+     "inflation": 1.321869,
+     "credit": 0.856262
+    },
+    {
+     "index": 5,
+     "verdict": "n/a",
+     "gap": 0.0546,
+     "normGap": 0.456567,
+     "inflation": 1.184063,
+     "credit": 0.0
+    }
+   ]
+  }
+ ]
+}
