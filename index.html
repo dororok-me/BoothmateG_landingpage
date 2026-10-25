@@ -375,6 +375,26 @@
   .demo{max-width:980px;margin:24px auto 0;border-radius:var(--radius);overflow:hidden;box-shadow:0 24px 50px rgba(0,0,0,.14)}
   .demo video{width:100%;display:block}
 
+  /* ---------- SHOWREEL 실제 시연 영상 (2026-10) ---------- */
+  .showreel{background:var(--offwhite);padding:64px 0 88px}
+  .showreel h2{text-align:center;margin-bottom:36px}
+  .sr-player{max-width:980px;margin:0 auto;border-radius:var(--radius);overflow:hidden;
+    background:#000;box-shadow:0 24px 50px rgba(0,0,0,.14);aspect-ratio:16/9}
+  .sr-player video{width:100%;height:100%;display:block;object-fit:contain;background:#000}
+  .sr-thumbs{max-width:980px;margin:18px auto 0;display:grid;grid-template-columns:repeat(6,1fr);gap:12px;list-style:none}
+  .sr-thumbs button{display:block;width:100%;padding:0;border:0;cursor:pointer;background:#000;
+    border-radius:10px;overflow:hidden;aspect-ratio:16/9;opacity:.55;
+    outline:2px solid transparent;outline-offset:3px;transition:opacity .2s,outline-color .2s}
+  .sr-thumbs button:hover{opacity:.85}
+  .sr-thumbs button[aria-pressed="true"]{opacity:1;outline-color:var(--blue)}
+  .sr-thumbs button:focus-visible{outline-color:var(--blue-link)}
+  .sr-thumbs img{width:100%;height:100%;object-fit:cover}
+  @media (max-width:768px){
+    .showreel{padding:48px 0 64px}
+    .showreel h2{margin-bottom:24px}
+    .sr-thumbs{grid-template-columns:repeat(3,1fr);gap:10px}
+  }
+
   /* CTA */
   .cta{background:var(--offwhite);text-align:center}
   .cta .btnrow{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px}
@@ -572,6 +592,24 @@
   </div>
 </header>
 -->
+
+<!-- SHOWREEL 실제 시연 영상 (2026-10) -->
+<section class="showreel" id="showreel">
+  <div class="wrap">
+    <h2 class="headline reveal">자신 있어서 실제 통역 장면 제일 먼저 보여 드립니다.</h2>
+    <div class="sr-player reveal">
+      <video id="srVideo" src="demo_001.mp4" poster="demo_001_poster.jpg" controls playsinline preload="none"></video>
+    </div>
+    <ul class="sr-thumbs reveal" id="srThumbs">
+      <li><button type="button" data-src="demo_001.mp4" data-poster="demo_001_poster.jpg" aria-pressed="true" aria-label="시연 영상 1"><img src="demo_001_poster.jpg" alt="" loading="lazy"></button></li>
+      <li><button type="button" data-src="demo_002.mp4" data-poster="demo_002_poster.jpg" aria-pressed="false" aria-label="시연 영상 2"><img src="demo_002_poster.jpg" alt="" loading="lazy"></button></li>
+      <li><button type="button" data-src="demo_003.mp4" data-poster="demo_003_poster.jpg" aria-pressed="false" aria-label="시연 영상 3"><img src="demo_003_poster.jpg" alt="" loading="lazy"></button></li>
+      <li><button type="button" data-src="demo_004.mp4" data-poster="demo_004_poster.jpg" aria-pressed="false" aria-label="시연 영상 4"><img src="demo_004_poster.jpg" alt="" loading="lazy"></button></li>
+      <li><button type="button" data-src="demo_005.mp4" data-poster="demo_005_poster.jpg" aria-pressed="false" aria-label="시연 영상 5"><img src="demo_005_poster.jpg" alt="" loading="lazy"></button></li>
+      <li><button type="button" data-src="demo_006.mp4" data-poster="demo_006_poster.jpg" aria-pressed="false" aria-label="시연 영상 6"><img src="demo_006_poster.jpg" alt="" loading="lazy"></button></li>
+    </ul>
+  </div>
+</section>
 
 <!-- TRANSITION STATEMENT -->
 <section class="statement">
@@ -1099,5 +1137,19 @@
 </script>
 
 <!-- redeploy 2026-07 -->
+<script>
+/* SHOWREEL: 썸네일을 누르면 위 플레이어에서 해당 영상 재생 */
+(function(){
+  var v=document.getElementById('srVideo'), list=document.getElementById('srThumbs');
+  if(!v||!list) return;
+  list.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    list.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed','false')});
+    b.setAttribute('aria-pressed','true');
+    v.poster=b.dataset.poster; v.src=b.dataset.src;
+    var p=v.play(); if(p&&p.catch) p.catch(function(){});
+  });
+})();
+</script>
 </body>
 </html>
